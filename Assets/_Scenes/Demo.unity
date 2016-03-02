@@ -3763,12 +3763,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 341003886}
   m_Layer: 0
-  m_Name: Model 1 Rig
+  m_Name: Acceleration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &341003886
 Transform:
   m_ObjectHideFlags: 0
@@ -4098,7 +4098,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 485397365}
   m_Layer: 0
-  m_Name: Model 2 Rig
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13617,13 +13617,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18200a69f39047df9ab7cfa08a1f981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 3500
+  acceleration: 6000
   rotationRate: 300
   turnRotationAngle: 25
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
-  maxSpeed: 50
+  maxSpeed: 70
 --- !u!114 &1599135774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18681,12 +18681,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 1760552817}
   m_Layer: 0
-  m_Name: Model 3 Rig
+  m_Name: Handling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1760552817
 Transform:
   m_ObjectHideFlags: 0
@@ -19016,7 +19016,7 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
-  maxSpeed: 40
+  maxSpeed: 50
 --- !u!114 &1846475163
 MonoBehaviour:
   m_ObjectHideFlags: 0
