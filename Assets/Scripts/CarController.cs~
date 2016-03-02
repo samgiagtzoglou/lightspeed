@@ -14,9 +14,6 @@ public class CarController : MonoBehaviour {
 	public float rotationVelocity;
 	public float groundAngleVelocity;
 
-	// Limit to top speed of cart
-	public float maxSpeed;
-
 	private Rigidbody rb;
 
 	void Start() {
@@ -35,12 +32,6 @@ public class CarController : MonoBehaviour {
 		} else {
 			rb.drag = 0;
 		}
-
-		// Limit max speed (from http://answers.unity3d.com/questions/265810/limiting-rigidbody-speed.html)
-		if (rb.velocity.magnitude > maxSpeed) {
-			rb.velocity = rb.velocity.normalized * maxSpeed;
-		}
-		Debug.Log(rb.velocity.magnitude);
 
 		//You can turn in the air or on the ground
 		Vector3 turnTorque = Vector3.up * rotationRate * Input.GetAxis ("Horizontal");
