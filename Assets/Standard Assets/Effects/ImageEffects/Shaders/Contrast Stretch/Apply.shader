@@ -1,25 +1,32 @@
+// Upgrade NOTE: replaced 'glstate.matrix.mvp' with 'UNITY_MATRIX_MVP'
+// Upgrade NOTE: replaced 'glstate.matrix.texture[0]' with 'UNITY_MATRIX_TEXTURE0'
+// Upgrade NOTE: replaced 'samplerRECT' with 'sampler2D'
+// Upgrade NOTE: replaced 'texRECT' with 'tex2D'
+
 // Final pass in the contrast stretch effect: apply
 // color stretch to the original image, based on currently
 // adapted to minimum/maximum luminances.
 
 Shader "Hidden/Contrast Stretch Apply" {
 Properties {
-	_MainTex ("Base (RGB)", 2D) = "white" {}
-	_AdaptTex ("Base (RGB)", 2D) = "white" {}
+	_MainTex ("Base (RGB)", RECT) = "white" {}
+	_AdaptTex ("Base (RGB)", RECT) = "white" {}
 }
 
 Category {
 	SubShader {
 		Pass {
 			ZTest Always Cull Off ZWrite Off
+			Fog { Mode off }
 				
 CGPROGRAM
 #pragma vertex vert
 #pragma fragment frag
+#pragma fragmentoption ARB_precision_hint_fastest 
 #include "UnityCG.cginc"
 
 struct v2f {
-	float4 pos		: SV_POSITION;
+	float4 pos		: POSITION;
 	float2 uv[2]	: TEXCOORD0;
 }; 
 
@@ -35,7 +42,7 @@ v2f vert (appdata_img v)
 	return o;
 }
 
-float4 frag (v2f i) : SV_Target
+float4 frag (v2f i) : COLOR
 {
 	float4 col = tex2D(_MainTex, i.uv[0]);
 	float4 adapted = tex2D(_AdaptTex, i.uv[1]);
