@@ -16,11 +16,14 @@ public class RivalCarTurn : MonoBehaviour {
 	public float groundAngleVelocity;
 	private Rigidbody rb;
 	private int currentPathObj = 0;
+	public float maxSpeed;
+
+	public float distFromPath = 30f;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-		Transform orig = GameObject.Find ("path_test").transform;
+		Transform orig = GameObject.Find ("Path").transform;
 		path = new Vector3[orig.childCount];
 		int i = 0;
 		foreach (Transform child in orig) {
@@ -30,10 +33,22 @@ public class RivalCarTurn : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
+		Vector3 steerVector = transform.InverseTransformPoint (path [currentPathObj].x, path [currentPathObj].y, path [currentPathObj].z);
+		float newSteer = (steerVector.x / steerVector.magnitude);
+		//Debug.Log (newSteer);
+		Debug.Log(steerVector.magnitude);
+		if (steerVector.magnitude < distFromPath) {
+			currentPathObj++;
+		}
+		if (currentPathObj >= path.Length) {
+			currentPathObj = 0;
+		}
+
 		if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
+			
 			//We are on the ground. Enable the accelerator and increase drag.
 			rb.drag = 1;
-			Vector3 forwardForce = transform.forward * acceleration * Input.GetAxis("Vertical");
+			Vector3 forwardForce = transform.forward * acceleration * 0.1f;
 			//Correct force for deltatime and vehicle mass
 			forwardForce = forwardForce * Time.deltaTime * rb.mass;
 			rb.AddForce(forwardForce);
@@ -41,9 +56,6 @@ public class RivalCarTurn : MonoBehaviour {
 			rb.drag = 0;
 		}
 
-		Vector3 steerVector = transform.InverseTransformPoint (path [currentPathObj].x, path [currentPathObj].y, path [currentPathObj].z);
-		float newSteer = (steerVector.x / steerVector.magnitude);
-		Debug.Log (newSteer);
 		//You can turn in the air or on the ground
 		Vector3 turnTorque = Vector3.up * rotationRate * newSteer;
 		//Correct force for deltatime and vehiclemass
