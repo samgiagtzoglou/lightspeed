@@ -20,18 +20,15 @@ public class CarController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 	}
 
-	void OnCollisionEnter(Collision collision) {
-		ContactPoint contact;
-		if (numBounces > 0  (collision.gameObject.layer != 8)) {
-			contact = collision.contacts[0];
-          float dot = Vector3.Dot(contact.normal, (-transform.forward));
-          dot *= 2;
-          reflection = contact.normal * dot;
-          reflection = reflection + transform.forward;
-          GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().TransformDirection(reflection.normalized * 15.0);
-          numBounces -= 1;
-		}
-	}
+	// void OnCollisionEnter(Collision collision) {
+	// 	ContactPoint contact;
+	// 	contact = collision.contacts[0];
+	// 	float dot = Vector3.Dot(contact.normal, (-transform.forward));
+	// 	dot *= 2;
+	// 	Vector3 reflection = contact.normal * dot;
+	// 	reflection = reflection + transform.forward;
+	// 	rb.velocity = rb.transform.TransformDirection(reflection.normalized * 15.0);
+	// }
 
 	void FixedUpdate() {
 		//Check if we are touching the ground
