@@ -49,10 +49,10 @@ public class CarController : MonoBehaviour {
 		turnTorque = turnTorque * Time.deltaTime * rb.mass;
 		rb.AddTorque (turnTorque);
 
-		if (transform.position.y <= 0.45f) {
-			Vector3 newPos = new Vector3(transform.position.x, 0.45f, transform.position.z);
-			rb.MovePosition (newPos);
-		}
+		// if (transform.position.y <= 0.45f) {
+		// 	Vector3 newPos = new Vector3(transform.position.x, 0.45f, transform.position.z);
+		// 	rb.MovePosition (newPos);
+		// }
 
 		//"Fake" rotate the car when you are turning
 		Vector3 newRotation = transform.eulerAngles;
