@@ -1,23 +1,30 @@
+// Upgrade NOTE: replaced 'glstate.matrix.mvp' with 'UNITY_MATRIX_MVP'
+// Upgrade NOTE: replaced 'glstate.matrix.texture[0]' with 'UNITY_MATRIX_TEXTURE0'
+// Upgrade NOTE: replaced 'samplerRECT' with 'sampler2D'
+// Upgrade NOTE: replaced 'texRECT' with 'tex2D'
+
 // Reduces input image (_MainTex) by 2x2.
 // Outputs maximum value in R, minimum in G.
 Shader "Hidden/Contrast Stretch Reduction" {
 
 Properties {
-	_MainTex ("Base (RGB)", 2D) = "white" {}
+	_MainTex ("Base (RGB)", RECT) = "white" {}
 }
 
 Category {
 	SubShader {
 		Pass {
 			ZTest Always Cull Off ZWrite Off
+			Fog { Mode off }
 				
 CGPROGRAM
 #pragma vertex vert
 #pragma fragment frag
+#pragma fragmentoption ARB_precision_hint_fastest 
 #include "UnityCG.cginc"
 
 struct v2f { 
-	float4 position : SV_POSITION;  
+	float4 position : POSITION;  
 	float2 uv[4]    : TEXCOORD0;
 }; 
 
@@ -36,7 +43,7 @@ v2f vert (appdata_img v) {
 	return o;
 }
 
-float4 frag (v2f i) : SV_Target
+float4 frag (v2f i) : COLOR
 {
 	// Sample pixel block
 	float4 v00 = tex2D(_MainTex, i.uv[0]);
@@ -51,6 +58,9 @@ float4 frag (v2f i) : SV_Target
 	res.y = min( min(v00.y,v01.y), min(v10.y,v11.y) );
 	// output zw unchanged from the first pixel
 	res.zw = v00.zw;
+	
+	//res.xy = (v00.xy + v01 + v10 + v11)/4;
+	//res.zw = 0;
 	
 	return res;
 }

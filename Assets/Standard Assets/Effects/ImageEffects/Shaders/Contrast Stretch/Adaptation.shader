@@ -1,28 +1,33 @@
+// Upgrade NOTE: replaced 'samplerRECT' with 'sampler2D'
+// Upgrade NOTE: replaced 'texRECT' with 'tex2D'
+
 // Calculates adaptation to minimum/maximum luminance values,
 // based on "currently adapted" and "new values to adapt to"
 // textures (both 1x1).
 
 Shader "Hidden/Contrast Stretch Adaptation" {
 Properties {
-	_MainTex ("Base (RGB)", 2D) = "white" {}
-	_CurTex ("Base (RGB)", 2D) = "white" {}
+	_MainTex ("Base (RGB)", RECT) = "white" {}
+	_CurTex ("Base (RGB)", RECT) = "white" {}
 }
 
 Category {
 	SubShader {
 		Pass {
 			ZTest Always Cull Off ZWrite Off
+			Fog { Mode off }
 				
 CGPROGRAM
 #pragma vertex vert_img
 #pragma fragment frag
+#pragma fragmentoption ARB_precision_hint_fastest 
 #include "UnityCG.cginc"
 
 uniform sampler2D _MainTex; // currently adapted to
 uniform sampler2D _CurTex; // new value to adapt to
 uniform float4 _AdaptParams; // x=adaptLerp, y=limitMinimum, z=limitMaximum
 
-float4 frag (v2f_img i) : SV_Target  {
+float4 frag (v2f_img i) : COLOR  {
 	// value is: max, min
 	float2 valAdapted = tex2D(_MainTex, i.uv).xy;
 	float2 valCur = tex2D(_CurTex, i.uv).xy;
