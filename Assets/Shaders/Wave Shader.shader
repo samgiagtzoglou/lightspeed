@@ -98,23 +98,26 @@
         void vert (inout appdata_full v) {
             float phase = _Time * _Velocity * _RefractiveIndex;
             float4 wpos = mul( _Object2World, v.vertex);
+            float2 vertexDisplacement = float2(wpos.x -
+                      _Displacement.x, wpos.z - _Displacement.y);
             float offset = _GroupPhase;
-            float vertexDisplacementX = wpos.x - _Displacement.x;
-            float vertexDisplacementY = wpos.z - _Displacement.y;
-            float dCrossD = (_Direction.x * vertexDisplacementY) - (_Direction.z * vertexDisplacementX);
-            float dCrossDCCW = ((-1.0f * _Direction.z) * vertexDisplacementY) - (_Direction.x * vertexDisplacementX);
-            float dCrossDCW = (_Direction.z * vertexDisplacementY + _Direction.x * vertexDisplacementX);
-            if (dCrossD > 0.0f) {
-                if (dCrossDCCW > 0.0f) {
-                    offset -= 0.025f;
-                } else {
-                    offset += 0.025f;
-                }
-            } else if (dCrossDCW > 0.0f) {
-                offset -= 0.025f;
-            } else {
-                offset += 0.025f;
-            }
+            float offsetDelta = dot(_Direction.xz,
+                      vertexDisplacement) / length(_Direction.xz);
+            offset += (offsetDelta * 0.25f);
+            // float dCrossD = (_Direction.x * vertexDisplacement.y) - (_Direction.z * vertexDisplacement.x);
+            // float dCrossDCCW = ((-1.0f * _Direction.z) * vertexDisplacement.y) - (_Direction.x * vertexDisplacement.x);
+            // float dCrossDCW = (_Direction.z * vertexDisplacement.y + _Direction.x * vertexDisplacement.x);
+            // if (dCrossD > 0.0f) {
+            //     if (dCrossDCCW > 0.0f) {
+            //         offset -= offsetDelta;
+            //     } else {
+            //         offset += offsetDelta;
+            //     }
+            // } else if (dCrossDCW > 0.0f) {
+            //     offset -= offsetDelta;
+            // } else {
+            //     offset += offsetDelta;
+            // }
              
 
             wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + offset) + _TransitionPhase) * _Amplitude;
