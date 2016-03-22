@@ -20,6 +20,16 @@ public class CarController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 	}
 
+	// void OnCollisionEnter(Collision collision) {
+	// 	ContactPoint contact;
+	// 	contact = collision.contacts[0];
+	// 	float dot = Vector3.Dot(contact.normal, (-transform.forward));
+	// 	dot *= 2;
+	// 	Vector3 reflection = contact.normal * dot;
+	// 	reflection = reflection + transform.forward;
+	// 	rb.velocity = rb.transform.TransformDirection(reflection.normalized * 15.0);
+	// }
+
 	void FixedUpdate() {
 		//Check if we are touching the ground
 		if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
@@ -38,6 +48,11 @@ public class CarController : MonoBehaviour {
 		//Correct force for deltatime and vehiclemass
 		turnTorque = turnTorque * Time.deltaTime * rb.mass;
 		rb.AddTorque (turnTorque);
+
+		// if (transform.position.y <= 0.45f) {
+		// 	Vector3 newPos = new Vector3(transform.position.x, 0.45f, transform.position.z);
+		// 	rb.MovePosition (newPos);
+		// }
 
 		//"Fake" rotate the car when you are turning
 		Vector3 newRotation = transform.eulerAngles;

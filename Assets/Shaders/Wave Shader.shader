@@ -98,27 +98,9 @@
         void vert (inout appdata_full v) {
             float phase = _Time * _Velocity * _RefractiveIndex;
             float4 wpos = mul( _Object2World, v.vertex);
-            float2 vertexDisplacement = float2(wpos.x -
-                      _Displacement.x, wpos.z - _Displacement.y);
-            float offset = _GroupPhase;
-            float offsetDelta = dot(_Direction.xz,
-                      vertexDisplacement) / length(_Direction.xz);
-            offset += (offsetDelta * 0.25f);
-            // float dCrossD = (_Direction.x * vertexDisplacement.y) - (_Direction.z * vertexDisplacement.x);
-            // float dCrossDCCW = ((-1.0f * _Direction.z) * vertexDisplacement.y) - (_Direction.x * vertexDisplacement.x);
-            // float dCrossDCW = (_Direction.z * vertexDisplacement.y + _Direction.x * vertexDisplacement.x);
-            // if (dCrossD > 0.0f) {
-            //     if (dCrossDCCW > 0.0f) {
-            //         offset -= offsetDelta;
-            //     } else {
-            //         offset += offsetDelta;
-            //     }
-            // } else if (dCrossDCW > 0.0f) {
-            //     offset -= offsetDelta;
-            // } else {
-            //     offset += offsetDelta;
-            // }
-             
+            float4 vertexDisplacement = wpos - _Displacement;
+            float offset = _GroupPhase + (0.25f * dot(_Direction,
+                      vertexDisplacement) / length(_Direction));
 
             wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + offset) + _TransitionPhase) * _Amplitude;
             v.vertex = mul(_World2Object, wpos);

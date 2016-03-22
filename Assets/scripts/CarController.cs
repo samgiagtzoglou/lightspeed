@@ -16,6 +16,8 @@ public class CarController : MonoBehaviour {
 
 	private Rigidbody rb;
 
+	private Renderer rend;
+
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 	}

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class WaveSegmentController : MonoBehaviour {
+public class AvatarController : MonoBehaviour {
 
     private float groupPhase;
 
@@ -10,16 +10,13 @@ public class WaveSegmentController : MonoBehaviour {
     
     void Start () {
         rend = GetComponent<Renderer> ();
-		groupPhase = transform.position.z * 0.25f;
-		rend.material.SetVector ("_Direction", transform.up);
-        rend.material.SetFloat ("_TransitionPhase", 0.0f);
-		rend.material.SetFloat ("_GroupPhase", groupPhase);
+		rend.material.SetVector ("_Direction", transform.forward);
     }
 
     void Update() {
 		Vector4 newDisplacement = new Vector4 (transform.position.x, transform.position.y,
 											   transform.position.z, 0f);
 		rend.material.SetVector ("_Displacement", newDisplacement);
-		rend.material.SetVector ("_Direction", transform.up);
+		rend.material.SetVector ("_Direction", transform.forward);
     }
 }
