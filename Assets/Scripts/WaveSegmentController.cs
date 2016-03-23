@@ -17,8 +17,8 @@ public class WaveSegmentController : MonoBehaviour {
     }
 
     void Update() {
-		Vector4 newDisplacement = new Vector4 (transform.position.x, transform.position.z,
-											   0f, 0f);
+		Vector4 newDisplacement = new Vector4 (transform.position.x, transform.position.y,
+											   transform.position.z, 0f);
 		rend.material.SetVector ("_Displacement", newDisplacement);
 		rend.material.SetVector ("_Direction", transform.up);
     }
