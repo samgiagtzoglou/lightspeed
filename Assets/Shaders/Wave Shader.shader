@@ -3,7 +3,8 @@
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Velocity ("Velocity", Float) = 10.0
         _Wavelength ("Wavelength", Float) = 10.0
-        _Amplitude ("Amplitude", Float) = 2.0
+        _FrontAmplitude ("Front Amplitude", Float) = 0.5
+        _BackAmplitude ("Back Amplitude", Float) = 0.5
         _RefractiveIndex ("Refractive Index", Float) = 1.0
         _TransitionPhase ("Transition Phase", Float) = 0.0
         _Displacement ("Displacement", Vector) = (0.0, 0.0, 0.0, 0.0)
@@ -24,7 +25,8 @@
         sampler2D _MainTex;
         float _Velocity;
         float _Wavelength;
-        float _Amplitude;
+        float _FrontAmplitude;
+        float _BackAmplitude;
         float _RefractiveIndex;
         float _TransitionPhase;
         float _GroupPhase;
@@ -98,29 +100,17 @@
         void vert (inout appdata_full v) {
             float phase = _Time * _Velocity * _RefractiveIndex;
             float4 wpos = mul( _Object2World, v.vertex);
-            float2 vertexDisplacement = float2(wpos.x -
-                      _Displacement.x, wpos.z - _Displacement.y);
-            float offset = _GroupPhase;
-            float offsetDelta = dot(_Direction.xz,
-                      vertexDisplacement) / length(_Direction.xz);
-            offset += (offsetDelta * 0.25f);
-            // float dCrossD = (_Direction.x * vertexDisplacement.y) - (_Direction.z * vertexDisplacement.x);
-            // float dCrossDCCW = ((-1.0f * _Direction.z) * vertexDisplacement.y) - (_Direction.x * vertexDisplacement.x);
-            // float dCrossDCW = (_Direction.z * vertexDisplacement.y + _Direction.x * vertexDisplacement.x);
-            // if (dCrossD > 0.0f) {
-            //     if (dCrossDCCW > 0.0f) {
-            //         offset -= offsetDelta;
-            //     } else {
-            //         offset += offsetDelta;
-            //     }
-            // } else if (dCrossDCW > 0.0f) {
-            //     offset -= offsetDelta;
-            // } else {
-            //     offset += offsetDelta;
-            // }
-             
+            float4 vertexDisplacement = wpos - _Displacement;
+            float offset = (0.25f * dot(_Direction,
+                      vertexDisplacement) / length(_Direction));
 
-            wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + offset) + _TransitionPhase) * _Amplitude;
+            if (offset > 0) {
+                wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset ) + _TransitionPhase)
+                       * _FrontAmplitude;
+            } else {
+                wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)
+                       * _BackAmplitude;
+            }
             v.vertex = mul(_World2Object, wpos);
         }
     
