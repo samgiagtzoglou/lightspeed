@@ -12,13 +12,10 @@ public class LapManager : MonoBehaviour {
 
 	private Collider nextCollider;
 	private int lap;
-//	private Vector3 startPos;
 	public Text lapText;
 
 	// Use this for initialization
 	void Start () {
-//		startPos = transform.position;
-//		Transform checkpointParent = GameObject.Find ("lap_checkpoint").transform;
 		lap = 1;
 		startCollider = startCheckpoint.GetComponent<Collider>();
 		midCollider = midCheckpoint.GetComponent<Collider>();
