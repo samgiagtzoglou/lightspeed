@@ -1,39 +1,15 @@
 fileFormatVersion: 2
-guid: bb0692cfbd0984b09b2b3a427dd27191
-timeCreated: 1458670396
+guid: e288548b2269e9d498c22fb4c0c552fd
+timeCreated: 1459071253
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Cube
-    100002: Cube_001
-    100004: Grid
-    100006: Plane
-    100008: //RootNode
-    100010: Grid_001
-    400000: Cube
-    400002: Cube_001
-    400004: Grid
-    400006: Plane
-    400008: //RootNode
-    400010: Grid_001
-    2300000: Cube
-    2300002: Cube_001
-    2300004: Grid
-    2300006: Plane
-    2300008: Grid_001
-    3300000: Cube
-    3300002: Cube_001
-    3300004: Grid
-    3300006: Plane
-    3300008: Grid_001
-    4300000: Cube_001
-    4300002: Plane
-    4300004: Grid
-    4300006: Cube
-    4300008: Grid_001
-    7400000: Default Take
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Torus.007
   materials:
     importMaterials: 1
     materialName: 0
@@ -92,7 +68,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
