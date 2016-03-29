@@ -36,7 +36,7 @@ public class RivalCarTurn : MonoBehaviour {
 		Vector3 steerVector = transform.InverseTransformPoint (path [currentPathObj].x, path [currentPathObj].y, path [currentPathObj].z);
 		float newSteer = (steerVector.x / steerVector.magnitude);
 		//Debug.Log (newSteer);
-		Debug.Log(steerVector.magnitude);
+		//Debug.Log(steerVector.magnitude);
 		if (steerVector.magnitude < distFromPath) {
 			currentPathObj++;
 		}
