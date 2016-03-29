@@ -25,7 +25,7 @@ public class AtomController : MonoBehaviour {
 		electronController.AbsorbPhoton();
 		CarController otherController = (CarController) other.gameObject.GetComponent(typeof(CarController));
 		otherController.EnterOrbit();
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(2.0f);
 		float emissionAngle = Random.Range(-emissionRange, emissionRange);
 		other.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(emissionLine,
 																				 Vector3.right,
