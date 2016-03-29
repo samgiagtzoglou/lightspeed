@@ -36,7 +36,7 @@ public class CarController : MonoBehaviour {
 		if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
 			//We are on the ground. Enable the accelerator and increase drag.
 			rb.drag = 1;
-			Vector3 forwardForce = transform.forward * acceleration * Input.GetAxis("Vertical(P1)");
+			Vector3 forwardForce = transform.forward * acceleration * Input.GetAxis("Vertical" + playerNumber);
 			//Correct force for deltatime and vehicle mass
 			forwardForce = forwardForce * Time.deltaTime * rb.mass;
 			rb.AddForce(forwardForce);
@@ -45,7 +45,7 @@ public class CarController : MonoBehaviour {
 		}
 
 		//You can turn in the air or on the ground
-		Vector3 turnTorque = Vector3.up * rotationRate * Input.GetAxis ("Horizontal(P1)");
+		Vector3 turnTorque = Vector3.up * rotationRate * Input.GetAxis ("Horizontal" + playerNumber);
 		//Correct force for deltatime and vehiclemass
 		turnTorque = turnTorque * Time.deltaTime * rb.mass;
 		rb.AddTorque (turnTorque);
@@ -57,7 +57,7 @@ public class CarController : MonoBehaviour {
 
 		//"Fake" rotate the car when you are turning
 		Vector3 newRotation = transform.eulerAngles;
-		newRotation.z = Mathf.SmoothDampAngle (newRotation.z, Input.GetAxis ("Horizontal(P1)") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
+		newRotation.z = Mathf.SmoothDampAngle (newRotation.z, Input.GetAxis ("Horizontal" + playerNumber) * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
 		transform.eulerAngles = newRotation;
 	}
 }
