@@ -129,14 +129,6 @@ Material:
         second: 0
       data:
         first:
-          name: _Amplitude
-        second: 0.5
-      data:
-        first:
-          name: _Wavelength
-        second: 0.49267
-      data:
-        first:
           name: _TransitionPhase
         second: 0
       data:
@@ -147,6 +139,14 @@ Material:
         first:
           name: _Velocity
         second: 5
+      data:
+        first:
+          name: _Wavelength
+        second: 0.49267
+      data:
+        first:
+          name: _Amplitude
+        second: 0.5
       data:
         first:
           name: _RefractiveIndex

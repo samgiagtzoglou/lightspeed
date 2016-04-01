@@ -950,7 +950,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 5000
   rotationRate: 800
-  playerNumber: 0
   turnRotationAngle: 25
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
@@ -5933,7 +5932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 6000
   rotationRate: 300
-  playerNumber: 0
   turnRotationAngle: 25
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
@@ -7091,7 +7089,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 7000
   rotationRate: 300
-  playerNumber: 0
   turnRotationAngle: 25
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
@@ -20028,7 +20025,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 3500
   rotationRate: 400
-  playerNumber: 0
   turnRotationAngle: 25
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
