@@ -45,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -936.6, y: 1.7255749, z: 536.4}
+  m_LocalPosition: {x: -285.78, y: 2.29, z: 9}
   m_LocalScale: {x: 2.006793, y: 2.0067942, z: 2.0067942}
   m_Children:
   - {fileID: 493850}
@@ -162,8 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5834994ca5e804ba762543e4e6f2d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emissionLine: {x: -1, y: 0, z: 0}
+  emissionLine: {x: 0, y: 0, z: 1}
   emissionRange: 0.7854
+  emissionStrength: 2000
   electron: {fileID: 109152}
 --- !u!135 &13550190
 SphereCollider:
