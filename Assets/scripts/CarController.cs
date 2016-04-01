@@ -52,7 +52,7 @@ public class CarController : MonoBehaviour {
 
 	public void EnterOrbit() {
 		inOrbit = true;
-		foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = false;
+		//foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = false;
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 		rb.Sleep();
@@ -60,6 +60,6 @@ public class CarController : MonoBehaviour {
 
 	public void LeaveOrbit() {
 		inOrbit = false;
-		foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = true;
+		//foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = true;
 	}
 }
