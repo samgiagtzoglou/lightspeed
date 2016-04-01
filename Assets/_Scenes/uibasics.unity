@@ -2337,7 +2337,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 216219547}
   m_Layer: 0
-  m_Name: new_track
+  m_Name: track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7542,6 +7542,45 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
   m_PrefabInternal: {fileID: 1432786683}
+--- !u!1 &417351717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 417351718}
+  - 114: {fileID: 417351719}
+  m_Layer: 0
+  m_Name: raceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &417351718
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 417351717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -281.998, y: 3.8850641, z: -3.7885962}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+--- !u!114 &417351719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 417351717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879c28125c0e6415c8d77460eea502b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &425404413
 GameObject:
   m_ObjectHideFlags: 0
@@ -14708,7 +14747,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 736562808}
   m_Layer: 0
-  m_Name: pos_checkpoint
+  m_Name: checkpoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19381,7 +19420,7 @@ GameObject:
   - 114: {fileID: 1206862107}
   - 114: {fileID: 1206862106}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26331,7 +26370,7 @@ GameObject:
   - 4: {fileID: 1480081974}
   - 108: {fileID: 1480081973}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: primaryLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30130,7 +30169,7 @@ GameObject:
   - 114: {fileID: 1747381321}
   - 114: {fileID: 1747381322}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: mainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30840,7 +30879,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1857773520}
   m_Layer: 0
-  m_Name: lap_checkpoint
+  m_Name: lapMarkers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
