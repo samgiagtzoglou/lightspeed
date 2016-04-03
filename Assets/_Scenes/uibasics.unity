@@ -1318,7 +1318,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 123310941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -281.998, y: 3.8850641, z: -3.7885962}
+  m_LocalPosition: {x: -281.998, y: 3.8850641, z: -109.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1139241921}
@@ -7252,7 +7252,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 901f438fb4ecde645945ecc4e565946c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.008726536
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 901f438fb4ecde645945ecc4e565946c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -7260,7 +7260,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 901f438fb4ecde645945ecc4e565946c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999619
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 901f438fb4ecde645945ecc4e565946c, type: 3}
       propertyPath: m_RootOrder
@@ -7578,9 +7578,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 417351717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 879c28125c0e6415c8d77460eea502b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4eea7f07c7e394d6daa0bd4fe9426b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allCarts:
+  - {fileID: 1139241923}
+  - {fileID: 918120242}
+  carOrder:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &425404413
 GameObject:
   m_ObjectHideFlags: 0
@@ -17366,6 +17372,7 @@ GameObject:
   - 114: {fileID: 918120237}
   - 54: {fileID: 918120236}
   - 114: {fileID: 918120235}
+  - 114: {fileID: 918120242}
   m_Layer: 0
   m_Name: kart2
   m_TagString: Untagged
@@ -17380,7 +17387,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 918120233}
   m_LocalRotation: {x: 0, y: 0.01404944, z: 0, w: 0.9999013}
-  m_LocalPosition: {x: 6.5, y: -0.38506413, z: 43.5}
+  m_LocalPosition: {x: 5, y: -0.38506413, z: -10.9}
   m_LocalScale: {x: 3, y: 0.7, z: 4}
   m_Children:
   - {fileID: 2091854617}
@@ -17501,6 +17508,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 918120233}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &918120242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 918120233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21aedd2a9e0834c70a8b7bb4fab9190d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWaypoint: 0
+  currentLap: 0
+  lastWaypoint: {fileID: 1105547630}
+  nbWaypoint: 8
 --- !u!1 &939047933
 GameObject:
   m_ObjectHideFlags: 0
@@ -18731,6 +18753,7 @@ GameObject:
   - 114: {fileID: 1139241916}
   - 54: {fileID: 1139241915}
   - 114: {fileID: 1139241922}
+  - 114: {fileID: 1139241923}
   m_Layer: 0
   m_Name: kart1
   m_TagString: Untagged
@@ -18840,7 +18863,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1139241914}
   m_LocalRotation: {x: 0, y: 0.01404944, z: 0, w: 0.9999013}
-  m_LocalPosition: {x: -1.802002, y: -0.38506413, z: -9.311404}
+  m_LocalPosition: {x: -1.6, y: -0.38506413, z: -3.1}
   m_LocalScale: {x: 3, y: 0.7, z: 4}
   m_Children:
   - {fileID: 1467622256}
@@ -18858,7 +18881,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1139241914}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 186489227feea4b78bfee951929a4232, type: 3}
   m_Name: 
@@ -18866,6 +18889,21 @@ MonoBehaviour:
   startCheckpoint: {fileID: 158765945}
   midCheckpoint: {fileID: 480788079}
   lapText: {fileID: 1672631188}
+--- !u!114 &1139241923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1139241914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21aedd2a9e0834c70a8b7bb4fab9190d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWaypoint: 0
+  currentLap: 0
+  lastWaypoint: {fileID: 1105547630}
+  nbWaypoint: 8
 --- !u!1001 &1146663605
 Prefab:
   m_ObjectHideFlags: 0
@@ -19495,7 +19533,7 @@ RectTransform:
   - {fileID: 1931035351}
   - {fileID: 1672631187}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -30884,7 +30922,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1857773520
 Transform:
   m_ObjectHideFlags: 0
@@ -30898,7 +30936,7 @@ Transform:
   - {fileID: 158765946}
   - {fileID: 480788080}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!4 &1859035361 stripped
 Transform:
   m_PrefabParentObject: {fileID: 495010, guid: d798f9d4e4b3bc34ab128dd5ac83da1c, type: 2}
