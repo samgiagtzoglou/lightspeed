@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
 	//Values that control the vehicle
@@ -23,8 +24,12 @@ public class CarController : MonoBehaviour {
 		inOrbit = false;
 	}
 
+	public void startDriving() {
+		allowDriving = true;
+	}
+
 	void FixedUpdate() {
-		if (!inOrbit) {
+		if (!inOrbit && allowDriving) {
 			//Check if we are touching the ground
 			if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
 				//We are on the ground. Enable the accelerator and increase drag.
