@@ -14,7 +14,7 @@ public class blink : MonoBehaviour {
 	public bool defaultState = true;
 	bool isBlinking = false;
 
-	public AudioClip clip;
+	//public AudioSource clip;
 
 	void Start()
 	{
@@ -40,8 +40,9 @@ public class blink : MonoBehaviour {
 		imageToToggle.enabled = !imageToToggle.enabled;
 
 		// plays the clip at (0,0,0)
-		if (clip)
-			AudioSource.PlayClipAtPoint(clip,Vector3.zero);
+		//if (clip)
+			//AudioSource.PlayClipAtPoint(clip,Vector3.zero);
+			//clip.Play();
 	}
 
 }
