@@ -15,6 +15,7 @@ public class CarController : MonoBehaviour {
 	public float rotationVelocity;
 	public float groundAngleVelocity;
 
+	private bool drivingAllowed;
 	private bool inOrbit;
 
 	private Rigidbody rb;
@@ -25,11 +26,11 @@ public class CarController : MonoBehaviour {
 	}
 
 	public void startDriving() {
-		allowDriving = true;
+		drivingAllowed = true;
 	}
 
 	void FixedUpdate() {
-		if (!inOrbit && allowDriving) {
+		if (!inOrbit && drivingAllowed) {
 			//Check if we are touching the ground
 			if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
 				//We are on the ground. Enable the accelerator and increase drag.
