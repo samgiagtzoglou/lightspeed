@@ -11,7 +11,7 @@ public class WaveSegmentController : MonoBehaviour {
     void Start () {
         rend = GetComponent<Renderer> ();
 		groupPhase = transform.position.z * 0.25f;
-		rend.material.SetVector ("_Direction", transform.up);
+		rend.material.SetVector ("_Direction", -1.0f * transform.forward);
         rend.material.SetFloat ("_TransitionPhase", 0.0f);
 		rend.material.SetFloat ("_GroupPhase", groupPhase);
 		if (groupPhase > -3.25) {
@@ -35,6 +35,6 @@ public class WaveSegmentController : MonoBehaviour {
 		Vector4 newDisplacement = new Vector4 (transform.position.x, transform.position.y,
 											   transform.position.z, 0f);
 		rend.material.SetVector ("_Displacement", newDisplacement);
-		rend.material.SetVector ("_Direction", transform.up);
+		rend.material.SetVector ("_Direction", -1.0f * transform.forward);
     }
 }
