@@ -1,10 +1,10 @@
 ﻿Shader "Custom/Wave Shader" {
     Properties {
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Velocity ("Velocity", Float) = 10.0
-        _Wavelength ("Wavelength", Float) = 10.0
-        _FrontAmplitude ("Front Amplitude", Float) = 0.5
-        _BackAmplitude ("Back Amplitude", Float) = 0.5
+        _Velocity ("Velocity", Float) = 5.0
+        _Wavelength ("Wavelength", Float) = 0.5
+        _Amplitude ("Amplitude", Float) = 1.0
+        _BoundaryLength ("Boundary Length", Float) = 1.0
         _RefractiveIndex ("Refractive Index", Float) = 1.0
         _TransitionPhase ("Transition Phase", Float) = 0.0
         _Displacement ("Displacement", Vector) = (0.0, 0.0, 0.0, 0.0)
@@ -25,8 +25,8 @@
         sampler2D _MainTex;
         float _Velocity;
         float _Wavelength;
-        float _FrontAmplitude;
-        float _BackAmplitude;
+        float _Amplitude;
+        float _BoundaryLength;
         float _RefractiveIndex;
         float _TransitionPhase;
         float _GroupPhase;
@@ -104,13 +104,14 @@
             float offset = (0.25f * dot(_Direction,
                       vertexDisplacement) / length(_Direction));
 
-            if (offset > 0) {
-                wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset ) + _TransitionPhase)
-                       * _FrontAmplitude;
-            } else {
-                wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)
-                       * _BackAmplitude;
+            float locationAmplitude = _Amplitude;
+            if (offset > -_BoundaryLength) {
+                locationAmplitude = offset * (-_Amplitude / _BoundaryLength);
             }
+
+            wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)
+                       * locationAmplitude;
+
             v.vertex = mul(_World2Object, wpos);
         }
     

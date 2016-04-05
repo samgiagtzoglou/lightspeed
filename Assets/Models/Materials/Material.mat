@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Material
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 4c465b05a28c9415aa9b03d625b526f7, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 6f8a546222f3c4ad38879b3a5a635bb1, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -93,6 +93,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -125,8 +129,32 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
+          name: _TransitionPhase
         second: 0
+      data:
+        first:
+          name: _GroupPhase
+        second: 0
+      data:
+        first:
+          name: _Velocity
+        second: 5
+      data:
+        first:
+          name: _Wavelength
+        second: 0.5
+      data:
+        first:
+          name: _RefractiveIndex
+        second: 1
+      data:
+        first:
+          name: _FrontAmplitude
+        second: 5
+      data:
+        first:
+          name: _BackAmplitude
+        second: 5
     m_Colors:
       data:
         first:
@@ -136,3 +164,11 @@ Material:
         first:
           name: _Color
         second: {r: 0.004860181, g: 0.8000001, b: 0.73257196, a: 0.99513984}
+      data:
+        first:
+          name: _Direction
+        second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _Displacement
+        second: {r: 0, g: 0, b: 0, a: 0}
