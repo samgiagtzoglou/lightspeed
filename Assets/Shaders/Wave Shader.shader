@@ -111,7 +111,7 @@
                 locationAmplitude = (_TailLength / 2.0f) * (_Amplitude / _BoundaryLength) + offset * (-_Amplitude / _BoundaryLength);
             }
 
-            wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)
+            wpos.x += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)
                        * locationAmplitude;
 
             v.vertex = mul(_World2Object, wpos);
