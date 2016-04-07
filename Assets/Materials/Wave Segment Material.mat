@@ -170,6 +170,10 @@ Material:
         first:
           name: _BoundaryLength
         second: 1
+      data:
+        first:
+          name: _TailLength
+        second: 0.95
     m_Colors:
       data:
         first:

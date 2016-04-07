@@ -4,6 +4,7 @@
         _Velocity ("Velocity", Float) = 5.0
         _Wavelength ("Wavelength", Float) = 0.5
         _Amplitude ("Amplitude", Float) = 1.0
+        _TailLength ("Tail Length", Float) = 0.0
         _BoundaryLength ("Boundary Length", Float) = 1.0
         _RefractiveIndex ("Refractive Index", Float) = 1.0
         _TransitionPhase ("Transition Phase", Float) = 0.0
@@ -26,6 +27,7 @@
         float _Velocity;
         float _Wavelength;
         float _Amplitude;
+        float _TailLength;
         float _BoundaryLength;
         float _RefractiveIndex;
         float _TransitionPhase;
@@ -105,8 +107,8 @@
                       vertexDisplacement) / length(_Direction));
 
             float locationAmplitude = _Amplitude;
-            if (offset > -_BoundaryLength) {
-                locationAmplitude = offset * (-_Amplitude / _BoundaryLength);
+            if (offset > _TailLength / 2.0f - _BoundaryLength) {
+                locationAmplitude = (_TailLength / 2.0f) * (_Amplitude / _BoundaryLength) + offset * (-_Amplitude / _BoundaryLength);
             }
 
             wpos.y += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)

@@ -23,6 +23,7 @@ public class CarController : MonoBehaviour {
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		inOrbit = false;
+		drivingAllowed = true;
 	}
 
 	public void startDriving() {
