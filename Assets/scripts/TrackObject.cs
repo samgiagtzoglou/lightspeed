@@ -16,7 +16,7 @@ public class TrackObject : MonoBehaviour {
 		Vector3 newPosition = target.position + (target.forward * distanceBack);
 		newPosition.y = Mathf.Max (newPosition.y + distanceUp, minimumHeight);
 		//Move the camera
-		transform.position = Vector3.SmoothDamp (transform.position, newPosition, ref positionVelocity, 0.18f);
+		transform.position = Vector3.SmoothDamp (transform.position, newPosition, ref positionVelocity, 0.22f);
 		//Rotate to look at where car is pointing
 		Vector3 focalPoint = target.position + (target.forward * 5); 
 		transform.LookAt (focalPoint);

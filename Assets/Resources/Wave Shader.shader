@@ -105,7 +105,7 @@
             float4 vertexDisplacement = wpos - _Displacement;
             float offset = (0.25f * dot(_Direction,
                       vertexDisplacement) / length(_Direction));
-
+            
             float locationAmplitude = _Amplitude;
             if (offset > _TailLength / 2.0f - _BoundaryLength) {
                 locationAmplitude = (_TailLength / 2.0f) * (_Amplitude / _BoundaryLength) + offset * (-_Amplitude / _BoundaryLength);
