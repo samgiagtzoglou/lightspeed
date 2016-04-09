@@ -1827,6 +1827,9 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  blackHoleOrbitRadius: 0
+  blackHoleOrbitSpeed: 0
+  blackHolePrefab: {fileID: 0}
 --- !u!114 &375788725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3877,6 +3880,9 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  blackHoleOrbitRadius: 0
+  blackHoleOrbitSpeed: 0
+  blackHolePrefab: {fileID: 0}
 --- !u!114 &496498243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12573,6 +12579,9 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  blackHoleOrbitRadius: 4
+  blackHoleOrbitSpeed: 5
+  blackHolePrefab: {fileID: 194746, guid: a12c94bdd4f1a4924ae32f6aa79c2108, type: 2}
 --- !u!114 &1046379266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13097,6 +13106,9 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  blackHoleOrbitRadius: 4
+  blackHoleOrbitSpeed: 5
+  blackHolePrefab: {fileID: 194746, guid: a12c94bdd4f1a4924ae32f6aa79c2108, type: 2}
 --- !u!114 &1139241917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21489,7 +21501,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &1747381320
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,4 +20,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/modelwave.unity
   - enabled: 1
-    path: Assets/_Scenes/Jack-week1.unity
+    path: Assets/_Scenes/game.unity
