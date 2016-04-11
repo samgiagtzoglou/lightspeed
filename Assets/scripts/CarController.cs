@@ -3,9 +3,17 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
+	// Powerup enum
+	enum Powerups {none, blackhole, shield, waves, boost}
+	private Powerups powerup;
+
 	//Values that control the vehicle
 	public float acceleration;
 	public float rotationRate;
+	public float forwardDampening;
+	public float forwardDampeningDistance;
+	public float sideDampening;
+	public float sideDampeningDistance;
 
 	//Values for faking a nice turn display
 	public float turnRotationAngle;
@@ -14,9 +22,6 @@ public class CarController : MonoBehaviour {
 	//Reference variables we don't directly use
 	public float rotationVelocity;
 	public float groundAngleVelocity;
-
-	// powerup variables
-	private bool hasPowerup;
 
 	// Black hole powerup variables
 	public float blackHoleOrbitRadius;
@@ -27,6 +32,10 @@ public class CarController : MonoBehaviour {
 	private float bhOrbitTime;
 	private float bhOrbitInitialPhase;
 
+	// Shield powerup variables
+	public ShieldController[] shieldControllers;
+
+	private bool shieldsUp;
 	private bool drivingAllowed;
 	private bool inElectronOrbit;
 	private bool inBlackHoleOrbit;
@@ -37,7 +46,8 @@ public class CarController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		inElectronOrbit = false;
 		drivingAllowed = true;
-		hasPowerup = true;
+		shieldsUp = false;
+		powerup = Powerups.shield;
 	}
 
 	public void startDriving() {
@@ -45,16 +55,34 @@ public class CarController : MonoBehaviour {
 	}
 
 	private void DropBlackHole() {
-		if (hasPowerup) {
-			Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
-						Quaternion.identity);
-			hasPowerup = false;
-		}
+		Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
+					Quaternion.identity);
 	}
+
+	private void ShieldsUp() {
+		foreach (ShieldController shield in shieldControllers) shield.Enable();
+		shieldsUp = true;
+	}
+
+	private void ShieldsDown() {
+		foreach (ShieldController shield in shieldControllers) shield.Disable();
+		shieldsUp = false;
+	}	
 
 	void Update() {
 		if (Input.GetButton("Fire1")) {
-			DropBlackHole();
+			switch (powerup) {
+				case Powerups.blackhole:
+					DropBlackHole();
+					powerup = Powerups.none;
+					break;
+				case Powerups.shield:
+					ShieldsUp();
+					powerup = Powerups.none;
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
@@ -82,6 +110,33 @@ public class CarController : MonoBehaviour {
 			Vector3 newRotation = transform.eulerAngles;
 			newRotation.z = Mathf.SmoothDampAngle (newRotation.z, Input.GetAxis ("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
 			transform.eulerAngles = newRotation;
+
+			// Make walls suck less
+			RaycastHit leftHit, rightHit, frontHit;
+			Vector3 backwardForce, lateralForce;
+			float distancePercentage;
+			
+			if (Physics.Raycast(transform.position, transform.right, out rightHit, sideDampeningDistance) ||
+				Physics.Raycast(transform.position, -1*transform.right, out leftHit, sideDampeningDistance)) {
+				distancePercentage = 1 - Mathf.Max(leftHit.distance, rightHit.distance) / sideDampeningDistance;
+				if (rightHit.distance > 0f) {
+					lateralForce = -1 * transform.right * sideDampening * distancePercentage;
+				} else if (leftHit.distance > 0f) {
+					lateralForce = transform.right * sideDampening * distancePercentage;
+				} else {
+					lateralForce = Vector3.zero;
+				}
+				lateralForce = lateralForce * Time.deltaTime * rb.mass;
+				rb.AddForce(lateralForce);
+			}
+
+			if (Physics.Raycast(transform.position, transform.forward, out frontHit, forwardDampeningDistance)) {
+				distancePercentage = 1 - frontHit.distance / forwardDampeningDistance;
+				backwardForce = -1*transform.forward * forwardDampening * distancePercentage;
+				backwardForce = backwardForce * Time.deltaTime * rb.mass;
+				rb.AddForce(backwardForce);
+			}
+				
 		} else if (inBlackHoleOrbit) {
 			float orbitPhase = (Time.time - bhOrbitTime) * blackHoleOrbitSpeed +
 				bhOrbitInitialPhase;
@@ -111,16 +166,20 @@ public class CarController : MonoBehaviour {
 	}
 
 	public void EnterBlackHoleOrbit(Vector3 center) {
-		inBlackHoleOrbit = true;
-		bhOrbitTime = Time.time;
-		bhOrbitInitialPhase = Mathf.Acos(center.x / center.magnitude);
-		orbitCenter = center;
-		rb.velocity = Vector3.zero;
-		rb.angularVelocity = Vector3.zero;
-		rb.Sleep();
-		transform.rotation = Quaternion.LookRotation(new Vector3
-													 (center.x, 0.0f,
-													  center.z));
+		if (!shieldsUp) {
+			inBlackHoleOrbit = true;
+			bhOrbitTime = Time.time;
+			bhOrbitInitialPhase = 0.0f;
+			orbitCenter = center;
+			rb.velocity = Vector3.zero;
+			rb.angularVelocity = Vector3.zero;
+			rb.Sleep();
+			transform.rotation = Quaternion.LookRotation(new Vector3
+														 (center.x, 0.0f,
+														  center.z));
+		} else {
+			ShieldsDown();
+		}
 	}
 
 	public void LeaveBlackHoleOrbit() {

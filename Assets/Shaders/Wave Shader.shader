@@ -112,7 +112,9 @@
             }
 
             wpos.x += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)
-                       * locationAmplitude;
+                       * locationAmplitude * normalize(_Direction).z;
+            wpos.z += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)
+                       * locationAmplitude * -1.0 * normalize(_Direction).x;            
 
             v.vertex = mul(_World2Object, wpos);
         }
