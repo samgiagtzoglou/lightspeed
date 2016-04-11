@@ -10,10 +10,6 @@ public class CarController : MonoBehaviour {
 	//Values that control the vehicle
 	public float acceleration;
 	public float rotationRate;
-	public float forwardDampening;
-	public float forwardDampeningDistance;
-	public float sideDampening;
-	public float sideDampeningDistance;
 
 	//Values for faking a nice turn display
 	public float turnRotationAngle;
@@ -110,32 +106,6 @@ public class CarController : MonoBehaviour {
 			Vector3 newRotation = transform.eulerAngles;
 			newRotation.z = Mathf.SmoothDampAngle (newRotation.z, Input.GetAxis ("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
 			transform.eulerAngles = newRotation;
-
-			// Make walls suck less
-			RaycastHit leftHit, rightHit, frontHit;
-			Vector3 backwardForce, lateralForce;
-			float distancePercentage;
-			
-			if (Physics.Raycast(transform.position, transform.right, out rightHit, sideDampeningDistance) ||
-				Physics.Raycast(transform.position, -1*transform.right, out leftHit, sideDampeningDistance)) {
-				distancePercentage = 1 - Mathf.Max(leftHit.distance, rightHit.distance) / sideDampeningDistance;
-				if (rightHit.distance > 0f) {
-					lateralForce = -1 * transform.right * sideDampening * distancePercentage;
-				} else if (leftHit.distance > 0f) {
-					lateralForce = transform.right * sideDampening * distancePercentage;
-				} else {
-					lateralForce = Vector3.zero;
-				}
-				lateralForce = lateralForce * Time.deltaTime * rb.mass;
-				rb.AddForce(lateralForce);
-			}
-
-			if (Physics.Raycast(transform.position, transform.forward, out frontHit, forwardDampeningDistance)) {
-				distancePercentage = 1 - frontHit.distance / forwardDampeningDistance;
-				backwardForce = -1*transform.forward * forwardDampening * distancePercentage;
-				backwardForce = backwardForce * Time.deltaTime * rb.mass;
-				rb.AddForce(backwardForce);
-			}
 				
 		} else if (inBlackHoleOrbit) {
 			float orbitPhase = (Time.time - bhOrbitTime) * blackHoleOrbitSpeed +
