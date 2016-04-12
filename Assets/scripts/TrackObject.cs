@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TrackObject : MonoBehaviour {
@@ -12,6 +12,7 @@ public class TrackObject : MonoBehaviour {
 	private Vector3 positionVelocity;
 
 	void FixedUpdate() {
+		if (target) {
 		//Calculate a new position to place the camera
 		Vector3 newPosition = target.position + (target.forward * distanceBack);
 		newPosition.y = Mathf.Max (newPosition.y + distanceUp, minimumHeight);
@@ -20,5 +21,6 @@ public class TrackObject : MonoBehaviour {
 		//Rotate to look at where car is pointing
 		Vector3 focalPoint = target.position + (target.forward * 5); 
 		transform.LookAt (focalPoint);
+		}
 	}
 }
