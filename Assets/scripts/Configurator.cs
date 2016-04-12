@@ -24,6 +24,9 @@ public class Configurator : MonoBehaviour {
 			camera1p.gameObject.SetActive (true);
 
 			GameObject player = Instantiate(car);
+			CarController controller = (CarController) player.GetComponent ("CarController");
+			controller.xaxis = "1_X axis";
+			controller.yaxis = "1_RT";
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
 
 			script.target = player.transform;
@@ -35,6 +38,14 @@ public class Configurator : MonoBehaviour {
 
 			GameObject player1 = Instantiate(car);
 			GameObject player2 = Instantiate(car);
+
+			CarController controller1 = (CarController) player1.GetComponent ("CarController");
+			controller1.xaxis = "1_X axis";
+			controller1.yaxis = "1_RT";
+
+			CarController controller2 = (CarController) player2.GetComponent ("CarController");
+			controller2.xaxis = "2_X axis";
+			controller2.yaxis = "2_RT";
 
 			TrackObject script1 = (TrackObject) camera12p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera22p.GetComponent("TrackObject");
@@ -50,6 +61,19 @@ public class Configurator : MonoBehaviour {
 			GameObject player1 = Instantiate(car);
 			GameObject player2 = Instantiate(car);
 			GameObject player3 = Instantiate(car);
+
+			CarController controller1 = (CarController) player1.GetComponent ("CarController");
+			controller1.xaxis = "1_X axis";
+			controller1.yaxis = "1_RT";
+
+			CarController controller2 = (CarController) player2.GetComponent ("CarController");
+			controller2.xaxis = "2_X axis";
+			controller2.yaxis = "2_RT";
+
+			CarController controller3 = (CarController) player3.GetComponent ("CarController");
+			controller3.xaxis = "3_X axis";
+			controller3.yaxis = "3_RT";
+
 
 			TrackObject script1 = (TrackObject) camera13p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera23p.GetComponent("TrackObject");
@@ -69,6 +93,22 @@ public class Configurator : MonoBehaviour {
 			GameObject player2 = Instantiate(car);
 			GameObject player3 = Instantiate(car);
 			GameObject player4 = Instantiate(car);
+
+			CarController controller1 = (CarController) player1.GetComponent ("CarController");
+			controller1.xaxis = "1_X axis";
+			controller1.yaxis = "1_RT";
+
+			CarController controller2 = (CarController) player2.GetComponent ("CarController");
+			controller2.xaxis = "2_X axis";
+			controller2.yaxis = "2_RT";
+
+			CarController controller3 = (CarController) player3.GetComponent ("CarController");
+			controller3.xaxis = "3_X axis";
+			controller3.yaxis = "3_RT";
+
+			CarController controller4 = (CarController) player4.GetComponent ("CarController");
+			controller4.xaxis = "4_X axis";
+			controller4.yaxis = "4_RT";
 
 			TrackObject script1 = (TrackObject) camera14p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera24p.GetComponent("TrackObject");
