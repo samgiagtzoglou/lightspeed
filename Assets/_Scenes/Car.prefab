@@ -386,6 +386,7 @@ GameObject:
   - 114: {fileID: 11405502}
   - 114: {fileID: 11447304}
   - 54: {fileID: 5417696}
+  - 114: {fileID: 11496394}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -1914,7 +1915,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 3500
   rotationRate: 400
-  playerNumber: 0
   turnRotationAngle: 25
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
@@ -1989,6 +1989,38 @@ MonoBehaviour:
   distanceUp: -2.17
   distanceBack: -4
   minimumHeight: 0
+--- !u!114 &11496394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 82
+    i1: 217
+    i2: 95
+    i3: 12
+    i4: 11
+    i5: 209
+    i6: 68
+    i7: 185
+    i8: 106
+    i9: 166
+    i10: 5
+    i11: 169
+    i12: 132
+    i13: 55
+    i14: 155
+    i15: 140
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!136 &13600662
 CapsuleCollider:
   m_ObjectHideFlags: 1
