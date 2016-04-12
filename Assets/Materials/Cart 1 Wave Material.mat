@@ -100,6 +100,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -132,8 +136,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
-        second: 0
+          name: _Amplitude
+        second: 0.5
+      data:
+        first:
+          name: _Wavelength
+        second: 760
       data:
         first:
           name: _TransitionPhase
@@ -148,10 +156,6 @@ Material:
         second: 5
       data:
         first:
-          name: _Wavelength
-        second: 0.512
-      data:
-        first:
           name: _RefractiveIndex
         second: 1
       data:
@@ -162,10 +166,6 @@ Material:
         first:
           name: _BackAmplitude
         second: 1
-      data:
-        first:
-          name: _Amplitude
-        second: 0.5
       data:
         first:
           name: _BoundaryLength
