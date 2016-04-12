@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Wave Segment Material
+  m_Name: Cart 1 Wave Material
   m_Shader: {fileID: 4800000, guid: 4c465b05a28c9415aa9b03d625b526f7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -100,6 +100,38 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Velocity
+        second: 5
+      data:
+        first:
+          name: _Wavelength
+        second: 760
+      data:
+        first:
+          name: _Amplitude
+        second: 0.5
+      data:
+        first:
+          name: _TailLength
+        second: 0.95
+      data:
+        first:
+          name: _BoundaryLength
+        second: 1
+      data:
+        first:
+          name: _RefractiveIndex
+        second: 1
+      data:
+        first:
+          name: _TransitionPhase
+        second: 0
+      data:
+        first:
+          name: _GroupPhase
+        second: 0
+      data:
+        first:
           name: _Metallic
         second: 0
       data:
@@ -136,44 +168,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Amplitude
-        second: 0.5
-      data:
-        first:
-          name: _Wavelength
-        second: 760
-      data:
-        first:
-          name: _TransitionPhase
-        second: 0
-      data:
-        first:
-          name: _GroupPhase
-        second: 0
-      data:
-        first:
-          name: _Velocity
-        second: 5
-      data:
-        first:
-          name: _RefractiveIndex
-        second: 1
-      data:
-        first:
           name: _FrontAmplitude
         second: 1
       data:
         first:
           name: _BackAmplitude
         second: 1
-      data:
-        first:
-          name: _BoundaryLength
-        second: 1
-      data:
-        first:
-          name: _TailLength
-        second: 0.95
     m_Colors:
       data:
         first:
@@ -189,9 +189,9 @@ Material:
         second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
       data:
         first:
-          name: _Direction
+          name: _Displacement
         second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
-          name: _Displacement
+          name: _Direction
         second: {r: 0, g: 0, b: 0, a: 0}
