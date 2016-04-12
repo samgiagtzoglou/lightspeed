@@ -155,4 +155,12 @@ public class CarController : MonoBehaviour {
 	public void LeaveBlackHoleOrbit() {
 		inBlackHoleOrbit = false;
 	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.name == "Item Box") {
+			if (powerup == Powerups.none) {
+				powerup = (Powerups)Random.Range(1, 4);
+			}
+		}
+	}
 }
