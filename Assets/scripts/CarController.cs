@@ -75,4 +75,24 @@ public class CarController : MonoBehaviour {
 		inOrbit = false;
 		//foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = true;
 	}
+
+
+	void OnTriggerEnter(Collider other)
+
+	{
+
+		if (other.gameObject.name == "powerup_pickup") {
+	
+			//Destroy (other.gameObject);
+			other.gameObject.SetActive(false);
+			StartCoroutine ("PowerupTimer");
+
+		
+		}
+	}
+
+	IEnumerator PowerupTimer() {
+		yield return new WaitForSeconds (7);
+
+	}
 }
