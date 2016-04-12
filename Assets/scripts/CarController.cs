@@ -69,4 +69,9 @@ public class CarController : MonoBehaviour {
 		inOrbit = false;
 		//foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = true;
 	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		Destroy (other.gameObject);
+	}
 }
