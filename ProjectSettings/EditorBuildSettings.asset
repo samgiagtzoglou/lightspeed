@@ -4,20 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 0
-    path: Assets/iRDS/DemoScenes/DemoSceneMobile/Scene/MobileScene.unity
-  - enabled: 0
-    path: Assets/iRDS/DemoScenes/DemoScene1/Scenes/CarChooseScene.unity
-  - enabled: 0
-    path: Assets/iRDS/DemoScenes/DemoScene1/Scenes/CompleteScene.unity
-  - enabled: 0
-    path: Assets/iRDS/DemoScenes/ChampionShipDemos/Scenes/Initial SceneCS.unity
-  - enabled: 0
-    path: Assets/iRDS/DemoScenes/ChampionShipDemos/Scenes/MobileSceneCS.unity
-  - enabled: 0
-    path: Assets/iRDS/DemoScenes/ChampionShipDemos/Scenes/OffroadtrackCS.unity
-  - enabled: 0
-    path: Assets/_Scenes/modelwave.unity
-  - enabled: 1
-    path: Assets/_Scenes/game.unity
+  m_Scenes: []
