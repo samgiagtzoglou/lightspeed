@@ -10,6 +10,7 @@ public class CarController : MonoBehaviour {
 	//Values that control the vehicle
 	public float acceleration;
 	public float rotationRate;
+	public float position;
 
 	//Values for faking a nice turn display
 	public float turnRotationAngle;
