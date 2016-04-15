@@ -45,28 +45,27 @@
             float factor, red, green, blue;
             float Gamma = 0.8;
             float IntensityMax = 1.0;
-            float scaledWavelength = (((_Wavelength - .485) * 13.79) + 0.380) * 1000;
-            if ((scaledWavelength >= 380) && (scaledWavelength<440)){
-                red = -(scaledWavelength - 440) / (440 - 380);
+            if ((_Wavelength >= 380) && (_Wavelength<440)){
+                red = -(_Wavelength - 440) / (440 - 380);
                 green = 0.0;
                 blue = 1.0;
-            } else if((scaledWavelength >= 440) && (scaledWavelength<490)){
+            } else if((_Wavelength >= 440) && (_Wavelength<490)){
                 red = 0.0;
-                green = (scaledWavelength - 440) / (490 - 440);
+                green = (_Wavelength - 440) / (490 - 440);
                 blue = 1.0;
-            } else if((scaledWavelength >= 490) && (scaledWavelength<510)){
+            } else if((_Wavelength >= 490) && (_Wavelength<510)){
                 red = 0.0;
                 green = 1.0;
-                blue = -(scaledWavelength - 510) / (510 - 490);
-            } else if((scaledWavelength >= 510) && (scaledWavelength<580)){
-                red = (scaledWavelength - 510) / (580 - 510);
+                blue = -(_Wavelength - 510) / (510 - 490);
+            } else if((_Wavelength >= 510) && (_Wavelength<580)){
+                red = (_Wavelength - 510) / (580 - 510);
                 green = 1.0;
                 blue = 0.0;
-            } else if((scaledWavelength >= 580) && (scaledWavelength<645)){
+            } else if((_Wavelength >= 580) && (_Wavelength<645)){
                 red = 1.0;
-                green = -(scaledWavelength - 645) / (645 - 580);
+                green = -(_Wavelength - 645) / (645 - 580);
                 blue = 0.0;
-            } else if((scaledWavelength >= 645) && (scaledWavelength<781)){
+            } else if((_Wavelength >= 645) && (_Wavelength<781)){
                 red = 1.0;
                 green = 0.0;
                 blue = 0.0;
@@ -76,12 +75,12 @@
                 blue = 0.0;
             }
     
-            if ((scaledWavelength >= 380) && (scaledWavelength<420)){
-                factor = 0.3 + 0.7*(scaledWavelength - 380) / (420 - 380);
-            } else if((scaledWavelength >= 420) && (scaledWavelength<701)) {
+            if ((_Wavelength >= 380) && (_Wavelength<420)){
+                factor = 0.3 + 0.7*(_Wavelength - 380) / (420 - 380);
+            } else if((_Wavelength >= 420) && (_Wavelength<701)) {
                 factor = 1.0;
-            } else if((scaledWavelength >= 701) && (scaledWavelength<781)) {
-                factor = 0.3 + 0.7*(780 - scaledWavelength) / (780 - 700);
+            } else if((_Wavelength >= 701) && (_Wavelength<781)) {
+                factor = 0.3 + 0.7*(780 - _Wavelength) / (780 - 700);
             } else {
                 factor = 0.0;
             }
@@ -105,14 +104,18 @@
             float4 vertexDisplacement = wpos - _Displacement;
             float offset = (0.25f * dot(_Direction,
                       vertexDisplacement) / length(_Direction));
+            float renderWavelength = 0.0015f * _Wavelength - 0.37f;
             
             float locationAmplitude = _Amplitude;
             if (offset > _TailLength / 2.0f - _BoundaryLength) {
                 locationAmplitude = (_TailLength / 2.0f) * (_Amplitude / _BoundaryLength) + offset * (-_Amplitude / _BoundaryLength);
             }
 
-            wpos.x += sin((2.0 * 3.14159 / _Wavelength) * (phase + _GroupPhase + offset) + _TransitionPhase)
-                       * locationAmplitude;
+            float wavepos = sin((2.0 * 3.14159 / renderWavelength) * (phase + _GroupPhase + offset)
+                          + _TransitionPhase)
+                                 * locationAmplitude;
+            wpos.x += wavepos * normalize(_Direction).z;
+            wpos.z += wavepos * -1.0f * normalize(_Direction).x;
 
             v.vertex = mul(_World2Object, wpos);
         }
