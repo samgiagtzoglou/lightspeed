@@ -4,13 +4,14 @@ using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
 	// Powerup enum
-	enum Powerups {none, blackhole, shield, waves, boost}
+	enum Powerups {none, blackhole, shield, attack, boost}
 	private Powerups powerup;
 
 	//Values that control the vehicle
 	public float acceleration;
 	public float rotationRate;
 	public float position;
+	public float totalRacers;
 
 	//Values for faking a nice turn display
 	public float turnRotationAngle;
@@ -160,7 +161,24 @@ public class CarController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
-				powerup = (Powerups)Random.Range(1, 4);
+				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
+				
+				// create weights out of 1.0 for each powerup
+				float blackhole = 0.5f * success;
+				float boost = blackhole + (0.5f - 0.5f * success);
+				float shield = boost + (0.125f + 0.25f * success);
+				// attack is the last remaining amount between shield and 1.0
+
+				float powerupIndex = Random.Range(0.0f, 1.0f);
+				if (powerupIndex < blackhole) {
+					powerup = Powerups.blackhole;
+				} else if (powerupIndex < boost) {
+					powerup = Powerups.boost;
+				} else if (powerupIndex < shield) {
+					powerup = Powerups.shield;
+				} else {
+					powerup = Powerups.attack;
+				}
 			}
 		}
 	}
