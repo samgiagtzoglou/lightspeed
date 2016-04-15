@@ -21,10 +21,10 @@ public class AtomController : MonoBehaviour {
 	IEnumerator WaitAndEmit(Collider other) {
 		electronController.AbsorbPhoton();
 		CarController otherController = (CarController) other.gameObject.GetComponent(typeof(CarController));
-		otherController.EnterOrbit();
+		otherController.EnterAtomOrbit();
 		yield return new WaitForSeconds(0.0f);
 		electronController.EmitPhoton();
-		otherController.LeaveOrbit();
+		otherController.LeaveAtomOrbit();
 		Rigidbody otherRB = other.attachedRigidbody;
 		float emissionAngle = Random.Range(-emissionRange, emissionRange);
 		Vector3 emissionForce = Vector3.RotateTowards(emissionLine,

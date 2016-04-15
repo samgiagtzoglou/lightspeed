@@ -22,6 +22,9 @@ public class PositionManager : MonoBehaviour {
 		foreach (CartPosition pos in allCarts) {
 			int val = pos.GetCarPosition (allCarts);
 			cartPositions [pos.name] = val - 1;
+			CarController kartController = (CarController)
+				GameObject.Find(pos.name).GetComponent(typeof(CarController));
+			kartController.position = val;
 			if (pos.name == "kart1") {
 				GameObject posTextObj = GameObject.Find ("position");
 				Text posText = posTextObj.GetComponent<Text> ();
