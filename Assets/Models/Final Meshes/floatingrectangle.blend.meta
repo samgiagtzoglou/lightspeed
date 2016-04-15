@@ -1,22 +1,15 @@
 fileFormatVersion: 2
-guid: b3259ada9596a40b081dbe170db8bf96
-timeCreated: 1459536387
-licenseType: Pro
+guid: dbd34c67fdc844f75acf303a7abe2736
+timeCreated: 1460701837
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cube
-    100004: Sphere
     400000: //RootNode
-    400002: Cube
-    400004: Sphere
-    2300000: Cube
-    2300002: Sphere
-    3300000: Cube
-    3300002: Sphere
-    4300000: Sphere
-    4300002: Cube
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube_001
     7400000: Default Take
     9500000: //RootNode
   materials:

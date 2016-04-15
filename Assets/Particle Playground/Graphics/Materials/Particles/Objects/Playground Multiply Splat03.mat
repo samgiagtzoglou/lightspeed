@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Playground Multiply Splat03
-  m_Shader: {fileID: 10723, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: []
-  m_CustomRenderQueue: -1
+  m_Shader: {fileID: 4800000, guid: b7eb90c4fea16d34ab4d7caa19b870a3, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -23,17 +25,17 @@ Material:
     m_Floats:
       data:
         first:
-          name: _InvFade
-        second: .769999981
+          name: _Shininess
+        second: 0.7
       data:
         first:
-          name: _Shininess
-        second: .699999988
+          name: _InvFade
+        second: 0.77
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _SpecColor
@@ -45,7 +47,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .514705896, g: .514705896, b: .514705896, a: .490196079}
+        second: {r: 0.5147059, g: 0.5147059, b: 0.5147059, a: 0.49019608}
       data:
         first:
           name: _EmisColor
