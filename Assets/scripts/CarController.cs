@@ -12,7 +12,7 @@ public class CarController : MonoBehaviour {
 	public float rotationRate;
 	public float position;
 	public float totalRacers;
-
+	
 	//Values for faking a nice turn display
 	public float turnRotationAngle;
 	public float turnRotationSeekSpeed;
@@ -37,6 +37,9 @@ public class CarController : MonoBehaviour {
 	private bool drivingAllowed;
 	private bool inElectronOrbit;
 	private bool inBlackHoleOrbit;
+
+	public string xaxis;
+	public string yaxis;
 
 	private Rigidbody rb;
 
@@ -85,42 +88,44 @@ public class CarController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (!inElectronOrbit && !inBlackHoleOrbit && drivingAllowed) {
-			//Check if we are touching the ground
-			if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
-				//We are on the ground. Enable the accelerator and increase drag.
-				rb.drag = 1;
-				Vector3 forwardForce = transform.forward * acceleration * Input.GetAxis("Vertical");
-				//Correct force for deltatime and vehicle mass
-				forwardForce = forwardForce * Time.deltaTime * rb.mass;
-				rb.AddForce(forwardForce);
-			} else {
-				rb.drag = 0;
-			}
-
-			//You can turn in the air or on the ground
-			Vector3 turnTorque = Vector3.up * rotationRate * Input.GetAxis ("Horizontal");
-			//Correct force for deltatime and vehiclemass
-			turnTorque = turnTorque * Time.deltaTime * rb.mass;
-			rb.AddTorque (turnTorque);
-
-			//"Fake" rotate the car when you are turning
-			Vector3 newRotation = transform.eulerAngles;
-			newRotation.z = Mathf.SmoothDampAngle (newRotation.z, Input.GetAxis ("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-			transform.eulerAngles = newRotation;
+		if (yaxis != "") {
+			if (!inElectronOrbit && !inBlackHoleOrbit && drivingAllowed) {
+				//Check if we are touching the ground
+				if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
+					//We are on the ground. Enable the accelerator and increase drag.
+					rb.drag = 1;
+					Vector3 forwardForce = transform.forward * acceleration * Input.GetAxis("Vertical");
+					//Correct force for deltatime and vehicle mass
+					forwardForce = forwardForce * Time.deltaTime * rb.mass;
+					rb.AddForce(forwardForce);
+				} else {
+					rb.drag = 0;
+				}
 				
-		} else if (inBlackHoleOrbit) {
-			float orbitPhase = (Time.time - bhOrbitTime) * blackHoleOrbitSpeed +
-				bhOrbitInitialPhase;
-			transform.position =
-				(new Vector3 (blackHoleOrbitRadius * Mathf.Cos(orbitPhase)
-							  + orbitCenter.x,
-							  transform.position.y, 
-							  blackHoleOrbitRadius * Mathf.Sin(orbitPhase)
-							  + orbitCenter.z));
-			transform.rotation = Quaternion.LookRotation
-				(new Vector3 (-Mathf.Sin(orbitPhase), 0.0f, 
-							  Mathf.Cos(orbitPhase)));
+				//You can turn in the air or on the ground
+				Vector3 turnTorque = Vector3.up * rotationRate * Input.GetAxis (yaxis);
+				//Correct force for deltatime and vehiclemass
+				turnTorque = turnTorque * Time.deltaTime * rb.mass;
+				rb.AddTorque (turnTorque);
+				
+				//"Fake" rotate the car when you are turning
+				Vector3 newRotation = transform.eulerAngles;
+				newRotation.z = Mathf.SmoothDampAngle (newRotation.z, Input.GetAxis (xaxis) * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
+				transform.eulerAngles = newRotation;
+				
+			} else if (inBlackHoleOrbit) {
+				float orbitPhase = (Time.time - bhOrbitTime) * blackHoleOrbitSpeed +
+					bhOrbitInitialPhase;
+				transform.position =
+					(new Vector3 (blackHoleOrbitRadius * Mathf.Cos(orbitPhase)
+								  + orbitCenter.x,
+								  transform.position.y, 
+								  blackHoleOrbitRadius * Mathf.Sin(orbitPhase)
+								  + orbitCenter.z));
+				transform.rotation = Quaternion.LookRotation
+					(new Vector3 (-Mathf.Sin(orbitPhase), 0.0f, 
+								  Mathf.Cos(orbitPhase)));
+			}
 		}
 	}
 
@@ -178,7 +183,8 @@ public class CarController : MonoBehaviour {
 				} else {
 					powerup = Powerups.attack;
 				}
-			} else if (other.gameObject.name == "powerup_pickup") {
+			}
+ else if (other.gameObject.name == "powerup_pickup") {
 	
 				//Destroy (other.gameObject);
 			other.gameObject.SetActive(false);
