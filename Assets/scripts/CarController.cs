@@ -40,6 +40,7 @@ public class CarController : MonoBehaviour {
 
 	public string xaxis;
 	public string yaxis;
+	public string brakeaxis;
 
 	private Rigidbody rb;
 
@@ -88,13 +89,26 @@ public class CarController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (yaxis != "") {
+//		if (yaxis != "") {
 			if (!inElectronOrbit && !inBlackHoleOrbit && drivingAllowed) {
 				//Check if we are touching the ground
 				if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
 					//We are on the ground. Enable the accelerator and increase drag.
 					rb.drag = 1;
-					Vector3 forwardForce = transform.forward * acceleration * Input.GetAxis(yaxis);
+				Vector3 forwardForce;
+				if (brakeaxis.EndsWith("LT")){
+					//Controller, set axis for triggers
+					float rt = (Input.GetAxis(yaxis)+1)/2;
+					float lt = 0;
+					if (Input.GetAxis (brakeaxis) != 0.0) {
+						lt = (Input.GetAxis (brakeaxis) + 1) / (-2);
+					}
+					forwardForce = transform.forward * acceleration * (rt + lt);
+
+				} else {
+					//Keyboard input
+					forwardForce = transform.forward * acceleration * Input.GetAxis(yaxis);
+				}
 					//Correct force for deltatime and vehicle mass
 					forwardForce = forwardForce * Time.deltaTime * rb.mass;
 					rb.AddForce(forwardForce);
@@ -126,7 +140,7 @@ public class CarController : MonoBehaviour {
 					(new Vector3 (-Mathf.Sin(orbitPhase), 0.0f, 
 								  Mathf.Cos(orbitPhase)));
 			}
-		}
+//		}
 	}
 
 	public void EnterAtomOrbit() {
