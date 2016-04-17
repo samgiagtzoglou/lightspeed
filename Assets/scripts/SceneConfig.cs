@@ -11,7 +11,8 @@ public class SceneConfig : MonoBehaviour {
 	public static bool controllerControl;
 
 	void Start() {
-
+		players = 1;
+		controllerControl = true;
 	}
 
 	void Awake()
