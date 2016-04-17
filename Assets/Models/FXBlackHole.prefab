@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2194caa8a026284d975848a1238e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderColorName: 5f436f6c6f72
+  ShaderColorName: _Color
   StartDelay: 1
   FadeInSpeed: 3
   FadeOutDelay: 0
@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2194caa8a026284d975848a1238e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderColorName: 5f54696e74436f6c6f72
+  ShaderColorName: _TintColor
   StartDelay: 2
   FadeInSpeed: 3
   FadeOutDelay: 0
@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2194caa8a026284d975848a1238e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderColorName: 5f54696e74436f6c6f72
+  ShaderColorName: _TintColor
   StartDelay: 2
   FadeInSpeed: 3
   FadeOutDelay: 0
@@ -1284,7 +1284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2194caa8a026284d975848a1238e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderColorName: 5f54696e74436f6c6f72
+  ShaderColorName: _TintColor
   StartDelay: 2
   FadeInSpeed: 3
   FadeOutDelay: 0
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2194caa8a026284d975848a1238e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderColorName: 5f54696e74436f6c6f72
+  ShaderColorName: _TintColor
   StartDelay: 1
   FadeInSpeed: 3
   FadeOutDelay: 0
@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2194caa8a026284d975848a1238e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderColorName: 5f54696e74436f6c6f72
+  ShaderColorName: _TintColor
   StartDelay: 1
   FadeInSpeed: 3
   FadeOutDelay: 0
