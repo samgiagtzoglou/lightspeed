@@ -23,10 +23,13 @@ public class CarController : MonoBehaviour {
 
 	private Rigidbody rb;
 
+
+
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		inOrbit = false;
 		drivingAllowed = true;
+
 	}
 
 	public void startDriving() {
@@ -77,22 +80,31 @@ public class CarController : MonoBehaviour {
 	}
 
 
-	void OnTriggerEnter(Collider other)
+	IEnumerator OnTriggerEnter(Collider other) {
 
-	{
+
 
 		if (other.gameObject.name == "powerup_pickup") {
-	
+			
 			//Destroy (other.gameObject);
+			yield return new WaitForSeconds (0.02F);
+			//GetComponent.<AudioSource>().PlayOne;
 			other.gameObject.SetActive(false);
-			StartCoroutine ("PowerupTimer");
-
+			//StartCoroutine ("PowerupTimer");
+			yield return new WaitForSeconds (3);
+			other.gameObject.SetActive(true);
 		
 		}
 	}
+		
+
+	IEnumerator PowerupTimer1() {
+	yield return new WaitForSeconds (2);
+
+	}
 
 	IEnumerator PowerupTimer() {
-		yield return new WaitForSeconds (7);
+		yield return new WaitForSeconds (3);
 
 	}
 }
