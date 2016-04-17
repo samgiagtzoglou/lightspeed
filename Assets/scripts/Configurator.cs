@@ -16,17 +16,26 @@ public class Configurator : MonoBehaviour {
 	public GameObject camera34p;
 	public GameObject camera44p;
 
+
 	void Start() {
 		if (SceneConfig.players == 0) {
 			SceneConfig.players = 1;
+
 		}
 		if (SceneConfig.players == 1) {
 			camera1p.gameObject.SetActive (true);
 
 			GameObject player = Instantiate(car);
 			CarController controller = (CarController) player.GetComponent ("CarController");
-			controller.xaxis = "1_X axis";
-			controller.yaxis = "1_RT";
+			if (SceneConfig.controllerControl) {
+				
+				controller.xaxis = "1_X axis";
+				controller.yaxis = "1_RT";
+			} else {
+				
+				controller.xaxis = "ArrowKeyboard_X axis";
+				controller.yaxis = "ArrowKeyboard_RT";
+			}
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
 
 			script.target = player.transform;
@@ -40,13 +49,25 @@ public class Configurator : MonoBehaviour {
 			GameObject player2 = Instantiate(car);
 
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
-			controller1.xaxis = "1_X axis";
-			controller1.yaxis = "1_RT";
+
+
 
 			CarController controller2 = (CarController) player2.GetComponent ("CarController");
-			controller2.xaxis = "2_X axis";
-			controller2.yaxis = "2_RT";
+			if (SceneConfig.controllerControl) {
+				controller1.xaxis = "1_X axis";
+				controller1.yaxis = "1_RT";
+				controller2.xaxis = "2_X axis";
+				controller2.yaxis = "2_RT";
 
+			} else {
+
+				controller1.xaxis = "ArrowKeyboard_X axis";
+				controller1.yaxis = "ArrowKeyboard_RT";
+				controller2.xaxis = "WasdKeyboard_X axis";
+				controller2.yaxis = "WasdKeyboard_RT";
+			}
+
+		
 			TrackObject script1 = (TrackObject) camera12p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera22p.GetComponent("TrackObject");
 
