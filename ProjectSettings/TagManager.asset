@@ -12,6 +12,10 @@ TagManager:
   - STR
   - obstacle
   - finishLine
+  - player1
+  - player2
+  - player3
+  - player4
   layers:
   - Default
   - TransparentFX

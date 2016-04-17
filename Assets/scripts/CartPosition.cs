@@ -13,10 +13,11 @@ public class CartPosition : MonoBehaviour {
 	private int cpt_waypoint = 0;
 
 	// Use this for initialization
-	public void Initialize() {
+	void Start() {
 		currentWaypoint = 0;
 		currentLap = 0;
 		cpt_waypoint = 0;
+		lastWaypoint = GameObject.FindWithTag ("finishLine").transform;
 	}
 
 	public void OnTriggerEnter(Collider other) {

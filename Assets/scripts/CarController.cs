@@ -47,7 +47,7 @@ public class CarController : MonoBehaviour {
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		inElectronOrbit = false;
-		drivingAllowed = true;
+		drivingAllowed = false;
 		shieldsUp = false;
 		powerup = Powerups.shield;
 	}

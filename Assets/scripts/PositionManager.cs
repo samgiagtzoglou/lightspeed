@@ -17,13 +17,13 @@ public class PositionManager : MonoBehaviour {
 		cartPositions = new Dictionary<string, int>();
 		allCarts = new CartPosition[numPlayers];
 		Configurator config = (Configurator) GameObject.Find ("Configurator").GetComponent("Configurator");
-		for (int i = 0; i < numPlayers; i++) {
-			//Debug.Log (string.Format ("player{}", i));
-			//allCarts[i] = (CartPosition) GameObject.Find(string.Format("player{0}",i)).GetComponent(typeof(CartPosition));
+		for (int i = 1; i <= numPlayers; i++) {
+			string curPlayerName = "player" + i;
+			GameObject curPlayerObject = GameObject.FindWithTag (curPlayerName);
+			allCarts[i-1] = (CartPosition) curPlayerObject.GetComponent<CartPosition>();
 		}
 		foreach (CartPosition pos in allCarts) {
 			cartPositions.Add (pos.name, 1);
-
 		}
 	}
 

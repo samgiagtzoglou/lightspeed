@@ -17,6 +17,7 @@ public class Configurator : MonoBehaviour {
 	public GameObject camera44p;
 
 	//The Carts
+	public GameObject allCarts;
 	public GameObject player1;
 	public GameObject player2;
 	public GameObject player3;
@@ -27,6 +28,7 @@ public class Configurator : MonoBehaviour {
 	public GameObject raceManager;
 
 	void Start() {
+		allCarts = GameObject.Find ("allCarts");
 		Vector3 position1 = new Vector3(-274.5f, 6.629662f,-37.71113f);
 		Vector3 position2 = new Vector3(-274.5f, 6.629662f,-37.71113f);
 		Vector3 position3 = new Vector3(-274.5f, 6.629662f,-37.71113f);
@@ -38,8 +40,8 @@ public class Configurator : MonoBehaviour {
 		}
 		if (SceneConfig.players == 1) {
 			camera1p.gameObject.SetActive (true);
-
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
+			player1.transform.parent = allCarts.transform;
 			CarController controller = (CarController) player1.GetComponent ("CarController");
 			if (SceneConfig.controllerControl) {
 				
@@ -52,7 +54,7 @@ public class Configurator : MonoBehaviour {
 				controller.yaxis = "ArrowKeyboard_RT";
 			}
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
-
+			player1.tag = "player1";
 			script.target = player1.transform;
 
 		} else if (SceneConfig.players == 2) {
@@ -158,12 +160,10 @@ public class Configurator : MonoBehaviour {
 			script3.target = player3.transform;
 			script4.target = player4.transform;
 		}
-//		raceManager = Instantiate (raceManagerPrefab);
-	}	
+		raceManager = (GameObject) Instantiate (raceManagerPrefab, new Vector3(-281.998f,3.885064f,70.2f), Quaternion.identity);
+	}
 
-
-	void Awake()
-	{
+	void Awake() {
 		DontDestroyOnLoad(this);
 	}
 

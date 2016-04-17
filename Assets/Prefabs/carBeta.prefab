@@ -434,6 +434,7 @@ GameObject:
   - 114: {fileID: 11493232}
   - 114: {fileID: 11404888}
   - 54: {fileID: 5466012}
+  - 114: {fileID: 11445516}
   m_Layer: 0
   m_Name: carBeta
   m_TagString: Untagged
@@ -1901,6 +1902,7 @@ MonoBehaviour:
   shieldControllers: []
   xaxis: 
   yaxis: 
+  brakeaxis: 
 --- !u!114 &11416650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1978,6 +1980,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28db6d88db784c9a84bf34634eb8f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11445516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21aedd2a9e0834c70a8b7bb4fab9190d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWaypoint: 0
+  currentLap: 0
+  lastWaypoint: {fileID: 0}
+  nbWaypoint: 0
 --- !u!114 &11449128
 MonoBehaviour:
   m_ObjectHideFlags: 1
