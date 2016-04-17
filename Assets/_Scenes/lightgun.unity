@@ -19347,7 +19347,7 @@ MonoBehaviour:
   groundAngleVelocity: 1
   blackHoleOrbitRadius: 0
   blackHoleOrbitSpeed: 0
-  blackHolePrefab: {fileID: 0}
+  blackHolePrefab: {fileID: 175740, guid: 8281e5e9aff94492b9099b2071599028, type: 2}
 --- !u!114 &724235231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39507,7 +39507,7 @@ MonoBehaviour:
   groundAngleVelocity: 1
   blackHoleOrbitRadius: 0
   blackHoleOrbitSpeed: 0
-  blackHolePrefab: {fileID: 0}
+  blackHolePrefab: {fileID: 175740, guid: 8281e5e9aff94492b9099b2071599028, type: 2}
 --- !u!114 &1761178268
 MonoBehaviour:
   m_ObjectHideFlags: 0
