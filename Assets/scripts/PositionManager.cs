@@ -2,18 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PositionManager : MonoBehaviour {
-	public CartPosition[] allCarts;
+	private int numPlayers;
+	private CartPosition[] allCarts;
 	public CartPosition[] carOrder;
 	public Dictionary<string,int> cartPositions;
 
 	public void Start() {
+		numPlayers = SceneConfig.players;
 		// set up the car objects
-		carOrder = new CartPosition[allCarts.Length];
+		carOrder = new CartPosition[numPlayers];
 		cartPositions = new Dictionary<string, int>();
+		allCarts = new CartPosition[numPlayers];
+		Configurator config = (Configurator) GameObject.Find ("Configurator").GetComponent("Configurator");
+		for (int i = 0; i < numPlayers; i++) {
+			//Debug.Log (string.Format ("player{}", i));
+			//allCarts[i] = (CartPosition) GameObject.Find(string.Format("player{0}",i)).GetComponent(typeof(CartPosition));
+		}
 		foreach (CartPosition pos in allCarts) {
 			cartPositions.Add (pos.name, 1);
+
 		}
 	}
 

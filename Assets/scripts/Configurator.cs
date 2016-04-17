@@ -16,8 +16,22 @@ public class Configurator : MonoBehaviour {
 	public GameObject camera34p;
 	public GameObject camera44p;
 
+	//The Carts
+	public GameObject player1;
+	public GameObject player2;
+	public GameObject player3;
+	public GameObject player4;
+
+	//The race manager
+	public GameObject raceManagerPrefab;
+	public GameObject raceManager;
 
 	void Start() {
+		Vector3 position1 = new Vector3(-274.5f, 6.629662f,-37.71113f);
+		Vector3 position2 = new Vector3(-274.5f, 6.629662f,-37.71113f);
+		Vector3 position3 = new Vector3(-274.5f, 6.629662f,-37.71113f);
+		Vector3 position4 = new Vector3(-274.5f, 6.629662f,-37.71113f);
+
 		if (SceneConfig.players == 0) {
 			SceneConfig.players = 1;
 
@@ -25,8 +39,8 @@ public class Configurator : MonoBehaviour {
 		if (SceneConfig.players == 1) {
 			camera1p.gameObject.SetActive (true);
 
-			GameObject player = Instantiate(car);
-			CarController controller = (CarController) player.GetComponent ("CarController");
+			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
+			CarController controller = (CarController) player1.GetComponent ("CarController");
 			if (SceneConfig.controllerControl) {
 				
 				controller.xaxis = "1_X axis";
@@ -38,15 +52,15 @@ public class Configurator : MonoBehaviour {
 			}
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
 
-			script.target = player.transform;
+			script.target = player1.transform;
 
 		} else if (SceneConfig.players == 2) {
 				
 			camera12p.gameObject.SetActive (true);
 			camera22p.gameObject.SetActive (true);
 
-			GameObject player1 = Instantiate(car);
-			GameObject player2 = Instantiate(car);
+			player1 = Instantiate(car);
+			player2 = Instantiate(car);
 
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
 
@@ -110,10 +124,10 @@ public class Configurator : MonoBehaviour {
 			camera34p.gameObject.SetActive (true);
 			camera44p.gameObject.SetActive (true);
 
-			GameObject player1 = Instantiate(car);
-			GameObject player2 = Instantiate(car);
-			GameObject player3 = Instantiate(car);
-			GameObject player4 = Instantiate(car);
+			player1 = Instantiate(car);
+			player2 = Instantiate(car);
+			player3 = Instantiate(car);
+			player4 = Instantiate(car);
 
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
 			controller1.xaxis = "1_X axis";
@@ -141,7 +155,8 @@ public class Configurator : MonoBehaviour {
 			script3.target = player3.transform;
 			script4.target = player4.transform;
 		}
-	}
+//		raceManager = Instantiate (raceManagerPrefab);
+	}	
 
 
 	void Awake()

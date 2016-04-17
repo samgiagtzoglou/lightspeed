@@ -11,6 +11,7 @@ TagManager:
   - RGT
   - STR
   - obstacle
+  - finishLine
   layers:
   - Default
   - TransparentFX
