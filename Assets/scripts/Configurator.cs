@@ -24,7 +24,7 @@ public class Configurator : MonoBehaviour {
 	public GameObject player4;
 
 	//The race manager
-	public GameObject raceManagerPrefab;
+//	public GameObject raceManagerPrefab;
 	public GameObject raceManager;
 
 	void Start() {
@@ -180,7 +180,7 @@ public class Configurator : MonoBehaviour {
 			script3.target = player3.transform;
 			script4.target = player4.transform;
 		}
-		raceManager = (GameObject)Instantiate (raceManagerPrefab);
+//		raceManager = (GameObject)Instantiate (raceManagerPrefab);
 		PositionAndLapManager lapsMgr = (PositionAndLapManager)raceManager.GetComponent ("PositionAndLapManager");
 		lapsMgr.setNumPlayers (SceneConfig.players);
 

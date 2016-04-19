@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class RaceStart : MonoBehaviour {
 
-	public TextMesh timerText;
-	private int secondsPassed;
+	public Text timerText;
+	private int secondsLeft;
 	public Transform karts;
 
 
@@ -12,15 +13,19 @@ public class RaceStart : MonoBehaviour {
 	void Start () {
 		karts = (Transform) GameObject.Find ("allCarts").transform;
 		InvokeRepeating ("startRace", 0.1f, 1);
+		secondsLeft = 4;
 	}
 
+
 	void startRace() {
-		secondsPassed++;
-		if (secondsPassed < 4) {
-			timerText.text = "" + secondsPassed;
-		} else {
+		secondsLeft--;
+		if (secondsLeft > 0) {
+			timerText.text = "" + secondsLeft;
+		} else if (secondsLeft > -2) {
 			timerText.text = "START!";
 			allowDriving ();
+		} else {
+			timerText.text = "";
 			CancelInvoke ();
 		}
 	}
