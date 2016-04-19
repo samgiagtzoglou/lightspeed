@@ -1033,6 +1033,7 @@ GameObject:
   - 4: {fileID: 742558875}
   - 114: {fileID: 742558874}
   - 114: {fileID: 742558873}
+  - 114: {fileID: 742558876}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1069,7 +1070,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 531050876}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &742558875
@@ -1084,6 +1085,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &742558876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742558872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ForceModuleActive: 0
 --- !u!1 &804380910
 GameObject:
   m_ObjectHideFlags: 0
