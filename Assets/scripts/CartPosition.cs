@@ -17,10 +17,6 @@ public class CartPosition : MonoBehaviour {
 		currentWaypoint = 0;
 		currentLap = 0;
 		cpt_waypoint = 0;
-		lastWaypoint = GameObject.FindGameObjectWithTag ("finishLine").transform;
-//		GameObject wptGameObject = GameObject.FindGameObjectWithTag ("finishLine");
-//		Debug.Log ("init lastWaypoint");
-//		lastWaypoint = wptGameObject.transform;
 	}
 
 	public void OnTriggerEnter(Collider other) {
@@ -45,15 +41,17 @@ public class CartPosition : MonoBehaviour {
 		return (transform.position - lastWaypoint.position).magnitude + currentWaypoint * WAYPOINT_VALUE + currentLap * LAP_VALUE;
 	}
 
+	public void setLastWaypoint(Transform wpt) {
+		lastWaypoint = wpt;
+	}
+
 	public int GetCarPosition(CartPosition[] allCars) {
 		float distance = GetDistance();
-		//Debug.Log (gameObject.name + " distance " + distance);
 		int position = 1;
 		foreach (CartPosition pos in allCars) {
 			if (pos.GetDistance() > distance)
 				position++;
 		}
-		//Debug.Log (gameObject.name + " at position " + position);
 		return position;
 	}
 }

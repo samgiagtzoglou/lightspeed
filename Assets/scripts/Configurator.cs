@@ -27,6 +27,8 @@ public class Configurator : MonoBehaviour {
 	public GameObject raceManagerPrefab;
 	public GameObject raceManager;
 
+	public string finishTag = "finishLine";
+
 	void Start() {
 		allCarts = GameObject.Find ("allCarts");
 		Vector3 position1 = GameObject.Find ("firstStart").transform.position;
@@ -184,9 +186,14 @@ public class Configurator : MonoBehaviour {
 		PositionAndLapManager lapsMgr = (PositionAndLapManager)raceManager.GetComponent ("PositionAndLapManager");
 		lapsMgr.setNumPlayers (SceneConfig.players);
 
-//		Debug.Log ("set num players to: " + SceneConfig.players);
+		setFinishLine (finishTag);
 	}
 
+	void setFinishLine(string tag) {
+		foreach (Transform cart in allCarts.transform) {
+			cart.GetComponent<CartPosition> ().setLastWaypoint (GameObject.FindWithTag ("finishLine").transform);
+		}
+	}
 	void Awake() {
 		DontDestroyOnLoad(this);
 	}
