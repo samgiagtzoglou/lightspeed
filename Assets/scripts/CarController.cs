@@ -48,16 +48,10 @@ public class CarController : MonoBehaviour {
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
-<<<<<<< HEAD
-		inOrbit = false;
-		drivingAllowed = true;
-
-=======
 		inElectronOrbit = false;
 		drivingAllowed = false;
 		shieldsUp = false;
 		powerup = Powerups.shield;
->>>>>>> 91dc5fb4fd9fac9664195efbc289f194338f588d
 	}
 
 	public void startDriving() {
@@ -97,26 +91,30 @@ public class CarController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-//		if (yaxis != "") {
+		if (yaxis != "") {
 			if (!inElectronOrbit && !inBlackHoleOrbit && drivingAllowed) {
 				//Check if we are touching the ground
 				if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
 					//We are on the ground. Enable the accelerator and increase drag.
 					rb.drag = 1;
-				Vector3 forwardForce;
-				if (brakeaxis.EndsWith("LT")){
-					//Controller, set axis for triggers
-					float rt = (Input.GetAxis(yaxis)+1)/2;
-					float lt = 0;
-					if (Input.GetAxis (brakeaxis) != 0.0) {
-						lt = (Input.GetAxis (brakeaxis) + 1) / (-2);
-					}
-					forwardForce = transform.forward * acceleration * (rt + lt);
+					float yfloat = 0;
+					if (brakeaxis.EndsWith("LT")){
+							
+						//Controller, set axis for triggers
+						float rt = (Input.GetAxis(yaxis)+1)/2;
+						float lt = 0;
+						Debug.Log ("Controller: " + rt + ", " + lt);
+						if (Input.GetAxis (brakeaxis) != 0.0) {
+							lt = (Input.GetAxis (brakeaxis) + 1) / (-2);
+						}
+						yfloat = (rt + lt);
 
-				} else {
-					//Keyboard input
-					forwardForce = transform.forward * acceleration * Input.GetAxis(yaxis);
-				}
+					} else {
+						yfloat = Input.GetAxis (yaxis);
+						//Keyboard input
+
+					}
+					Vector3 forwardForce = transform.forward * acceleration * yfloat;
 					//Correct force for deltatime and vehicle mass
 					forwardForce = forwardForce * Time.deltaTime * rb.mass;
 					rb.AddForce(forwardForce);
@@ -148,7 +146,7 @@ public class CarController : MonoBehaviour {
 					(new Vector3 (-Mathf.Sin(orbitPhase), 0.0f, 
 								  Mathf.Cos(orbitPhase)));
 			}
-//		}
+		}
 	}
 
 	public void EnterAtomOrbit() {
@@ -185,7 +183,7 @@ public class CarController : MonoBehaviour {
 		inBlackHoleOrbit = false;
 	}
 
-	void OnTriggerEnter(Collider other) {
+	public void OnTriggerEnter(Collider other) {
 		if (other.gameObject.name == "powerup_pickup") {
 
 			//Destroy (other.gameObject);
