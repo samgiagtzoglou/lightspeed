@@ -22,15 +22,19 @@ public class CartPosition : MonoBehaviour {
 
 	public void OnTriggerEnter(Collider other) {
 		string checkpointNum = other.gameObject.name;
-		Debug.Log (checkpointNum);
-		currentWaypoint = System.Convert.ToInt32(checkpointNum);
-		if (currentWaypoint == 1 && cpt_waypoint == nbWaypoint) { // completed a lap, so increase currentLap;
-			currentLap++;
-			cpt_waypoint = 0;
-		}
-		if (cpt_waypoint == currentWaypoint - 1) {
-			lastWaypoint = other.transform;
-			cpt_waypoint++;
+		//Not the ideal system. Convert to tag-based code at some point
+		try {
+			currentWaypoint = System.Convert.ToInt32(checkpointNum);
+			if (currentWaypoint == 1 && cpt_waypoint == nbWaypoint) { // completed a lap, so increase currentLap;
+				currentLap++;
+				cpt_waypoint = 0;
+			}
+			if (cpt_waypoint == currentWaypoint - 1) {
+				lastWaypoint = other.transform;
+				cpt_waypoint++;
+			}
+		} catch {
+//			Debug.Log ("Not a checkpoint!");
 		}
 	}
 
