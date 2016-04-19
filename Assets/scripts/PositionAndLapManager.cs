@@ -42,7 +42,7 @@ public class PositionAndLapManager : MonoBehaviour {
 			Debug.Log (pos.tag);
 			CarController cartController = (CarController) pos.GetComponent("CarController");
 			cartController.position = val;
-			if (pos.currentLap == numLaps + 1) {
+			if (pos.currentLap == numLaps) {
 				Debug.Log (pos.tag + " is the Winner!");
 			}
 			if (pos.tag == "kart1") {
