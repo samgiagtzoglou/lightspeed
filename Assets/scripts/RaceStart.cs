@@ -10,7 +10,7 @@ public class RaceStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		karts = (Transform) GameObject.Find ("allCarts").transform;
 		InvokeRepeating ("startRace", 0.1f, 1);
 	}
 

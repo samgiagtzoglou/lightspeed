@@ -543,17 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304af97088d4a46fb9162d16ac1c3a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 179188, guid: d26f45fbc0309e04883e87547ce0c852, type: 2}
-  camera1p: {fileID: 0}
-  camera12p: {fileID: 0}
-  camera22p: {fileID: 0}
-  camera13p: {fileID: 0}
-  camera23p: {fileID: 0}
-  camera33p: {fileID: 0}
-  camera14p: {fileID: 0}
-  camera24p: {fileID: 0}
-  camera34p: {fileID: 0}
-  camera44p: {fileID: 0}
+  car: {fileID: 182094, guid: 07808d53b5ef54842b337f45b7e1ebff, type: 2}
 --- !u!1 &1112336614
 GameObject:
   m_ObjectHideFlags: 0

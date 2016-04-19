@@ -8,9 +8,11 @@ public class SceneConfig : MonoBehaviour {
 	public static int score;
 
 	public static int players;
+	public static bool controllerControl;
 
 	void Start() {
-
+		players = 1;
+		controllerControl = true;
 	}
 
 	void Awake()
@@ -27,5 +29,6 @@ public class SceneConfig : MonoBehaviour {
 
 	public void setPlayers (Slider slider){
 		players = (int) slider.value;
+		controllerControl = true;
 	}
 }
