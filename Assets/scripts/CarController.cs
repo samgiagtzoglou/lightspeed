@@ -183,7 +183,7 @@ public class CarController : MonoBehaviour {
 		inBlackHoleOrbit = false;
 	}
 
-	public void OnTriggerEnter(Collider other) {
+	public IEnumerator OnTriggerEnter(Collider other) {
 		if (other.gameObject.name == "powerup_pickup") {
 
 			//Destroy (other.gameObject);
