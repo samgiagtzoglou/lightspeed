@@ -7,11 +7,15 @@ public class ShieldController : MonoBehaviour {
 	private Renderer rend;
 
 	void Start() {
-		rend = GetComponent<Renderer>();
+		Debug.Log ("hitting init");
+		rend = this.GetComponent<Renderer> ();
+		Debug.Log (rend);
 		rend.enabled = false;
+		Debug.Log(this.transform.position);
 	}
 
 	public void Enable() {
+		Debug.Log ("hitting enable");
 		rend.enabled = true;
 	}
 

@@ -40,7 +40,6 @@ public class Configurator : MonoBehaviour {
 		if (SceneConfig.players == 1) {
 			camera1p.gameObject.SetActive (true);
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
-
 			player1.transform.parent = allCarts.transform;
 
 			CarController controller = (CarController) player1.GetComponent ("CarController");
@@ -54,6 +53,7 @@ public class Configurator : MonoBehaviour {
 				controller.xaxis = "ArrowKeyboard_X axis";
 				controller.yaxis = "ArrowKeyboard_RT";
 			}
+
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
 			player1.tag = "player1";
 			script.target = player1.transform;

@@ -17,7 +17,10 @@ public class CartPosition : MonoBehaviour {
 		currentWaypoint = 0;
 		currentLap = 0;
 		cpt_waypoint = 0;
-		lastWaypoint = GameObject.FindWithTag ("finishLine").transform;
+		lastWaypoint = GameObject.FindGameObjectWithTag ("finishLine").transform;
+//		GameObject wptGameObject = GameObject.FindGameObjectWithTag ("finishLine");
+//		Debug.Log ("init lastWaypoint");
+//		lastWaypoint = wptGameObject.transform;
 	}
 
 	public void OnTriggerEnter(Collider other) {

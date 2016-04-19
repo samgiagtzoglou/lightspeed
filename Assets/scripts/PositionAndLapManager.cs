@@ -32,11 +32,11 @@ public class PositionAndLapManager : MonoBehaviour {
 	// this gets called every frame
 	public void Update() {
 		foreach (CartPosition pos in allCarts) {
-//			Debug.Log (pos);
-//			Debug.Log (pos.lastWaypoint);
-//			if (pos == null) {
-//				return;
-//			}
+			Debug.Log (pos);
+			Debug.Log (pos.lastWaypoint);
+			if (pos.lastWaypoint == null) {
+				return;
+			}
 			int val = pos.GetCarPosition (allCarts);
 			cartPositions [pos.tag] = val - 1;
 			Debug.Log (pos.tag);
