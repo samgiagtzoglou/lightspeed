@@ -27,6 +27,8 @@ public class Configurator : MonoBehaviour {
 //	public GameObject raceManagerPrefab;
 	public GameObject raceManager;
 
+	public string finishTag = "finishLine";
+
 	void Start() {
 		allCarts = GameObject.Find ("allCarts");
 		Vector3 position1 = GameObject.Find ("firstStart").transform.position;
@@ -40,7 +42,6 @@ public class Configurator : MonoBehaviour {
 		if (SceneConfig.players == 1) {
 			camera1p.gameObject.SetActive (true);
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
-
 			player1.transform.parent = allCarts.transform;
 
 			CarController controller = (CarController) player1.GetComponent ("CarController");
@@ -54,6 +55,7 @@ public class Configurator : MonoBehaviour {
 				controller.xaxis = "ArrowKeyboard_X axis";
 				controller.yaxis = "ArrowKeyboard_RT";
 			}
+
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
 			player1.tag = "player1";
 			script.target = player1.transform;
@@ -184,9 +186,14 @@ public class Configurator : MonoBehaviour {
 		PositionAndLapManager lapsMgr = (PositionAndLapManager)raceManager.GetComponent ("PositionAndLapManager");
 		lapsMgr.setNumPlayers (SceneConfig.players);
 
-//		Debug.Log ("set num players to: " + SceneConfig.players);
+		setFinishLine (finishTag);
 	}
 
+	void setFinishLine(string tag) {
+		foreach (Transform cart in allCarts.transform) {
+			cart.GetComponent<CartPosition> ().setLastWaypoint (GameObject.FindWithTag ("finishLine").transform);
+		}
+	}
 	void Awake() {
 		DontDestroyOnLoad(this);
 	}

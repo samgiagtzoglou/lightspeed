@@ -1308,6 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionStrength: 2000
+  numOrbits: 3
 --- !u!114 &11434500
 MonoBehaviour:
   m_ObjectHideFlags: 1

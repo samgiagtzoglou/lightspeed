@@ -64,7 +64,9 @@ public class CarController : MonoBehaviour {
 	}
 
 	private void ShieldsUp() {
-		foreach (ShieldController shield in shieldControllers) shield.Enable();
+		foreach (ShieldController shield in shieldControllers) {
+			shield.Enable ();
+		}
 		shieldsUp = true;
 	}
 
@@ -209,27 +211,17 @@ public class CarController : MonoBehaviour {
 				} else {
 					powerup = Powerups.attack;
 				}
-			}
- else if (other.gameObject.name == "powerup_pickup") {
-	
+			} else if (other.gameObject.name == "powerup_pickup") {
 				//Destroy (other.gameObject);
 			other.gameObject.SetActive(false);
 			//StartCoroutine ("PowerupTimer");
 			yield return new WaitForSeconds (3);
 			other.gameObject.SetActive(true);
-		
 			}
 		}
 	}
 		
 
-	IEnumerator PowerupTimer1() {
-	yield return new WaitForSeconds (2);
 
-	}
 
-	IEnumerator PowerupTimer() {
-		yield return new WaitForSeconds (3);
-
-	}
 }
