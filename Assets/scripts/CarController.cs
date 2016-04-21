@@ -87,6 +87,7 @@ public class CarController : MonoBehaviour {
 					powerup = Powerups.none;
 					break;
 				default:
+					powerup = Powerups.none;
 					break;
 			}
 		}
@@ -185,13 +186,7 @@ public class CarController : MonoBehaviour {
 		inBlackHoleOrbit = false;
 	}
 
-	public IEnumerator OnTriggerEnter(Collider other) {
-		if (other.gameObject.name == "powerup_pickup") {
-
-			//Destroy (other.gameObject);
-			yield return new WaitForSeconds (0.02F);
-			//GetComponent.<AudioSource>().PlayOne;
-		}
+	public void OnTriggerEnter(Collider other) {
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
@@ -211,17 +206,7 @@ public class CarController : MonoBehaviour {
 				} else {
 					powerup = Powerups.attack;
 				}
-			} else if (other.gameObject.name == "powerup_pickup") {
-				//Destroy (other.gameObject);
-			other.gameObject.SetActive(false);
-			//StartCoroutine ("PowerupTimer");
-			yield return new WaitForSeconds (3);
-			other.gameObject.SetActive(true);
 			}
 		}
 	}
-		
-
-
-
 }
