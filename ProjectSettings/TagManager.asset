@@ -3,19 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - PitExit
-  - PitEntrance
-  - COG
-  - LFT
-  - RGT
-  - STR
-  - obstacle
-  - finishLine
-  - player1
-  - player2
-  - player3
-  - player4
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -43,11 +31,11 @@ TagManager:
   - 
   - 
   - 
-  - CloseView
-  - NormalView
-  - FarView
-  - BackGroud
-  - T4MObj
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   m_SortingLayers:
   - name: Default
