@@ -185,14 +185,31 @@ public class CarController : MonoBehaviour {
 		inBlackHoleOrbit = false;
 	}
 
+
+
+	Canvas gameCanvas = (Canvas)GameObject.Find("PlayerUI").GetComponent<Canvas>();
+
+
 	public IEnumerator OnTriggerEnter(Collider other) {
+		
+
+			
+		if (other.gameObject.name == "RoidsTrigger") {
+			//RawImage roids = gameCanvas.getComponent("Roids");
+			//gameCanvas.GetComponent("Roids").insta
+
+
+			//roids.enabled = true;
+			//gameCanvas.GetComponent("Roids").SetActive(true);
+		}
+
 		if (other.gameObject.name == "powerup_pickup") {
 
 			//Destroy (other.gameObject);
 			yield return new WaitForSeconds (0.02F);
 			//GetComponent.<AudioSource>().PlayOne;
 		}
-		if (other.name == "Item Box") {
+		if (other.name == "Item Box") {	
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
 				

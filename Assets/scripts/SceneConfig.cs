@@ -40,7 +40,7 @@ public class SceneConfig : MonoBehaviour {
 			players = 4;
 		}
 
-		controllerControl = true;
+		controllerControl = false;
 	}
 
 	public void LoadLevel(string level){
