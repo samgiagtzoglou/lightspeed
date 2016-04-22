@@ -1964,9 +1964,7 @@ MonoBehaviour:
   blackHoleOrbitRadius: 3
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 8281e5e9aff94492b9099b2071599028, type: 2}
-  shieldControllers:
-  - {fileID: 11417596, guid: d58ca4531459e40c6a308331a712ceea, type: 2}
-  - {fileID: 11417596, guid: d58ca4531459e40c6a308331a712ceea, type: 2}
+  shieldControllers: []
   xaxis: ArrowKeyboard_X axis
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
