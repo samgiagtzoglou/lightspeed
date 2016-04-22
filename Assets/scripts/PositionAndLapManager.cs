@@ -10,6 +10,7 @@ public class PositionAndLapManager : MonoBehaviour {
 	public CartPosition[] carOrder;
 	public Dictionary<string,int> cartPositions;
 	public int numLaps = 1;
+	public Text timerText;
 
 	public void Start() {
 		numPlayers = SceneConfig.players;
@@ -27,6 +28,7 @@ public class PositionAndLapManager : MonoBehaviour {
 		foreach (CartPosition pos in allCarts) {
 			cartPositions.Add (pos.tag, 1);
 		}
+//		timerText = GameObject.Find("timerText").text;
 	}
 
 	// this gets called every frame
@@ -43,7 +45,7 @@ public class PositionAndLapManager : MonoBehaviour {
 			CarController cartController = (CarController) pos.GetComponent("CarController");
 			cartController.position = val;
 			if (pos.currentLap == numLaps) {
-				Debug.Log (pos.tag + " is the Winner!");
+				timerText.text = pos.tag + "Wins!";
 			}
 			if (pos.tag == "kart1") {
 				GameObject posTextObj = GameObject.Find ("position");
