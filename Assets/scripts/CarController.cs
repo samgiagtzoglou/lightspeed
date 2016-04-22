@@ -21,6 +21,12 @@ public class CarController : MonoBehaviour {
 	public float rotationVelocity;
 	public float groundAngleVelocity;
 
+	// Boost powerup variables
+	public float boostStrength;
+	public float boostTime;
+	
+	private float boostStartTime;
+
 	// Black hole powerup variables
 	public float blackHoleOrbitRadius;
 	public float blackHoleOrbitSpeed;
@@ -29,6 +35,9 @@ public class CarController : MonoBehaviour {
 	private Vector3 orbitCenter;
 	private float bhOrbitTime;
 	private float bhOrbitInitialPhase;
+
+	// Lightgun powerup variables
+	public GameObject lightBallPrefab;
 
 	// Shield powerup variables
 	public ShieldController[] shieldControllers;
@@ -51,16 +60,26 @@ public class CarController : MonoBehaviour {
 		inElectronOrbit = false;
 		drivingAllowed = false;
 		shieldsUp = false;
-		powerup = Powerups.shield;
+		powerup = Powerups.boost;
 	}
 
 	public void startDriving() {
 		drivingAllowed = true;
 	}
 
+	private void ActivateBoost() {
+		boostStartTime = Time.time;
+	}
+
 	private void DropBlackHole() {
 		Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
 					Quaternion.identity);
+	}
+
+	private void ShootLightGun() {
+		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
+										transform.position + (3.0f * transform.forward),
+										Quaternion.identity);
 	}
 
 	private void ShieldsUp() {
@@ -84,6 +103,14 @@ public class CarController : MonoBehaviour {
 					break;
 				case Powerups.shield:
 					ShieldsUp();
+					powerup = Powerups.none;
+					break;
+				case Powerups.attack:
+					ShootLightGun();
+					powerup = Powerups.none;
+					break;
+				case Powerups.boost:
+					ActivateBoost();
 					powerup = Powerups.none;
 					break;
 				default:
@@ -121,6 +148,10 @@ public class CarController : MonoBehaviour {
 					//Correct force for deltatime and vehicle mass
 					forwardForce = forwardForce * Time.deltaTime * rb.mass;
 					rb.AddForce(forwardForce);
+
+					// Are we boosting?
+					if (Time.time - boostStartTime < boostTime)
+						rb.AddForce(transform.forward * boostStrength * Time.deltaTime * rb.mass);
 				} else {
 					rb.drag = 0;
 				}
