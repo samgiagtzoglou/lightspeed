@@ -50,6 +50,7 @@ public class CarController : MonoBehaviour {
 	public string xaxis;
 	public string yaxis;
 	public string brakeaxis;
+	public string fireButton;
 
 	private Rigidbody rb;
 
@@ -95,7 +96,8 @@ public class CarController : MonoBehaviour {
 	}	
 
 	void Update() {
-		if (Input.GetButton("Fire1")) {
+		if (Input.GetButton(fireButton)) {
+			Debug.Log (fireButton + " : " + powerup);
 			switch (powerup) {
 				case Powerups.blackhole:
 					DropBlackHole();
@@ -133,7 +135,7 @@ public class CarController : MonoBehaviour {
 						//Controller, set axis for triggers
 						float rt = (Input.GetAxis(yaxis)+1)/2;
 						float lt = 0;
-						Debug.Log ("Controller: " + rt + ", " + lt);
+//						Debug.Log ("Controller: " + rt + ", " + lt);
 						if (Input.GetAxis (brakeaxis) != 0.0) {
 							lt = (Input.GetAxis (brakeaxis) + 1) / (-2);
 						}
@@ -220,6 +222,7 @@ public class CarController : MonoBehaviour {
 	public void OnTriggerEnter(Collider other) {
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
+				
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
 				
 				// create weights out of 1.0 for each powerup

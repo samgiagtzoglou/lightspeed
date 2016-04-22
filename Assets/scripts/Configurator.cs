@@ -78,6 +78,8 @@ public class Configurator : MonoBehaviour {
 				controller2.xaxis = "2_X axis";
 				controller2.yaxis = "2_RT";
 				controller2.brakeaxis = "2_LT";
+				controller1.fireButton = "1_Fire";
+				controller2.fireButton = "2_Fire";
 			} else {
 				controller1.xaxis = "ArrowKeyboard_X axis";
 				controller1.yaxis = "ArrowKeyboard_RT";

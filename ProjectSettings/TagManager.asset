@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - target
+  - player1
+  - player2
+  - player3
+  - player4
+  - finishLine
   layers:
   - Default
   - TransparentFX
