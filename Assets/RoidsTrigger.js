@@ -28,8 +28,9 @@ function OnGUI()
 {
 	if(guiShow == true)
 	{
-		GUI.DrawTexture(Rect(Screen.width - 480, Screen.height -725, 480, 145), riddle);
+		//GUI.DrawTexture(Rect(Screen.width - 480, Screen.height -725, 480, 145), riddle);
 			//	GUI.DrawTexture(Rect(Screen.width /4, Screen.height /4.5, 480, 145), riddle);
+			GUI.DrawTexture(Rect(Screen.width /4, 0, (Screen.width/2), Screen.height/16), riddle, ScaleMode.ScaleToFit);
 
 	}
 }
