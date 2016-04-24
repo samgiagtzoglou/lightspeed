@@ -48,6 +48,9 @@ public class CarController : MonoBehaviour {
 
 	// Shield powerup variables
 	public ShieldController[] shieldControllers;
+	private float shieldStartTime;
+	
+	public float shieldTime;
 
 	public  bool shieldsUp;
 	private bool drivingAllowed;
@@ -95,9 +98,10 @@ public class CarController : MonoBehaviour {
 			shield.Enable ();
 		}
 		shieldsUp = true;
+		shieldStartTime = Time.time;
 	}
 
-	private void ShieldsDown() {
+	public void ShieldsDown() {
 		foreach (ShieldController shield in shieldControllers) shield.Disable();
 		shieldsUp = false;
 	}	
@@ -142,7 +146,9 @@ public class CarController : MonoBehaviour {
 		if (this.transform.position.y <= -40) {
 			respawn ();
 		}
-		Debug.Log("Velocity: " + rb.velocity);
+
+		if (shieldsUp && (Time.time - shieldStartTime > shieldTime))
+			ShieldsDown();
 	}
 
 	void orbitBlackHole() {
@@ -242,20 +248,16 @@ public class CarController : MonoBehaviour {
 	}
 
 	public void EnterBlackHoleOrbit(Vector3 center) {
-		if (!shieldsUp) {
-			inBlackHoleOrbit = true;
-			bhOrbitTime = Time.time;
-			bhOrbitInitialPhase = 0.0f;
-			orbitCenter = center;
-			rb.velocity = Vector3.zero;
-			rb.angularVelocity = Vector3.zero;
-			rb.Sleep();
-			transform.rotation = Quaternion.LookRotation(new Vector3
-														 (center.x, 0.0f,
-														  center.z));
-		} else {
-			ShieldsDown();
-		}
+		inBlackHoleOrbit = true;
+		bhOrbitTime = Time.time;
+		bhOrbitInitialPhase = 0.0f;
+		orbitCenter = center;
+		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+		rb.Sleep();
+		transform.rotation = Quaternion.LookRotation(new Vector3
+													 (center.x, 0.0f,
+													  center.z));
 	}
 		
 	public void LeaveBlackHoleOrbit() {

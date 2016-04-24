@@ -2291,6 +2291,8 @@ MonoBehaviour:
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
   shieldControllers:
   - {fileID: 11417892}
+  shieldTime: 4
+  shieldsUp: 0
   xaxis: ArrowKeyboard_X axis
   yaxis: ArrowKeyboard_RT
   brakeaxis: 

@@ -22,7 +22,7 @@ public class BlackHoleController : MonoBehaviour {
 			Rigidbody otherRB = other.attachedRigidbody;
 			otherRB.AddForce(other.transform.forward * emissionStrength);
 		} else {
-			otherController.shieldsUp = false;
+			otherController.ShieldsDown();
 		}
 
 		Destroy(gameObject);
