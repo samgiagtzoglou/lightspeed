@@ -21,6 +21,13 @@ public class CarController : MonoBehaviour {
 	public float rotationVelocity;
 	public float groundAngleVelocity;
 
+	// Handling travelling in medium
+	public int wavelength;
+	private bool inMedium;
+	public float maxMediumAccelerationReduction;
+	public float maxMediumSpeed;
+	public float maxMediumSpeedReduction;
+
 	// Boost powerup variables
 	public float boostStrength;
 	public float boostTime;
@@ -42,7 +49,7 @@ public class CarController : MonoBehaviour {
 	// Shield powerup variables
 	public ShieldController[] shieldControllers;
 
-	private bool shieldsUp;
+	public  bool shieldsUp;
 	private bool drivingAllowed;
 	private bool inElectronOrbit;
 	private bool inBlackHoleOrbit;
@@ -53,14 +60,14 @@ public class CarController : MonoBehaviour {
 	public string fireButton;
 
 	private Rigidbody rb;
-
-
-
+	public WaveTailController waveTailController;
+	
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		inElectronOrbit = false;
 		drivingAllowed = false;
 		shieldsUp = false;
+		inMedium = false;
 		powerup = Powerups.boost;
 	}
 
@@ -135,6 +142,7 @@ public class CarController : MonoBehaviour {
 		if (this.transform.position.y <= -40) {
 			respawn ();
 		}
+		Debug.Log("Velocity: " + rb.velocity);
 	}
 
 	void orbitBlackHole() {
@@ -180,10 +188,30 @@ public class CarController : MonoBehaviour {
 				//Keyboard input
 
 			}
-			Vector3 forwardForce = transform.forward * acceleration * yfloat;
-			//Correct force for deltatime and vehicle mass
-			forwardForce = forwardForce * Time.deltaTime * rb.mass;
-			rb.AddForce(forwardForce);
+
+			if (!inMedium) {
+				Vector3 forwardForce = transform.forward * acceleration * yfloat;
+				//Correct force for deltatime and vehicle mass
+				forwardForce = forwardForce * Time.deltaTime * rb.mass;
+				rb.AddForce(forwardForce);
+
+				if (Time.time - boostStartTime < boostTime)
+					rb.AddForce(transform.forward * boostStrength * Time.deltaTime * rb.mass);
+			} else {
+				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
+					(1.0f - ((float) (wavelength - 380) / 400.0f));
+				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
+					float adjustedAcceleration = acceleration - maxMediumAccelerationReduction *
+						(1.0f - ((float) (wavelength - 380) / 400.0f));
+					Vector3 forwardForce = transform.forward * adjustedAcceleration * yfloat;
+					//Correct force for deltatime and vehicle mass
+					forwardForce = forwardForce * Time.deltaTime * rb.mass;
+					rb.AddForce(forwardForce);
+				} else {
+					float factor = Vector3.Magnitude (rb.velocity) / adjustedMaxSpeed;
+					rb.velocity = rb.velocity * (1.0f / factor);
+				}
+			}
 		} else {
 			rb.drag = 0;
 		}
@@ -255,6 +283,16 @@ public class CarController : MonoBehaviour {
 					powerup = Powerups.attack;
 				}
 			}
+		} else if (other.name == "Medium") {
+			inMedium = true;
+			waveTailController.SetRefractiveIndex(1.5f);
+		}
+	}
+
+	void OnTriggerExit (Collider other) {
+		if (other.name == "Medium") {
+			inMedium = false;
+			waveTailController.SetRefractiveIndex(1.0f);
 		}
 	}
 }
