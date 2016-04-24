@@ -25,16 +25,16 @@ MonoBehaviour:
   playgroundManagerFoldout: 1
   particleSystemFoldout: 1
   limitsFoldout: 0
-  particlesFoldout: 1
-  statesFoldout: 1
-  sourceFoldout: 0
+  particlesFoldout: 0
+  statesFoldout: 0
+  sourceFoldout: 1
   createNewStateFoldout: 1
-  particleSettingsFoldout: 0
+  particleSettingsFoldout: 1
   forcesFoldout: 0
-  manipulatorsFoldout: 0
-  eventsFoldout: 0
+  manipulatorsFoldout: 1
+  eventsFoldout: 1
   collisionFoldout: 0
-  renderingFoldout: 0
+  renderingFoldout: 1
   advancedFoldout: 0
   saveLoadFoldout: 0
   toolboxFoldout: 1
@@ -43,13 +43,13 @@ MonoBehaviour:
   textureSheetAnimationFoldout: 0
   splineListFoldout: 1
   transformListFoldout: 1
-  particleSettingsParticleCountFoldout: 0
-  particleSettingsOverflowOffsetFoldout: 0
-  particleSettingsScatterFoldout: 0
-  particleSettingsEmissionFoldout: 0
-  particleSettingsSizeFoldout: 0
+  particleSettingsParticleCountFoldout: 1
+  particleSettingsOverflowOffsetFoldout: 1
+  particleSettingsScatterFoldout: 1
+  particleSettingsEmissionFoldout: 1
+  particleSettingsSizeFoldout: 1
   particleSettingsRotationFoldout: 0
-  particleSettingsLifetimeFoldout: 0
+  particleSettingsLifetimeFoldout: 1
   particleSettingsMaskFoldout: 0
   forceAnnihilationFoldout: 0
   forceInitialVelocityFoldout: 0
@@ -61,9 +61,9 @@ MonoBehaviour:
   collisionSettingsFoldout: 0
   collisionPlanesFoldout: 0
   collisionExclusionFoldout: 0
-  renderingMaterialFoldout: 0
-  renderingColorFoldout: 0
-  renderingRenderModeFoldout: 0
+  renderingMaterialFoldout: 1
+  renderingColorFoldout: 1
+  renderingRenderModeFoldout: 1
   renderingShadowsFoldout: 0
   advancedTimeFoldout: 0
   advancedSimulationFoldout: 0
@@ -73,9 +73,9 @@ MonoBehaviour:
   advancedAutoPauseFoldout: 0
   advancedMiscFoldout: 0
   playgroundFoldout: 1
-  particleSystemsFoldout: 0
-  globalManipulatorsFoldout: 0
-  advancedSettingsFoldout: 0
+  particleSystemsFoldout: 1
+  globalManipulatorsFoldout: 1
+  advancedSettingsFoldout: 1
   manipulatorTargetsFoldout: 1
   playgroundSplineFoldout: 1
   nodesFoldout: 0

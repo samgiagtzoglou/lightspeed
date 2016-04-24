@@ -10,5 +10,7 @@ particle.Stop();
  {
    
         particle.Play();
+        yield WaitForSeconds (3);
+        particle.Stop();
 
  }

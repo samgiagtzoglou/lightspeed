@@ -1837,6 +1837,10 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  blackHoleOrbitRadius: 0
+  blackHoleOrbitSpeed: 0
+  blackHolePrefab: {fileID: 0}
+  shieldControllers: []
 --- !u!114 &375788725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,6 +2303,10 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  blackHoleOrbitRadius: 0
+  blackHoleOrbitSpeed: 0
+  blackHolePrefab: {fileID: 0}
+  shieldControllers: []
 --- !u!114 &496498243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9449,6 +9457,10 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  blackHoleOrbitRadius: 0
+  blackHoleOrbitSpeed: 0
+  blackHolePrefab: {fileID: 0}
+  shieldControllers: []
 --- !u!114 &1046379266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9972,6 +9984,10 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  blackHoleOrbitRadius: 0
+  blackHoleOrbitSpeed: 0
+  blackHolePrefab: {fileID: 0}
+  shieldControllers: []
 --- !u!114 &1139241917
 MonoBehaviour:
   m_ObjectHideFlags: 0
