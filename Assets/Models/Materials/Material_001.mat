@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Material_001
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 4c465b05a28c9415aa9b03d625b526f7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -93,48 +93,16 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Glossiness
-        second: 0.5
-      data:
-        first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Velocity
-        second: 5
-      data:
-        first:
-          name: _Wavelength
-        second: 0.5
-      data:
-        first:
-          name: _Amplitude
-        second: 1
-      data:
-        first:
-          name: _BoundaryLength
-        second: 1
-      data:
-        first:
-          name: _RefractiveIndex
-        second: 1
-      data:
-        first:
-          name: _TransitionPhase
-        second: 0
-      data:
-        first:
-          name: _GroupPhase
-        second: 0
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
         first:
           name: _ZWrite
         second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -157,12 +125,48 @@ Material:
         second: 0
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _TransitionPhase
+        second: 0
+      data:
+        first:
+          name: _GroupPhase
+        second: 0
+      data:
+        first:
+          name: _Velocity
+        second: 5
+      data:
+        first:
+          name: _Wavelength
+        second: 500
+      data:
+        first:
+          name: _RefractiveIndex
+        second: 1
+      data:
+        first:
           name: _FrontAmplitude
         second: 0.5
       data:
         first:
           name: _BackAmplitude
         second: 0.5
+      data:
+        first:
+          name: _Amplitude
+        second: 1
+      data:
+        first:
+          name: _BoundaryLength
+        second: 1
+      data:
+        first:
+          name: _TailLength
+        second: 0
     m_Colors:
       data:
         first:
@@ -174,9 +178,9 @@ Material:
         second: {r: 0.5030071, g: 0.030999994, b: 0.8, a: 1}
       data:
         first:
-          name: _Displacement
+          name: _Direction
         second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
-          name: _Direction
+          name: _Displacement
         second: {r: 0, g: 0, b: 0, a: 0}

@@ -114,10 +114,10 @@ public class SceneConfig : MonoBehaviour {
 			if (Input.GetButtonDown ("C4_Fire") && (controllersActive ["C4"] > 0) && !playersReady[controllersActive ["C14"]])  {
 				setPlayerReady (controllersActive ["C4"]);
 			} 
-			if (Input.GetButtonDown ("KArrow_Start") && (controllersActive ["KArrow"] > 0) ){
+			if (Input.GetButtonDown ("KArrow_Start") && (controllersActive ["KArrow"] > 0) && !playersReady[controllersActive ["KArrow"]]){
 				setPlayerReady (controllersActive ["KArrow"]);
 			} 
-				if (Input.GetButtonDown ("KWasd_Start") && (controllersActive ["KWasd"] > 0) ){
+			if (Input.GetButtonDown ("KWasd_Start") && (controllersActive ["KWasd"] > 0) && !playersReady[controllersActive ["KWasd"]]){
 				setPlayerReady (controllersActive ["KWasd"]);
 			} 
 		}
