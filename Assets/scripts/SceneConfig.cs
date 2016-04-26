@@ -101,17 +101,17 @@ public class SceneConfig : MonoBehaviour {
 				xaxisWasdinuse = false;
 			}
 
-			if (Input.GetButton ("C1_Fire") && (controllersActive ["C1"] > 0)) {
+			if (Input.GetButtonDown ("C1_Fire") && (controllersActive ["C1"] > 0) && !playersReady[controllersActive ["C1"]]) {
 				Debug.Log ("C1 ready");
 				setPlayerReady (controllersActive ["C1"]);
 			}
-			if (Input.GetButton ("C2_Fire") && (controllersActive ["C2"] > 0)) {
+			if (Input.GetButtonDown ("C2_Fire") && (controllersActive ["C2"] > 0) && !playersReady[controllersActive ["C2"]])  {
 				setPlayerReady (controllersActive ["C2"]);
 			} 
-			if (Input.GetButton ("C3_Fire") && (controllersActive ["C3"] > 0)) {
+			if (Input.GetButtonDown ("C3_Fire") && (controllersActive ["C3"] > 0) && !playersReady[controllersActive ["C3"]])  {
 				setPlayerReady (controllersActive ["C3"]);
 			} 
-			if (Input.GetButton ("C4_Fire") && (controllersActive ["C4"] > 0)) {
+			if (Input.GetButtonDown ("C4_Fire") && (controllersActive ["C4"] > 0) && !playersReady[controllersActive ["C14"]])  {
 				setPlayerReady (controllersActive ["C4"]);
 			} 
 			if (Input.GetButtonDown ("KArrow_Start") && (controllersActive ["KArrow"] > 0) ){
