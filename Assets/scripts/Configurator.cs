@@ -44,16 +44,18 @@ public class Configurator : MonoBehaviour {
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player1.transform.parent = allCarts.transform;
 
-			CarController controller = (CarController) player1.GetComponent ("CarController");
+		
+			setColorForCart(player1, SceneConfig.playersColors[1]);
 
+			CarController controller = (CarController) player1.GetComponent ("CarController");
 			controller.xaxis = SceneConfig.player1ControlCode + "_X axis";
 			controller.yaxis = SceneConfig.player1ControlCode + "_RT";
 			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
 				controller.brakeaxis = SceneConfig.player1ControlCode + "_LT";
+			} else {
+				controller.fireButton = SceneConfig.player1ControlCode + "_Start";
 			}
 
-			//TODO: Fix this
-			controller.fireButton = "1_Fire";
 
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
 			player1.tag = "player1";
@@ -67,23 +69,31 @@ public class Configurator : MonoBehaviour {
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player2 = (GameObject) Instantiate(car, position2, Quaternion.identity);
 
+			setColorForCart(player1, SceneConfig.playersColors[1]);
+			setColorForCart(player2, SceneConfig.playersColors[2]);
+
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
 			CarController controller2 = (CarController) player2.GetComponent ("CarController");
 
-			controller1.xaxis = SceneConfig.player1ControlCode + "_X axis";
-			controller1.yaxis = SceneConfig.player1ControlCode + "_RT";
 			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
 				controller1.brakeaxis = SceneConfig.player1ControlCode + "_LT";
+			} else {
+				controller1.fireButton = SceneConfig.player1ControlCode + "_Start";
 			}
+
 			controller2.xaxis = SceneConfig.player2ControlCode + "_X axis";
 			controller2.yaxis = SceneConfig.player2ControlCode + "_RT";
 			if (SceneConfig.player2ControlCode.StartsWith ("C")) {
 				controller2.brakeaxis = SceneConfig.player2ControlCode + "_LT";
+			} else {
+				controller2.fireButton = SceneConfig.player2ControlCode + "_Start";
 			}
 
-			//TODO: Fix this
-			controller1.fireButton = "1_Fire";
-			controller2.fireButton = "2_Fire";
+		
+
+
+			controller1.fireButton = SceneConfig.player1ControlCode + "_Fire";
+			controller2.fireButton = SceneConfig.player2ControlCode + "_Fire";
 			
 
 			TrackObject script1 = (TrackObject) camera12p.GetComponent("TrackObject");
@@ -106,6 +116,10 @@ public class Configurator : MonoBehaviour {
 			player2 = (GameObject) Instantiate(car, position2, Quaternion.identity);
 			player3 = (GameObject) Instantiate(car, position3, Quaternion.identity);
 
+			setColorForCart(player1, SceneConfig.playersColors[1]);
+			setColorForCart(player2, SceneConfig.playersColors[2]);
+			setColorForCart(player3, SceneConfig.playersColors[3]);
+
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
 
 
@@ -113,22 +127,30 @@ public class Configurator : MonoBehaviour {
 
 
 			CarController controller3 = (CarController) player3.GetComponent ("CarController");
-			controller1.xaxis = SceneConfig.player1ControlCode + "_X axis";
-			controller1.yaxis = SceneConfig.player1ControlCode + "_RT";
+
 			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
 				controller1.brakeaxis = SceneConfig.player1ControlCode + "_LT";
+			} else {
+				controller1.fireButton = SceneConfig.player1ControlCode + "_Start";
 			}
+
 			controller2.xaxis = SceneConfig.player2ControlCode + "_X axis";
 			controller2.yaxis = SceneConfig.player2ControlCode + "_RT";
 			if (SceneConfig.player2ControlCode.StartsWith ("C")) {
 				controller2.brakeaxis = SceneConfig.player2ControlCode + "_LT";
+			} else {
+				controller2.fireButton = SceneConfig.player2ControlCode + "_Start";
 			}
 
 			controller3.xaxis = SceneConfig.player3ControlCode + "_X axis";
 			controller3.yaxis = SceneConfig.player3ControlCode + "_RT";
 			if (SceneConfig.player3ControlCode.StartsWith ("C")) {
 				controller3.brakeaxis = SceneConfig.player3ControlCode + "_LT";
+			} else {
+				controller3.fireButton = SceneConfig.player3ControlCode + "_Start";
 			}
+
+
 
 			TrackObject script1 = (TrackObject) camera13p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera23p.GetComponent("TrackObject");
@@ -157,6 +179,11 @@ public class Configurator : MonoBehaviour {
 			player3 = (GameObject) Instantiate(car, position3, Quaternion.identity);
 			player4 = (GameObject) Instantiate(car, position4, Quaternion.identity);
 
+			setColorForCart(player1, SceneConfig.playersColors[1]);
+			setColorForCart(player2, SceneConfig.playersColors[2]);
+			setColorForCart(player3, SceneConfig.playersColors[3]);
+			setColorForCart(player4, SceneConfig.playersColors[4]);
+
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
 
 			CarController controller2 = (CarController) player2.GetComponent ("CarController");
@@ -168,24 +195,37 @@ public class Configurator : MonoBehaviour {
 
 			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
 				controller1.brakeaxis = SceneConfig.player1ControlCode + "_LT";
+			} else {
+				controller1.fireButton = SceneConfig.player1ControlCode + "_Start";
 			}
+
 			controller2.xaxis = SceneConfig.player2ControlCode + "_X axis";
 			controller2.yaxis = SceneConfig.player2ControlCode + "_RT";
 			if (SceneConfig.player2ControlCode.StartsWith ("C")) {
 				controller2.brakeaxis = SceneConfig.player2ControlCode + "_LT";
+			} else {
+				controller2.fireButton = SceneConfig.player2ControlCode + "_Start";
 			}
 
 			controller3.xaxis = SceneConfig.player3ControlCode + "_X axis";
 			controller3.yaxis = SceneConfig.player3ControlCode + "_RT";
 			if (SceneConfig.player3ControlCode.StartsWith ("C")) {
 				controller3.brakeaxis = SceneConfig.player3ControlCode + "_LT";
+			} else {
+				controller3.fireButton = SceneConfig.player3ControlCode + "_Start";
 			}
 
 			controller4.xaxis = SceneConfig.player4ControlCode + "_X axis";
 			controller4.yaxis = SceneConfig.player4ControlCode + "_RT";
 			if (SceneConfig.player4ControlCode.StartsWith ("C")) {
 				controller4.brakeaxis = SceneConfig.player4ControlCode + "_LT";
+				controller4.fireButton = SceneConfig.player4ControlCode + "_Fire";
+			} else {
+				controller4.fireButton = SceneConfig.player4ControlCode + "_Start";
 			}
+
+
+
 			TrackObject script1 = (TrackObject) camera14p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera24p.GetComponent("TrackObject");
 			TrackObject script3 = (TrackObject) camera34p.GetComponent("TrackObject");
@@ -223,6 +263,15 @@ public class Configurator : MonoBehaviour {
 		DontDestroyOnLoad(this);
 	}
 
+	void setColorForCart(GameObject player, int color) {
+		Debug.Log ("setting color " + color + " for player");
+		Renderer renderer = (Renderer) player.GetComponent<Renderer> ();
+		renderer.material.SetInt ("_Wavelength", color);
+		Renderer cartRenderer = (Renderer) player.transform.FindChild("Meshes/cart").GetComponent<Renderer> ();
+		cartRenderer.material.SetInt ("_Wavelength", color);
+		Renderer tailRenderer = (Renderer) player.transform.FindChild("Meshes/cart").GetComponent<Renderer> ();
+		tailRenderer.material.SetInt ("_Wavelength", color);
+	}
 
 		
 }
