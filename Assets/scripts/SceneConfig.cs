@@ -207,17 +207,28 @@ public class SceneConfig : MonoBehaviour {
 	}
 	private void moveColorSelection(int player, bool right){
 		Toggle old = GameObject.Find(player+"ColorToggles").gameObject.GetComponent<ToggleGroup>().ActiveToggles().FirstOrDefault();
-		old.isOn = false;
 		Toggle newToggle;
 		if (right) {
 			newToggle = (Toggle) old.FindSelectableOnRight ();
-			newToggle.gameObject.GetComponent<Toggle>().isOn = true;
+
+			if (newToggle) {
+				old.isOn = false;
+				newToggle.gameObject.GetComponent<Toggle> ().isOn = true;
+				GameObject playerObject = GameObject.Find("P"+player+"Box").transform.FindChild("carBeta").gameObject;
+				setColorForCart (playerObject, getLightwaveForColor (newToggle.name));
+			}
+
+
 		} else  {
 			newToggle = (Toggle) old.FindSelectableOnLeft ();
-			newToggle.gameObject.GetComponent<Toggle>().isOn = true;
+			if (newToggle) {
+				old.isOn = false;
+				newToggle.gameObject.GetComponent<Toggle> ().isOn = true;
+				GameObject playerObject = GameObject.Find("P"+player+"Box").transform.FindChild("carBeta").gameObject;
+				setColorForCart (playerObject, getLightwaveForColor (newToggle.name));
+			}
 		}
-		GameObject playerObject = GameObject.Find("P"+player+"Box").transform.FindChild("carBeta").gameObject;
-		setColorForCart (playerObject, getLightwaveForColor (newToggle.name));
+
 
 	}
 	private void setPlayerReady(int player){
