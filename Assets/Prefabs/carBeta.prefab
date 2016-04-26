@@ -2279,6 +2279,10 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: -0.00002700022
   groundAngleVelocity: 1
+  wavelength: 500
+  maxMediumAccelerationReduction: 2000
+  maxMediumSpeed: 65
+  maxMediumSpeedReduction: 40
   boostStrength: 2000
   boostTime: 2
   blackHoleOrbitRadius: 3
@@ -2287,10 +2291,13 @@ MonoBehaviour:
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
   shieldControllers:
   - {fileID: 11417892}
+  shieldTime: 0
+  shieldsUp: 0
   xaxis: ArrowKeyboard_X axis
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  waveTailController: {fileID: 11494800}
 --- !u!114 &11494800
 MonoBehaviour:
   m_ObjectHideFlags: 1

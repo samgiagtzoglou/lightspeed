@@ -99,7 +99,7 @@
         }
 
         void vert (inout appdata_full v) {
-            float phase = _Time * _Velocity * _RefractiveIndex;
+            float phase = _Time * _Velocity / _RefractiveIndex;
             float4 wpos = mul( _Object2World, v.vertex);
             float4 vertexDisplacement = wpos - _Displacement;
             float offset = (0.25f * dot(_Direction,
