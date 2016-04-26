@@ -21,10 +21,9 @@ public class HomingCSharp : MonoBehaviour {
 		float distance = Mathf.Infinity;
 
 		foreach (Transform cart in allCarts) {
+			Debug.Log (cart);
 			CarController ctrl = cart.GetComponent<CarController> ();
-
 			float diff = (cart.position - transform.position).sqrMagnitude;
-
 			if(diff < distance && cart.GetInstanceID() != launcher.GetInstanceID()) {
 				if ((transform.name != launchCart.name) && (ctrl.position > launchCart.GetComponent<CarController>().position)) {
 					distance = diff;
@@ -36,11 +35,9 @@ public class HomingCSharp : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		
 		if (target == null || bolt == null) {
 			Debug.Log ("target: " + target);
 			Debug.Log ("bolt: " + bolt);
-			Debug.Log ("exiting");
 			return;
 		}
 		bolt.velocity = transform.forward * boltVelocity;

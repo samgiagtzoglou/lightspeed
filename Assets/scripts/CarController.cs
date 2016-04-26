@@ -61,8 +61,7 @@ public class CarController : MonoBehaviour {
 		inElectronOrbit = false;
 		drivingAllowed = false;
 		shieldsUp = false;
-		powerup = Powerups.boost;
-		fireButton = "Fire1";
+		powerup = Powerups.attack;
 	}
 
 	public void startDriving() {
