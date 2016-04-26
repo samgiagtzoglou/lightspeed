@@ -50,6 +50,8 @@ public class Configurator : MonoBehaviour {
 				controller.xaxis = "1_X axis";
 				controller.yaxis = "1_RT";
 				controller.brakeaxis = "1_LT";
+				controller.fireButton = "1_Fire";
+
 			} else {
 				
 				controller.xaxis = "ArrowKeyboard_X axis";
