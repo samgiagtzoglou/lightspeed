@@ -48,3 +48,5 @@ tramp
 Lightspeed.app/*
 
 *.meta
+
+*.cs

@@ -10,19 +10,26 @@ public class HomingCSharp : MonoBehaviour {
 	public GameObject launcher;
 	private float totalRot;
 	private float curRot;
+	private Transform allCarts;
+	public GameObject launchCart;
 
 	// Use this for initialization
 	void Start () {
+		allCarts = GameObject.Find ("allCarts").transform;
 		// AudioSource.PlayClipAtPoint(missileClip, transform.position);
 		bolt = GetComponent<Rigidbody>();
 		float distance = Mathf.Infinity;
 
-		foreach (GameObject go in GameObject.FindGameObjectsWithTag("target")) {
-			float diff = (go.transform.position - transform.position).sqrMagnitude;
+		foreach (Transform cart in allCarts) {
+			CarController ctrl = cart.GetComponent<CarController> ();
 
-			if(diff < distance && go != launcher) {
-				distance = diff;
-				target = go.transform;
+			float diff = (cart.position - transform.position).sqrMagnitude;
+
+			if(diff < distance && cart.GetInstanceID() != launcher.GetInstanceID()) {
+				if ((transform.name != launchCart.name) && (ctrl.position > launchCart.GetComponent<CarController>().position)) {
+					distance = diff;
+					target = cart;
+				}
 			}
 		}
 	}
