@@ -24,6 +24,7 @@ ExportedObj/
 
 # Unity3D generated meta files
 *.pidb.meta
+Realistic\ Effects\ Pack.meta
 
 #emacs
 *.cs~
@@ -45,3 +46,4 @@ sysinfo.txt
 auto-save-list
 tramp
 .\#*
+Lightspeed.app/*

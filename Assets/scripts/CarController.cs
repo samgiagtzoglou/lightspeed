@@ -21,6 +21,12 @@ public class CarController : MonoBehaviour {
 	public float rotationVelocity;
 	public float groundAngleVelocity;
 
+	// Boost powerup variables
+	public float boostStrength;
+	public float boostTime;
+	
+	private float boostStartTime;
+
 	// Black hole powerup variables
 	public float blackHoleOrbitRadius;
 	public float blackHoleOrbitSpeed;
@@ -29,6 +35,9 @@ public class CarController : MonoBehaviour {
 	private Vector3 orbitCenter;
 	private float bhOrbitTime;
 	private float bhOrbitInitialPhase;
+
+	// Lightgun powerup variables
+	public GameObject lightBallPrefab;
 
 	// Shield powerup variables
 	public ShieldController[] shieldControllers;
@@ -41,6 +50,7 @@ public class CarController : MonoBehaviour {
 	public string xaxis;
 	public string yaxis;
 	public string brakeaxis;
+	public string fireButton;
 
 	private Rigidbody rb;
 
@@ -51,16 +61,26 @@ public class CarController : MonoBehaviour {
 		inElectronOrbit = false;
 		drivingAllowed = false;
 		shieldsUp = false;
-		powerup = Powerups.shield;
+		powerup = Powerups.boost;
 	}
 
 	public void startDriving() {
 		drivingAllowed = true;
 	}
 
+	private void ActivateBoost() {
+		boostStartTime = Time.time;
+	}
+
 	private void DropBlackHole() {
 		Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
 					Quaternion.identity);
+	}
+
+	private void ShootLightGun() {
+		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
+										transform.position + (3.0f * transform.forward),
+										Quaternion.identity);
 	}
 
 	private void ShieldsUp() {
@@ -76,7 +96,8 @@ public class CarController : MonoBehaviour {
 	}	
 
 	void Update() {
-		if (Input.GetButton("Fire1")) {
+		if (Input.GetButton(fireButton)) {
+			Debug.Log (fireButton + " : " + powerup);
 			switch (powerup) {
 				case Powerups.blackhole:
 					DropBlackHole();
@@ -86,7 +107,16 @@ public class CarController : MonoBehaviour {
 					ShieldsUp();
 					powerup = Powerups.none;
 					break;
+				case Powerups.attack:
+					ShootLightGun();
+					powerup = Powerups.none;
+					break;
+				case Powerups.boost:
+					ActivateBoost();
+					powerup = Powerups.none;
+					break;
 				default:
+					powerup = Powerups.none;
 					break;
 			}
 		}
@@ -95,60 +125,79 @@ public class CarController : MonoBehaviour {
 	void FixedUpdate() {
 		if (yaxis != "") {
 			if (!inElectronOrbit && !inBlackHoleOrbit && drivingAllowed) {
-				//Check if we are touching the ground
-				if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
-					//We are on the ground. Enable the accelerator and increase drag.
-					rb.drag = 1;
-					float yfloat = 0;
-					if (brakeaxis.EndsWith("LT")){
-							
-						//Controller, set axis for triggers
-						float rt = (Input.GetAxis(yaxis)+1)/2;
-						float lt = 0;
-						Debug.Log ("Controller: " + rt + ", " + lt);
-						if (Input.GetAxis (brakeaxis) != 0.0) {
-							lt = (Input.GetAxis (brakeaxis) + 1) / (-2);
-						}
-						yfloat = (rt + lt);
+				//Apply player input to the car
+				applyDrivingForces ();
 
-					} else {
-						yfloat = Input.GetAxis (yaxis);
-						//Keyboard input
-
-					}
-					Vector3 forwardForce = transform.forward * acceleration * yfloat;
-					//Correct force for deltatime and vehicle mass
-					forwardForce = forwardForce * Time.deltaTime * rb.mass;
-					rb.AddForce(forwardForce);
-				} else {
-					rb.drag = 0;
-				}
-				
-				//You can turn in the air or on the ground
-				Vector3 turnTorque = Vector3.up * rotationRate * Input.GetAxis (xaxis);
-				//Correct force for deltatime and vehiclemass
-				turnTorque = turnTorque * Time.deltaTime * rb.mass;
-				rb.AddTorque (turnTorque);
-				
-				//"Fake" rotate the car when you are turning
-				Vector3 newRotation = transform.eulerAngles;
-				newRotation.z = Mathf.SmoothDampAngle (newRotation.z, Input.GetAxis (xaxis) * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-				transform.eulerAngles = newRotation;
-				
 			} else if (inBlackHoleOrbit) {
-				float orbitPhase = (Time.time - bhOrbitTime) * blackHoleOrbitSpeed +
-					bhOrbitInitialPhase;
-				transform.position =
-					(new Vector3 (blackHoleOrbitRadius * Mathf.Cos(orbitPhase)
-								  + orbitCenter.x,
-								  transform.position.y, 
-								  blackHoleOrbitRadius * Mathf.Sin(orbitPhase)
-								  + orbitCenter.z));
-				transform.rotation = Quaternion.LookRotation
-					(new Vector3 (-Mathf.Sin(orbitPhase), 0.0f, 
-								  Mathf.Cos(orbitPhase)));
+				orbitBlackHole ();
 			}
 		}
+		if (this.transform.position.y <= -40) {
+			respawn ();
+		}
+	}
+
+	void orbitBlackHole() {
+		float orbitPhase = (Time.time - bhOrbitTime) * blackHoleOrbitSpeed +
+			bhOrbitInitialPhase;
+		transform.position =
+			(new Vector3 (blackHoleOrbitRadius * Mathf.Cos(orbitPhase)
+				+ orbitCenter.x,
+				transform.position.y, 
+				blackHoleOrbitRadius * Mathf.Sin(orbitPhase)
+				+ orbitCenter.z));
+		transform.rotation = Quaternion.LookRotation
+			(new Vector3 (-Mathf.Sin(orbitPhase), 0.0f, 
+				Mathf.Cos(orbitPhase)));
+	}
+
+	void respawn() {
+		CartPosition posHandler = GetComponent <CartPosition> ();
+		this.transform.position = posHandler.getRespawnPosition ();
+		this.transform.rotation = posHandler.getRespawnRotation ();
+		this.GetComponent<Rigidbody> ().velocity = new Vector3(0f,0f,0f);
+	}
+
+	void applyDrivingForces() {
+		//Check if we are touching the ground
+		if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
+			//We are on the ground. Enable the accelerator and increase drag.
+			rb.drag = 1;
+			float yfloat = 0;
+			if (brakeaxis.EndsWith("LT")){
+
+				//Controller, set axis for triggers
+				float rt = (Input.GetAxis(yaxis)+1)/2;
+				float lt = 0;
+				Debug.Log ("Controller: " + rt + ", " + lt);
+				if (Input.GetAxis (brakeaxis) != 0.0) {
+					lt = (Input.GetAxis (brakeaxis) + 1) / (-2);
+				}
+				yfloat = (rt + lt);
+
+			} else {
+				yfloat = Input.GetAxis (yaxis);
+				//Keyboard input
+
+			}
+			Vector3 forwardForce = transform.forward * acceleration * yfloat;
+			//Correct force for deltatime and vehicle mass
+			forwardForce = forwardForce * Time.deltaTime * rb.mass;
+			rb.AddForce(forwardForce);
+		} else {
+			rb.drag = 0;
+		}
+
+		//You can turn in the air or on the ground
+		Vector3 turnTorque = Vector3.up * rotationRate * Input.GetAxis (xaxis);
+		//Correct force for deltatime and vehiclemass
+		turnTorque = turnTorque * Time.deltaTime * rb.mass;
+		rb.AddTorque (turnTorque);
+
+		//"Fake" rotate the car when you are turning
+		Vector3 newRotation = transform.eulerAngles;
+		newRotation.z = Mathf.SmoothDampAngle (newRotation.z, Input.GetAxis (xaxis) * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
+		transform.eulerAngles = newRotation;
 	}
 
 	public void EnterAtomOrbit() {
@@ -185,6 +234,7 @@ public class CarController : MonoBehaviour {
 		inBlackHoleOrbit = false;
 	}
 
+<<<<<<< HEAD
 
 
 	Canvas gameCanvas = (Canvas)GameObject.Find("PlayerUI").GetComponent<Canvas>();
@@ -210,6 +260,10 @@ public class CarController : MonoBehaviour {
 			//GetComponent.<AudioSource>().PlayOne;
 		}
 		if (other.name == "Item Box") {	
+=======
+	public void OnTriggerEnter(Collider other) {
+		if (other.name == "Item Box") {
+>>>>>>> db009112b05042c693eefcb0c338bfad4243ac74
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
 				
@@ -228,17 +282,7 @@ public class CarController : MonoBehaviour {
 				} else {
 					powerup = Powerups.attack;
 				}
-			} else if (other.gameObject.name == "powerup_pickup") {
-				//Destroy (other.gameObject);
-			other.gameObject.SetActive(false);
-			//StartCoroutine ("PowerupTimer");
-			yield return new WaitForSeconds (3);
-			other.gameObject.SetActive(true);
 			}
 		}
 	}
-		
-
-
-
 }
