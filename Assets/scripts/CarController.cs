@@ -62,6 +62,7 @@ public class CarController : MonoBehaviour {
 		drivingAllowed = false;
 		shieldsUp = false;
 		powerup = Powerups.boost;
+		fireButton = "Fire1";
 	}
 
 	public void startDriving() {
@@ -81,6 +82,8 @@ public class CarController : MonoBehaviour {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
 										transform.position + (3.0f * transform.forward),
 										Quaternion.identity);
+		HomingCSharp homingScript = bullet.GetComponent<HomingCSharp>();
+		homingScript.launchCart = this.gameObject;
 	}
 
 	private void ShieldsUp() {
