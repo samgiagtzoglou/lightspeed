@@ -45,16 +45,15 @@ public class Configurator : MonoBehaviour {
 			player1.transform.parent = allCarts.transform;
 
 			CarController controller = (CarController) player1.GetComponent ("CarController");
-			if (SceneConfig.controllerControl) {
-				
-				controller.xaxis = "1_X axis";
-				controller.yaxis = "1_RT";
-				controller.brakeaxis = "1_LT";
-			} else {
-				
-				controller.xaxis = "ArrowKeyboard_X axis";
-				controller.yaxis = "ArrowKeyboard_RT";
+
+			controller.xaxis = SceneConfig.player1ControlCode + "_X axis";
+			controller.yaxis = SceneConfig.player1ControlCode + "_RT";
+			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
+				controller.brakeaxis = SceneConfig.player1ControlCode + "_LT";
 			}
+
+			//TODO: Fix this
+			controller.fireButton = "1_Fire";
 
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
 			player1.tag = "player1";
@@ -71,21 +70,21 @@ public class Configurator : MonoBehaviour {
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
 			CarController controller2 = (CarController) player2.GetComponent ("CarController");
 
-			if (SceneConfig.controllerControl) {
-				controller1.xaxis = "1_X axis";
-				controller1.yaxis = "1_RT";
-				controller1.brakeaxis = "1_LT";
-				controller2.xaxis = "2_X axis";
-				controller2.yaxis = "2_RT";
-				controller2.brakeaxis = "2_LT";
-				controller1.fireButton = "1_Fire";
-				controller2.fireButton = "2_Fire";
-			} else {
-				controller1.xaxis = "ArrowKeyboard_X axis";
-				controller1.yaxis = "ArrowKeyboard_RT";
-				controller2.xaxis = "WasdKeyboard_X axis";
-				controller2.yaxis = "WasdKeyboard_RT";
+			controller1.xaxis = SceneConfig.player1ControlCode + "_X axis";
+			controller1.yaxis = SceneConfig.player1ControlCode + "_RT";
+			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
+				controller1.brakeaxis = SceneConfig.player1ControlCode + "_LT";
 			}
+			controller2.xaxis = SceneConfig.player2ControlCode + "_X axis";
+			controller2.yaxis = SceneConfig.player2ControlCode + "_RT";
+			if (SceneConfig.player2ControlCode.StartsWith ("C")) {
+				controller2.brakeaxis = SceneConfig.player2ControlCode + "_LT";
+			}
+
+			//TODO: Fix this
+			controller1.fireButton = "1_Fire";
+			controller2.fireButton = "2_Fire";
+			
 
 			TrackObject script1 = (TrackObject) camera12p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera22p.GetComponent("TrackObject");
@@ -108,17 +107,28 @@ public class Configurator : MonoBehaviour {
 			player3 = (GameObject) Instantiate(car, position3, Quaternion.identity);
 
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
-			controller1.xaxis = "1_X axis";
-			controller1.yaxis = "1_RT";
+
 
 			CarController controller2 = (CarController) player2.GetComponent ("CarController");
-			controller2.xaxis = "2_X axis";
-			controller2.yaxis = "2_RT";
+
 
 			CarController controller3 = (CarController) player3.GetComponent ("CarController");
-			controller3.xaxis = "3_X axis";
-			controller3.yaxis = "3_RT";
+			controller1.xaxis = SceneConfig.player1ControlCode + "_X axis";
+			controller1.yaxis = SceneConfig.player1ControlCode + "_RT";
+			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
+				controller1.brakeaxis = SceneConfig.player1ControlCode + "_LT";
+			}
+			controller2.xaxis = SceneConfig.player2ControlCode + "_X axis";
+			controller2.yaxis = SceneConfig.player2ControlCode + "_RT";
+			if (SceneConfig.player2ControlCode.StartsWith ("C")) {
+				controller2.brakeaxis = SceneConfig.player2ControlCode + "_LT";
+			}
 
+			controller3.xaxis = SceneConfig.player3ControlCode + "_X axis";
+			controller3.yaxis = SceneConfig.player3ControlCode + "_RT";
+			if (SceneConfig.player3ControlCode.StartsWith ("C")) {
+				controller3.brakeaxis = SceneConfig.player3ControlCode + "_LT";
+			}
 
 			TrackObject script1 = (TrackObject) camera13p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera23p.GetComponent("TrackObject");
@@ -148,21 +158,34 @@ public class Configurator : MonoBehaviour {
 			player4 = (GameObject) Instantiate(car, position4, Quaternion.identity);
 
 			CarController controller1 = (CarController) player1.GetComponent ("CarController");
-			controller1.xaxis = "1_X axis";
-			controller1.yaxis = "1_RT";
 
 			CarController controller2 = (CarController) player2.GetComponent ("CarController");
-			controller2.xaxis = "2_X axis";
-			controller2.yaxis = "2_RT";
 
 			CarController controller3 = (CarController) player3.GetComponent ("CarController");
-			controller3.xaxis = "3_X axis";
-			controller3.yaxis = "3_RT";
+
 
 			CarController controller4 = (CarController) player4.GetComponent ("CarController");
-			controller4.xaxis = "4_X axis";
-			controller4.yaxis = "4_RT";
 
+			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
+				controller1.brakeaxis = SceneConfig.player1ControlCode + "_LT";
+			}
+			controller2.xaxis = SceneConfig.player2ControlCode + "_X axis";
+			controller2.yaxis = SceneConfig.player2ControlCode + "_RT";
+			if (SceneConfig.player2ControlCode.StartsWith ("C")) {
+				controller2.brakeaxis = SceneConfig.player2ControlCode + "_LT";
+			}
+
+			controller3.xaxis = SceneConfig.player3ControlCode + "_X axis";
+			controller3.yaxis = SceneConfig.player3ControlCode + "_RT";
+			if (SceneConfig.player3ControlCode.StartsWith ("C")) {
+				controller3.brakeaxis = SceneConfig.player3ControlCode + "_LT";
+			}
+
+			controller4.xaxis = SceneConfig.player4ControlCode + "_X axis";
+			controller4.yaxis = SceneConfig.player4ControlCode + "_RT";
+			if (SceneConfig.player4ControlCode.StartsWith ("C")) {
+				controller4.brakeaxis = SceneConfig.player4ControlCode + "_LT";
+			}
 			TrackObject script1 = (TrackObject) camera14p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera24p.GetComponent("TrackObject");
 			TrackObject script3 = (TrackObject) camera34p.GetComponent("TrackObject");
