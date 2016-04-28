@@ -78,6 +78,7 @@ public class CarController : MonoBehaviour {
 		drivingAllowed = true;
 	}
 
+
 	private void ActivateBoost() {
 		boostStartTime = Time.time;
 	}

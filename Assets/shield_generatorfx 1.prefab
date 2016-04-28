@@ -46,7 +46,7 @@ GameObject:
   - 95: {fileID: 9507480}
   - 114: {fileID: 11459426}
   m_Layer: 0
-  m_Name: shield_generatorfx
+  m_Name: shield_generatorfx 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

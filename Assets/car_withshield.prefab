@@ -125,7 +125,7 @@ GameObject:
   - 114: {fileID: 11480528}
   - 82: {fileID: 8261346}
   m_Layer: 0
-  m_Name: New Prefab
+  m_Name: car_withshield
   m_TagString: player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
