@@ -2279,12 +2279,12 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: -0.00002700022
   groundAngleVelocity: 1
-  wavelength: 500
+  wavelength: 700
   maxMediumAccelerationReduction: 2000
   maxMediumSpeed: 65
-  maxMediumSpeedReduction: 40
-  maxTrackAccelerationReduction: 1000
-  maxTrackSpeed: 65
+  maxMediumSpeedReduction: 20
+  maxTrackAccelerationReduction: 500
+  maxTrackSpeed: 75
   maxTrackSpeedReduction: 10
   boostStrength: 2000
   boostTime: 2
@@ -2292,8 +2292,7 @@ MonoBehaviour:
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 5391b74f0aaac4f1d83cb8816ce52e0b, type: 2}
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
-  shieldControllers:
-  - {fileID: 11417892}
+  shieldControllers: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: ArrowKeyboard_X axis

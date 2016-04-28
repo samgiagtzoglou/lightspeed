@@ -210,9 +210,6 @@ public class CarController : MonoBehaviour {
 					//Correct force for deltatime and vehicle mass
 					forwardForce = forwardForce * Time.deltaTime * rb.mass;
 					rb.AddForce(forwardForce);
-				} else {
-					float factor = Vector3.Magnitude (rb.velocity) / adjustedMaxSpeed;
-					rb.velocity = rb.velocity * (1.0f / factor);
 				}
 
 				if (Time.time - boostStartTime < boostTime)
@@ -227,9 +224,6 @@ public class CarController : MonoBehaviour {
 					//Correct force for deltatime and vehicle mass
 					forwardForce = forwardForce * Time.deltaTime * rb.mass;
 					rb.AddForce(forwardForce);
-				} else {
-					float factor = Vector3.Magnitude (rb.velocity) / adjustedMaxSpeed;
-					rb.velocity = rb.velocity * (1.0f / factor);
 				}
 			}
 		} else {

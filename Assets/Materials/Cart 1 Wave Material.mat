@@ -141,7 +141,7 @@ Material:
       data:
         first:
           name: _Wavelength
-        second: 500
+        second: 700
       data:
         first:
           name: _TransitionPhase
