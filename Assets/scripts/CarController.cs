@@ -28,6 +28,11 @@ public class CarController : MonoBehaviour {
 	public float maxMediumSpeed;
 	public float maxMediumSpeedReduction;
 
+	// Handling travelling in the track
+	public float maxTrackAccelerationReduction;
+	public float maxTrackSpeed;
+	public float maxTrackSpeedReduction;
+
 	// Boost powerup variables
 	public float boostStrength;
 	public float boostTime;
@@ -196,10 +201,19 @@ public class CarController : MonoBehaviour {
 			}
 
 			if (!inMedium) {
-				Vector3 forwardForce = transform.forward * acceleration * yfloat;
-				//Correct force for deltatime and vehicle mass
-				forwardForce = forwardForce * Time.deltaTime * rb.mass;
-				rb.AddForce(forwardForce);
+				float adjustedMaxSpeed = maxTrackSpeed - maxTrackSpeedReduction *
+					(1.0f - ((float) (wavelength - 380) / 400.0f));
+				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
+					float adjustedAcceleration = acceleration - maxTrackAccelerationReduction *
+						((float) (wavelength - 380) / 400.0f);
+					Vector3 forwardForce = transform.forward * adjustedAcceleration * yfloat;
+					//Correct force for deltatime and vehicle mass
+					forwardForce = forwardForce * Time.deltaTime * rb.mass;
+					rb.AddForce(forwardForce);
+				} else {
+					float factor = Vector3.Magnitude (rb.velocity) / adjustedMaxSpeed;
+					rb.velocity = rb.velocity * (1.0f / factor);
+				}
 
 				if (Time.time - boostStartTime < boostTime)
 					rb.AddForce(transform.forward * boostStrength * Time.deltaTime * rb.mass);

@@ -2283,6 +2283,9 @@ MonoBehaviour:
   maxMediumAccelerationReduction: 2000
   maxMediumSpeed: 65
   maxMediumSpeedReduction: 40
+  maxTrackAccelerationReduction: 1000
+  maxTrackSpeed: 65
+  maxTrackSpeedReduction: 10
   boostStrength: 2000
   boostTime: 2
   blackHoleOrbitRadius: 3
