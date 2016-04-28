@@ -28,20 +28,17 @@ public class PositionAndLapManager : MonoBehaviour {
 		foreach (CartPosition pos in allCarts) {
 			cartPositions.Add (pos.tag, 1);
 		}
-//		timerText = GameObject.Find("timerText").text;
 	}
 
 	// this gets called every frame
 	public void Update() {
 		foreach (CartPosition pos in allCarts) {
-			Debug.Log (pos);
-			Debug.Log (pos.lastWaypoint);
 			if (pos.lastWaypoint == null) {
 				return;
 			}
 			int val = pos.GetCarPosition (allCarts);
 			cartPositions [pos.tag] = val - 1;
-			Debug.Log (pos.tag);
+//			Debug.Log (pos.tag);
 			CarController cartController = (CarController) pos.GetComponent("CarController");
 			cartController.position = val;
 			if (pos.currentLap == numLaps) {

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class HomingCSharp : MonoBehaviour {
 
-	public float boltVelocity;
-	public float turningSpeed;
+	private float boltVelocity;
+	private float turningSpeed;
 	private Rigidbody bolt;
 	private Transform target;
 	public GameObject launcher;
@@ -15,17 +15,20 @@ public class HomingCSharp : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		boltVelocity = 45f;
+		turningSpeed = 20f;
 		allCarts = GameObject.Find ("allCarts").transform;
 		// AudioSource.PlayClipAtPoint(missileClip, transform.position);
 		bolt = GetComponent<Rigidbody>();
 		float distance = Mathf.Infinity;
-
+		CarController launchCtrl = launchCart.GetComponent<CarController> ();
 		foreach (Transform cart in allCarts) {
-			Debug.Log (cart);
+//			Debug.Log (cart.tag);
 			CarController ctrl = cart.GetComponent<CarController> ();
 			float diff = (cart.position - transform.position).sqrMagnitude;
 			if(diff < distance && cart.GetInstanceID() != launcher.GetInstanceID()) {
-				if ((transform.name != launchCart.name) && (ctrl.position > launchCart.GetComponent<CarController>().position)) {
+				if ((cart.tag != launchCart.tag) && (ctrl.position < launchCtrl.position)) {
+					Debug.Log ("got through second if: " + cart.tag);
 					distance = diff;
 					target = cart;
 				}
@@ -36,8 +39,7 @@ public class HomingCSharp : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (target == null || bolt == null) {
-			Debug.Log ("target: " + target);
-			Debug.Log ("bolt: " + bolt);
+			Debug.Log ("null path");
 			return;
 		}
 		bolt.velocity = transform.forward * boltVelocity;

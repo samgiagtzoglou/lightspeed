@@ -62,6 +62,7 @@ public class CarController : MonoBehaviour {
 		drivingAllowed = false;
 		shieldsUp = false;
 		powerup = Powerups.attack;
+		totalRacers = SceneConfig.players;
 	}
 
 	public void startDriving() {

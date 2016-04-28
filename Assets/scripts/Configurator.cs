@@ -155,8 +155,6 @@ public class Configurator : MonoBehaviour {
 				controller3.fireButton = SceneConfig.player3ControlCode + "_Start";
 			}
 
-
-
 			TrackObject script1 = (TrackObject) camera13p.GetComponent("TrackObject");
 			TrackObject script2 = (TrackObject) camera23p.GetComponent("TrackObject");
 			TrackObject script3 = (TrackObject) camera33p.GetComponent("TrackObject");
@@ -256,7 +254,7 @@ public class Configurator : MonoBehaviour {
 			script3.target = player3.transform;
 			script4.target = player4.transform;
 		}
-//		raceManager = (GameObject)Instantiate (raceManagerPrefab);
+		//raceManager = (GameObject)Instantiate (raceManagerPrefab);
 		PositionAndLapManager lapsMgr = (PositionAndLapManager)raceManager.GetComponent ("PositionAndLapManager");
 		lapsMgr.setNumPlayers (SceneConfig.players);
 

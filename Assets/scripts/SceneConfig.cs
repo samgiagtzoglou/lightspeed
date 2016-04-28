@@ -179,7 +179,6 @@ public class SceneConfig : MonoBehaviour {
 		}
 	}
 	public void setPlayerInput(string controlCode, int player) {
-		Debug.Log ("Called setPlayerInput");
 		switch (player) {
 		case 1:
 			Debug.Log ("Setting P1");
@@ -235,12 +234,12 @@ public class SceneConfig : MonoBehaviour {
 		Toggle color = GameObject.Find(player+"ColorToggles").gameObject.GetComponent<ToggleGroup>().ActiveToggles().FirstOrDefault();
 		playersColors [player] = getLightwaveForColor(color.name);
 		playersReady [player] = true;
-			Debug.Log ("Ready P"+player);
+//		Debug.Log ("Ready P"+player);
 		GameObject.Find("P"+player+"Box").transform.FindChild("Ready").gameObject.SetActive(true);
 		GameObject.Find("P"+player+"Box").transform.FindChild(player+"ColorToggles").gameObject.SetActive(false);
 	}
 	private int getLightwaveForColor(string color){
-		Debug.Log ("retrieving color " + color);
+//		Debug.Log ("retrieving color " + color);
 		switch (color) {
 		case "Black":
 			return 0;
@@ -283,13 +282,13 @@ public class SceneConfig : MonoBehaviour {
 	}
 
 	public void LoadLevel(string level){
-		Debug.Log (players);
+//		Debug.Log (players);
 		Application.LoadLevel(level);
 
 
 	}
 	void setColorForCart(GameObject player, int color) {
-		Debug.Log ("setting color " + color + " for player");
+//		Debug.Log ("setting color " + color + " for player");
 		Renderer renderer = (Renderer) player.GetComponent<Renderer> ();
 		renderer.material.SetInt ("_Wavelength", color);
 		Renderer cartRenderer = (Renderer) player.transform.FindChild("Meshes/cart").GetComponent<Renderer> ();
