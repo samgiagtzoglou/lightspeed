@@ -425,6 +425,7 @@ GameObject:
   - 114: {fileID: 11419396}
   - 114: {fileID: 11466076}
   - 82: {fileID: 8228788}
+  - 135: {fileID: 13522866}
   m_Layer: 0
   m_Name: carBeta
   m_TagString: player1
@@ -619,8 +620,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172582}
-  m_LocalRotation: {x: 0.0000002991099, y: 0.000437096, z: 0.00000013227032, w: 0.99999994}
-  m_LocalPosition: {x: -279.76602, y: 2.1166015, z: 39.41191}
+  m_LocalRotation: {x: -0.031286683, y: 0.0006669553, z: -0.0023813758, w: 0.9995074}
+  m_LocalPosition: {x: -306.76245, y: 0.4229436, z: 53.371}
   m_LocalScale: {x: 3, y: 0.7, z: 4}
   m_Children:
   - {fileID: 486866}
@@ -977,7 +978,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 37e7a74d9c7a5864aada7f4c72455979, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1077,7 +1078,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137156}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1746,7 +1747,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 95b8b2be5694e4af8ad40af71617d427, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 0.1
+  m_Pitch: 0.46881074
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2302,6 +2303,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2413e76b8665334caff8ff32f1970a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &13522866
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Center: {x: 0.0000076293945, y: 0.00000047683716, z: 0}
 --- !u!136 &13600090
 CapsuleCollider:
   m_ObjectHideFlags: 1

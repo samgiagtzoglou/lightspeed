@@ -12,10 +12,11 @@ public class HomingCSharp : MonoBehaviour {
 	private float curRot;
 	private Transform allCarts;
 	public GameObject launchCart;
+	public CarController targetCtrl;
 
 	// Use this for initialization
 	void Start () {
-		boltVelocity = 45f;
+		boltVelocity = 55f;
 		turningSpeed = 20f;
 		allCarts = GameObject.Find ("allCarts").transform;
 		// AudioSource.PlayClipAtPoint(missileClip, transform.position);
@@ -28,9 +29,9 @@ public class HomingCSharp : MonoBehaviour {
 			float diff = (cart.position - transform.position).sqrMagnitude;
 			if(diff < distance && cart.GetInstanceID() != launcher.GetInstanceID()) {
 				if ((cart.tag != launchCart.tag) && (ctrl.position < launchCtrl.position)) {
-					Debug.Log ("got through second if: " + cart.tag);
 					distance = diff;
 					target = cart;
+					targetCtrl = ctrl;
 				}
 			}
 		}
@@ -46,5 +47,12 @@ public class HomingCSharp : MonoBehaviour {
 		Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
 		bolt.MoveRotation (Quaternion.RotateTowards (transform.rotation, targetRotation, turningSpeed));
 		//Destroy(this);
+	}
+
+	void OnTriggerEnter(Collider other) {
+		Debug.Log ("entered trigger");
+		if (other.tag == target.tag) {
+			Debug.Log ("hit!");
+		}
 	}
 }
