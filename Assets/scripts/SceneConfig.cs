@@ -279,7 +279,7 @@ public class SceneConfig : MonoBehaviour {
 			players = 4;
 		}
 
-		controllerControl = true;
+		controllerControl = false;
 	}
 
 	public void LoadLevel(string level){
@@ -289,12 +289,11 @@ public class SceneConfig : MonoBehaviour {
 
 	}
 	void setColorForCart(GameObject player, int color) {
-		Debug.Log ("setting color " + color + " for player");
-		Renderer renderer = (Renderer) player.GetComponent<Renderer> ();
-		renderer.material.SetInt ("_Wavelength", color);
-		Renderer cartRenderer = (Renderer) player.transform.FindChild("Meshes/cart").GetComponent<Renderer> ();
+		CarController playerController = (CarController) player.GetComponent(typeof(CarController));
+		playerController.wavelength = color;
+		Renderer cartRenderer = (Renderer) player.transform.Find("Meshes/cart").GetComponent<Renderer> ();
 		cartRenderer.material.SetInt ("_Wavelength", color);
-		Renderer tailRenderer = (Renderer) player.transform.FindChild("Meshes/cart").GetComponent<Renderer> ();
+		Renderer tailRenderer = (Renderer) player.transform.Find("Meshes/tail").GetComponent<Renderer> ();
 		tailRenderer.material.SetInt ("_Wavelength", color);
 	}
 }

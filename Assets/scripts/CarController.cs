@@ -21,6 +21,18 @@ public class CarController : MonoBehaviour {
 	public float rotationVelocity;
 	public float groundAngleVelocity;
 
+	// Handling travelling in medium
+	public int wavelength;
+	private bool inMedium;
+	public float maxMediumAccelerationReduction;
+	public float maxMediumSpeed;
+	public float maxMediumSpeedReduction;
+
+	// Handling travelling in the track
+	public float maxTrackAccelerationReduction;
+	public float maxTrackSpeed;
+	public float maxTrackSpeedReduction;
+
 	// Boost powerup variables
 	public float boostStrength;
 	public float boostTime;
@@ -40,9 +52,12 @@ public class CarController : MonoBehaviour {
 	public GameObject lightBallPrefab;
 
 	// Shield powerup variables
-	public ShieldController[] shieldControllers;
+	public GameObject[] shieldObjects;
+	private float shieldStartTime;
+	
+	public float shieldTime;
 
-	private bool shieldsUp;
+	public  bool shieldsUp;
 	private bool drivingAllowed;
 	private bool inElectronOrbit;
 	private bool inBlackHoleOrbit;
@@ -53,15 +68,15 @@ public class CarController : MonoBehaviour {
 	public string fireButton;
 
 	private Rigidbody rb;
-
-
-
+	public WaveTailController waveTailController;
+	
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		inElectronOrbit = false;
 		drivingAllowed = false;
 		shieldsUp = false;
-		powerup = Powerups.boost;
+		inMedium = false;
+		powerup = Powerups.shield;
 	}
 
 	public void startDriving() {
@@ -84,14 +99,15 @@ public class CarController : MonoBehaviour {
 	}
 
 	private void ShieldsUp() {
-		foreach (ShieldController shield in shieldControllers) {
-			shield.Enable ();
+		foreach (GameObject shield in shieldObjects) {
+			shield.SetActive (true);
 		}
 		shieldsUp = true;
+		shieldStartTime = Time.time;
 	}
 
-	private void ShieldsDown() {
-		foreach (ShieldController shield in shieldControllers) shield.Disable();
+	public void ShieldsDown() {
+		foreach (GameObject shield in shieldObjects) shield.SetActive(false);
 		shieldsUp = false;
 	}	
 
@@ -135,6 +151,9 @@ public class CarController : MonoBehaviour {
 		if (this.transform.position.y <= -40) {
 			respawn ();
 		}
+
+		if (shieldsUp && (Time.time - shieldStartTime > shieldTime))
+			ShieldsDown();
 	}
 
 	void orbitBlackHole() {
@@ -180,10 +199,33 @@ public class CarController : MonoBehaviour {
 				//Keyboard input
 
 			}
-			Vector3 forwardForce = transform.forward * acceleration * yfloat;
-			//Correct force for deltatime and vehicle mass
-			forwardForce = forwardForce * Time.deltaTime * rb.mass;
-			rb.AddForce(forwardForce);
+
+			if (!inMedium) {
+				float adjustedMaxSpeed = maxTrackSpeed - maxTrackSpeedReduction *
+					(1.0f - ((float) (wavelength - 380) / 400.0f));
+				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
+					float adjustedAcceleration = acceleration - maxTrackAccelerationReduction *
+						((float) (wavelength - 380) / 400.0f);
+					Vector3 forwardForce = transform.forward * adjustedAcceleration * yfloat;
+					//Correct force for deltatime and vehicle mass
+					forwardForce = forwardForce * Time.deltaTime * rb.mass;
+					rb.AddForce(forwardForce);
+				}
+
+				if (Time.time - boostStartTime < boostTime)
+					rb.AddForce(transform.forward * boostStrength * Time.deltaTime * rb.mass);
+			} else {
+				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
+					(1.0f - ((float) (wavelength - 380) / 400.0f));
+				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
+					float adjustedAcceleration = acceleration - maxMediumAccelerationReduction *
+						(1.0f - ((float) (wavelength - 380) / 400.0f));
+					Vector3 forwardForce = transform.forward * adjustedAcceleration * yfloat;
+					//Correct force for deltatime and vehicle mass
+					forwardForce = forwardForce * Time.deltaTime * rb.mass;
+					rb.AddForce(forwardForce);
+				}
+			}
 		} else {
 			rb.drag = 0;
 		}
@@ -214,20 +256,16 @@ public class CarController : MonoBehaviour {
 	}
 
 	public void EnterBlackHoleOrbit(Vector3 center) {
-		if (!shieldsUp) {
-			inBlackHoleOrbit = true;
-			bhOrbitTime = Time.time;
-			bhOrbitInitialPhase = 0.0f;
-			orbitCenter = center;
-			rb.velocity = Vector3.zero;
-			rb.angularVelocity = Vector3.zero;
-			rb.Sleep();
-			transform.rotation = Quaternion.LookRotation(new Vector3
-														 (center.x, 0.0f,
-														  center.z));
-		} else {
-			ShieldsDown();
-		}
+		inBlackHoleOrbit = true;
+		bhOrbitTime = Time.time;
+		bhOrbitInitialPhase = 0.0f;
+		orbitCenter = center;
+		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+		rb.Sleep();
+		transform.rotation = Quaternion.LookRotation(new Vector3
+													 (center.x, 0.0f,
+													  center.z));
 	}
 		
 	public void LeaveBlackHoleOrbit() {
@@ -255,6 +293,16 @@ public class CarController : MonoBehaviour {
 					powerup = Powerups.attack;
 				}
 			}
+		} else if (other.name == "Medium") {
+			inMedium = true;
+			waveTailController.SetRefractiveIndex(1.5f);
+		}
+	}
+
+	void OnTriggerExit (Collider other) {
+		if (other.name == "Medium") {
+			inMedium = false;
+			waveTailController.SetRefractiveIndex(1.0f);
 		}
 	}
 }

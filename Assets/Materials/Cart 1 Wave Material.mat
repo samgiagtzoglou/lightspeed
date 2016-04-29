@@ -100,42 +100,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Velocity
-        second: 5
-      data:
-        first:
-          name: _Wavelength
-        second: 760
-      data:
-        first:
-          name: _Amplitude
-        second: 0.5
-      data:
-        first:
-          name: _TailLength
-        second: 0.95
-      data:
-        first:
-          name: _BoundaryLength
-        second: 1
-      data:
-        first:
-          name: _RefractiveIndex
-        second: 1
-      data:
-        first:
-          name: _TransitionPhase
-        second: 0
-      data:
-        first:
-          name: _GroupPhase
-        second: 0
-      data:
-        first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -168,12 +132,48 @@ Material:
         second: 0
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _Amplitude
+        second: 0.5
+      data:
+        first:
+          name: _Wavelength
+        second: 700
+      data:
+        first:
+          name: _TransitionPhase
+        second: 0
+      data:
+        first:
+          name: _GroupPhase
+        second: 0
+      data:
+        first:
+          name: _Velocity
+        second: 5
+      data:
+        first:
+          name: _RefractiveIndex
+        second: 1
+      data:
+        first:
           name: _FrontAmplitude
         second: 1
       data:
         first:
           name: _BackAmplitude
         second: 1
+      data:
+        first:
+          name: _BoundaryLength
+        second: 1
+      data:
+        first:
+          name: _TailLength
+        second: 0.95
     m_Colors:
       data:
         first:
@@ -189,9 +189,9 @@ Material:
         second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
       data:
         first:
-          name: _Displacement
+          name: _Direction
         second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
-          name: _Direction
+          name: _Displacement
         second: {r: 0, g: 0, b: 0, a: 0}
