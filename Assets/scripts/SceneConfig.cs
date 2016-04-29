@@ -17,6 +17,14 @@ public class SceneConfig : MonoBehaviour {
 	public static bool controllerControl;
 	public static bool gameArmed;
 	public static Dictionary<string, int> controllersActive = new Dictionary<string, int>{{"C1",0},{"C2",0},{"C3",0},{"C4",0},{"KArrow",0},{"KWasd",0}};
+	public AudioClip alert;
+	AudioSource audio;
+	public AudioClip alert1;
+	AudioSource audio1;
+	public AudioClip alert2;
+	AudioSource audio2;
+	public AudioClip alert3;
+	AudioSource audio3;
 
 	private bool xaxis1inuse;
 	private bool xaxis2inuse;
@@ -33,8 +41,17 @@ public class SceneConfig : MonoBehaviour {
 		players = 0;
 		gameArmed = false;
 		GameObject.Find ("armedGameText").gameObject.GetComponent<Text>().enabled = false;
+		GameObject.Find ("pressToJoinText").gameObject.GetComponent<Text>().enabled = true;
+		GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (false);
+		GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (true);
+		GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
+		audio = GetComponent<AudioSource> ();
+		audio1 = GetComponent<AudioSource> ();
+		audio2 = GetComponent<AudioSource> ();
+		audio3 = GetComponent<AudioSource> ();
 
 
+		//GameObject.Find ("MenuScreen").GetComponent<AudioSource>().PlayOneShot(alert);
 	}
 
 	void Awake()
@@ -48,11 +65,22 @@ public class SceneConfig : MonoBehaviour {
 		}
 		if (playersReady [1] && playersReady [2] && playersReady [3] && playersReady [4]) {
 			GameObject.Find ("armedGameText").gameObject.GetComponent<Text> ().enabled = true;
+			GameObject.Find ("pressToJoinText").gameObject.GetComponent<Text>().enabled = false;
+			GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (true);
+			GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (false);
+			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (false);
+
 			gameArmed = true;
 		} else {
 			GameObject.Find ("armedGameText").gameObject.GetComponent<Text> ().enabled = false;
+			GameObject.Find ("pressToJoinText").gameObject.GetComponent<Text>().enabled = true;
+			GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (false);
+
+			GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (true);
+			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
 		}
 		if (players > 0) {
+			Debug.Log ("C2 "+Input.GetAxis ("C2_X axis"));
 			if (Mathf.Abs(Input.GetAxis ("C1_X axis"))>0.5 && (controllersActive ["C1"] > 0) && !xaxis1inuse) {
 				xaxis1inuse = true;
 				bool right = Input.GetAxis ("C1_X axis") > 0 ? true : false;
@@ -104,6 +132,7 @@ public class SceneConfig : MonoBehaviour {
 			if (Input.GetButtonDown ("C1_Fire") && (controllersActive ["C1"] > 0) && !playersReady[controllersActive ["C1"]]) {
 				Debug.Log ("C1 ready");
 				setPlayerReady (controllersActive ["C1"]);
+
 			}
 			if (Input.GetButtonDown ("C2_Fire") && (controllersActive ["C2"] > 0) && !playersReady[controllersActive ["C2"]])  {
 				setPlayerReady (controllersActive ["C2"]);
@@ -121,7 +150,7 @@ public class SceneConfig : MonoBehaviour {
 				setPlayerReady (controllersActive ["KWasd"]);
 			} 
 		}
-		if (players < 4) {
+		if (players <= 4) {
 			if (Input.GetButton ("C1_Start") && controllersActive ["C1"]==0) {
 				playersReady [players + 1] = false;
 				controllersActive ["C1"] = players + 1;
@@ -187,21 +216,25 @@ public class SceneConfig : MonoBehaviour {
 			GameObject.Find("JackCanvas").transform.FindChild("P1Box").gameObject.SetActive(true);
 //			GameObject.Find("P1Box").gameObject.activeInHierarchy = true;
 			player1ControlCode = controlCode;
+			audio.PlayOneShot (alert, 1);
 			break;
 		case 2:
 			Debug.Log ("Setting P2");
 			GameObject.Find("JackCanvas").transform.FindChild("P2Box").gameObject.SetActive(true);
 			player2ControlCode = controlCode;
+			audio.PlayOneShot (alert, 1);
 			break;
 		case 3:
 			Debug.Log ("Setting P3");
 			GameObject.Find("JackCanvas").transform.FindChild("P3Box").gameObject.SetActive(true);
 			player3ControlCode = controlCode;
+			audio.PlayOneShot (alert, 1);
 			break;
 		case 4:
 			Debug.Log ("Setting P4");
 			GameObject.Find("JackCanvas").transform.FindChild("P4Box").gameObject.SetActive(true);
 			player4ControlCode = controlCode;
+			audio.PlayOneShot (alert, 1);
 			break;
 		}
 	}
@@ -216,6 +249,7 @@ public class SceneConfig : MonoBehaviour {
 				newToggle.gameObject.GetComponent<Toggle> ().isOn = true;
 				GameObject playerObject = GameObject.Find("P"+player+"Box").transform.FindChild("carBeta").gameObject;
 				setColorForCart (playerObject, getLightwaveForColor (newToggle.name));
+				audio.PlayOneShot (alert1, 1);
 			}
 
 
@@ -226,6 +260,7 @@ public class SceneConfig : MonoBehaviour {
 				newToggle.gameObject.GetComponent<Toggle> ().isOn = true;
 				GameObject playerObject = GameObject.Find("P"+player+"Box").transform.FindChild("carBeta").gameObject;
 				setColorForCart (playerObject, getLightwaveForColor (newToggle.name));
+				audio.PlayOneShot (alert1, 1);
 			}
 		}
 
@@ -238,6 +273,7 @@ public class SceneConfig : MonoBehaviour {
 			Debug.Log ("Ready P"+player);
 		GameObject.Find("P"+player+"Box").transform.FindChild("Ready").gameObject.SetActive(true);
 		GameObject.Find("P"+player+"Box").transform.FindChild(player+"ColorToggles").gameObject.SetActive(false);
+		audio.PlayOneShot (alert2, 1);
 	}
 	private int getLightwaveForColor(string color){
 		Debug.Log ("retrieving color " + color);
@@ -284,8 +320,9 @@ public class SceneConfig : MonoBehaviour {
 
 	public void LoadLevel(string level){
 		Debug.Log (players);
+		audio.PlayOneShot (alert3, 1);
 		Application.LoadLevel(level);
-
+	
 
 	}
 	void setColorForCart(GameObject player, int color) {

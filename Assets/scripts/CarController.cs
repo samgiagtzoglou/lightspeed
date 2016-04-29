@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
 	// Powerup enum
@@ -12,7 +11,7 @@ public class CarController : MonoBehaviour {
 	public float rotationRate;
 	public float position;
 	public float totalRacers;
-	
+
 	//Values for faking a nice turn display
 	public float turnRotationAngle;
 	public float turnRotationSeekSpeed;
@@ -36,7 +35,7 @@ public class CarController : MonoBehaviour {
 	// Boost powerup variables
 	public float boostStrength;
 	public float boostTime;
-	
+
 	private float boostStartTime;
 
 	// Black hole powerup variables
@@ -50,11 +49,15 @@ public class CarController : MonoBehaviour {
 
 	// Lightgun powerup variables
 	public GameObject lightBallPrefab;
+	public float attackSpeedReduction;
+	public float attackLength;
+
+	private float attackStartTime;
 
 	// Shield powerup variables
 	public GameObject[] shieldObjects;
 	private float shieldStartTime;
-	
+
 	public float shieldTime;
 
 	public  bool shieldsUp;
@@ -77,14 +80,15 @@ public class CarController : MonoBehaviour {
 
 	private Rigidbody rb;
 	public WaveTailController waveTailController;
-	
+
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		inElectronOrbit = false;
 		drivingAllowed = false;
 		shieldsUp = false;
 		inMedium = false;
-		powerup = Powerups.shield;
+		attackStartTime = 0f;
+		powerup = Powerups.attack;
 	}
 
 	public void startDriving() {
@@ -97,13 +101,13 @@ public class CarController : MonoBehaviour {
 
 	private void DropBlackHole() {
 		Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
-					Quaternion.identity);
+			Quaternion.identity);
 	}
 
 	private void ShootLightGun() {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
-										transform.position + (3.0f * transform.forward),
-										Quaternion.identity);
+			transform.position + (3.0f * transform.forward),
+			Quaternion.identity);
 	}
 
 	private void ShieldsUp() {
@@ -123,25 +127,25 @@ public class CarController : MonoBehaviour {
 		if (Input.GetButton(fireButton)) {
 			Debug.Log (fireButton + " : " + powerup);
 			switch (powerup) {
-				case Powerups.blackhole:
-					DropBlackHole();
-					powerup = Powerups.none;
-					break;
-				case Powerups.shield:
-					ShieldsUp();
-					powerup = Powerups.none;
-					break;
-				case Powerups.attack:
-					ShootLightGun();
-					powerup = Powerups.none;
-					break;
-				case Powerups.boost:
-					ActivateBoost();
-					powerup = Powerups.none;
-					break;
-				default:
-					powerup = Powerups.none;
-					break;
+			case Powerups.blackhole:
+				DropBlackHole();
+				powerup = Powerups.none;
+				break;
+			case Powerups.shield:
+				ShieldsUp();
+				powerup = Powerups.none;
+				break;
+			case Powerups.attack:
+				ShootLightGun();
+				powerup = Powerups.none;
+				break;
+			case Powerups.boost:
+				ActivateBoost();
+				powerup = Powerups.none;
+				break;
+			default:
+				powerup = Powerups.none;
+				break;
 			}
 			showIcon = false;
 		}
@@ -226,6 +230,10 @@ public class CarController : MonoBehaviour {
 			} else {
 				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
+
+				if (Time.time < attackStartTime + attackLength)
+					adjustedMaxSpeed -= attackSpeedReduction;
+
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxMediumAccelerationReduction *
 						(1.0f - ((float) (wavelength - 380) / 400.0f));
@@ -273,10 +281,10 @@ public class CarController : MonoBehaviour {
 		rb.angularVelocity = Vector3.zero;
 		rb.Sleep();
 		transform.rotation = Quaternion.LookRotation(new Vector3
-													 (center.x, 0.0f,
-													  center.z));
+			(center.x, 0.0f,
+				center.z));
 	}
-		
+
 	public void LeaveBlackHoleOrbit() {
 		inBlackHoleOrbit = false;
 	}
@@ -305,7 +313,7 @@ public class CarController : MonoBehaviour {
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
-				
+
 				// create weights out of 1.0 for each powerup
 				float blackhole = 0.5f * success;
 				float boost = blackhole + (0.5f - 0.5f * success);
@@ -333,6 +341,13 @@ public class CarController : MonoBehaviour {
 		if (other.name == "Medium") {
 			inMedium = false;
 			waveTailController.SetRefractiveIndex(1.0f);
+		}
+	}
+
+	void OnCollisionEnter (Collision collision) {
+		if (collision.gameObject.tag == "homingBall"
+			&& (Time.time > attackStartTime + attackLength + 1f)) {
+			attackStartTime = Time.time;
 		}
 	}
 }
