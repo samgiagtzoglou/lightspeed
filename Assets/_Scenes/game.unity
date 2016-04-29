@@ -8303,7 +8303,7 @@ MonoBehaviour:
   blackHoleOrbitSpeed: 0
   blackHolePrefab: {fileID: 0}
   lightBallPrefab: {fileID: 0}
-  shieldControllers: []
+  shieldObjects: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: 
@@ -9650,7 +9650,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 418718, guid: a460c7d7817984fcc9a35bdccb153673, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a460c7d7817984fcc9a35bdccb153673, type: 2}
@@ -10044,7 +10044,7 @@ MonoBehaviour:
   blackHoleOrbitSpeed: 0
   blackHolePrefab: {fileID: 0}
   lightBallPrefab: {fileID: 0}
-  shieldControllers: []
+  shieldObjects: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: 
