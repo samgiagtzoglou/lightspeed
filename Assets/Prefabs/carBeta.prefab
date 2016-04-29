@@ -1778,7 +1778,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 0.1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -1827,7 +1827,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2091,6 +2091,11 @@ MonoBehaviour:
   - {fileID: 174376}
   shieldTime: 5
   shieldsUp: 0
+  boostAudio: {fileID: 8300000, guid: 4a948a3d967714d4aa9d8b4ffbbf1f9f, type: 3}
+  blackHoleAudio: {fileID: 8300000, guid: 8004be4af213b43e7a41bcf113277dd0, type: 3}
+  shieldAudio: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
+  laserAudio: {fileID: 8300000, guid: e8f2edf4e131b45049aeb1a40b6d3392, type: 3}
+  hum: {fileID: 0}
   xaxis: ArrowKeyboard_X axis
   yaxis: ArrowKeyboard_RT
   brakeaxis: 

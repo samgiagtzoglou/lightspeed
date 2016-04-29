@@ -73,10 +73,6 @@ public class CarController : MonoBehaviour {
 	AudioSource laserAudioSource;
 	public AudioClip hum;
 	AudioSource humSource;
-	public int audioClipSpeed = 10;
-	public float p;
-	public float p1;
-	public float p2;
 
 	public string xaxis;
 	public string yaxis;
@@ -142,11 +138,6 @@ public class CarController : MonoBehaviour {
 	}	
 
 	void Update() {
-
-		p = GetComponent<Rigidbody>().velocity.magnitude/audioClipSpeed;
-		GetComponent<AudioSource>().pitch = Mathf.Clamp( p, p2, p2); // p is clamped to sane values
-
-
 		if (Input.GetButton(fireButton)) {
 			Debug.Log (fireButton + " : " + powerup);
 			switch (powerup) {
