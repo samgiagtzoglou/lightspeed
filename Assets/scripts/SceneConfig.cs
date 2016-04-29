@@ -150,7 +150,7 @@ public class SceneConfig : MonoBehaviour {
 				setPlayerReady (controllersActive ["KWasd"]);
 			} 
 		}
-		if (players < 4) {
+		if (players <= 4) {
 			if (Input.GetButton ("C1_Start") && controllersActive ["C1"]==0) {
 				playersReady [players + 1] = false;
 				controllersActive ["C1"] = players + 1;
