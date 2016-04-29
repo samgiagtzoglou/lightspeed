@@ -31,6 +31,10 @@ public class WaveTailController : MonoBehaviour {
 		// }
     }
 
+	public void SetRefractiveIndex(float n) {
+		rend.material.SetFloat("_RefractiveIndex", n);
+	}
+
     void Update() {
 		Vector4 newDisplacement = new Vector4 (transform.position.x, transform.position.y,
 											   transform.position.z, 0f);
