@@ -52,7 +52,7 @@ public class CarController : MonoBehaviour {
 	public GameObject lightBallPrefab;
 
 	// Shield powerup variables
-	public ShieldController[] shieldControllers;
+	public GameObject[] shieldObjects;
 	private float shieldStartTime;
 	
 	public float shieldTime;
@@ -76,7 +76,7 @@ public class CarController : MonoBehaviour {
 		drivingAllowed = false;
 		shieldsUp = false;
 		inMedium = false;
-		powerup = Powerups.boost;
+		powerup = Powerups.shield;
 	}
 
 	public void startDriving() {
@@ -99,15 +99,15 @@ public class CarController : MonoBehaviour {
 	}
 
 	private void ShieldsUp() {
-		foreach (ShieldController shield in shieldControllers) {
-			shield.Enable ();
+		foreach (GameObject shield in shieldObjects) {
+			shield.SetActive (true);
 		}
 		shieldsUp = true;
 		shieldStartTime = Time.time;
 	}
 
 	public void ShieldsDown() {
-		foreach (ShieldController shield in shieldControllers) shield.Disable();
+		foreach (GameObject shield in shieldObjects) shield.SetActive(false);
 		shieldsUp = false;
 	}	
 
