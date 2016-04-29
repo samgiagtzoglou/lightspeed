@@ -80,6 +80,7 @@ public class SceneConfig : MonoBehaviour {
 			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
 		}
 		if (players > 0) {
+			Debug.Log ("C2 "+Input.GetAxis ("C2_X axis"));
 			if (Mathf.Abs(Input.GetAxis ("C1_X axis"))>0.5 && (controllersActive ["C1"] > 0) && !xaxis1inuse) {
 				xaxis1inuse = true;
 				bool right = Input.GetAxis ("C1_X axis") > 0 ? true : false;
