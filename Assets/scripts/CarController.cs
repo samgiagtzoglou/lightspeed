@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
 	// Powerup enum
@@ -12,7 +11,7 @@ public class CarController : MonoBehaviour {
 	public float rotationRate;
 	public float position;
 	public float totalRacers;
-	
+
 	//Values for faking a nice turn display
 	public float turnRotationAngle;
 	public float turnRotationSeekSpeed;
@@ -21,10 +20,22 @@ public class CarController : MonoBehaviour {
 	public float rotationVelocity;
 	public float groundAngleVelocity;
 
+	// Handling travelling in medium
+	public int wavelength;
+	private bool inMedium;
+	public float maxMediumAccelerationReduction;
+	public float maxMediumSpeed;
+	public float maxMediumSpeedReduction;
+
+	// Handling travelling in the track
+	public float maxTrackAccelerationReduction;
+	public float maxTrackSpeed;
+	public float maxTrackSpeedReduction;
+
 	// Boost powerup variables
 	public float boostStrength;
 	public float boostTime;
-	
+
 	private float boostStartTime;
 
 	// Black hole powerup variables
@@ -38,30 +49,21 @@ public class CarController : MonoBehaviour {
 
 	// Lightgun powerup variables
 	public GameObject lightBallPrefab;
+	public float attackSpeedReduction;
+	public float attackLength;
+
+	private float attackStartTime;
 
 	// Shield powerup variables
-	public ShieldController[] shieldControllers;
+	public GameObject[] shieldObjects;
+	private float shieldStartTime;
 
-	private bool shieldsUp;
+	public float shieldTime;
+
+	public  bool shieldsUp;
 	private bool drivingAllowed;
 	private bool inElectronOrbit;
 	private bool inBlackHoleOrbit;
-
-	//Powerup Sound effect variables
-	public AudioClip boostAudio;
-	AudioSource boostAudioSource;
-	public AudioClip blackHoleAudio;
-	AudioSource blackHoleAudioSource;
-	public AudioClip shieldAudio;
-	AudioSource shieldAudioSource;
-	public AudioClip laserAudio;
-	AudioSource laserAudioSource;
-	public AudioClip hum;
-	AudioSource humSource;
-	public int audioClipSpeed = 10;
-	public float p;
-	public float p1;
-	public float p2;
 
 	public string xaxis;
 	public string yaxis;
@@ -69,25 +71,16 @@ public class CarController : MonoBehaviour {
 	public string fireButton;
 
 	private Rigidbody rb;
-
-
+	public WaveTailController waveTailController;
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		inElectronOrbit = false;
 		drivingAllowed = false;
 		shieldsUp = false;
-		powerup = Powerups.boost;
-
-		boostAudioSource = GetComponent<AudioSource> ();
-		blackHoleAudioSource = GetComponent<AudioSource> ();
-		shieldAudioSource = GetComponent<AudioSource> ();
-		laserAudioSource = GetComponent<AudioSource> ();
-		humSource = GetComponent<AudioSource> ();
-
-		p1 = 0.1f;
-		p2 = 4.0f;
-
+		inMedium = false;
+		attackStartTime = 0f;
+		powerup = Powerups.attack;
 	}
 
 	public void startDriving() {
@@ -96,67 +89,58 @@ public class CarController : MonoBehaviour {
 
 	private void ActivateBoost() {
 		boostStartTime = Time.time;
-		boostAudioSource.PlayOneShot (boostAudio, 1);
 	}
 
 	private void DropBlackHole() {
 		Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
-					Quaternion.identity);
-		blackHoleAudioSource.PlayOneShot (blackHoleAudio, 1);
+			Quaternion.identity);
 	}
 
 	private void ShootLightGun() {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
-										transform.position + (3.0f * transform.forward),
-										Quaternion.identity);
-		laserAudioSource.PlayOneShot (laserAudio, 1);
+			transform.position + (3.0f * transform.forward),
+			Quaternion.identity);
 	}
 
 	private void ShieldsUp() {
-		foreach (ShieldController shield in shieldControllers) {
-			shield.Enable ();
-			shieldAudioSource.PlayOneShot (shieldAudio, 1);
+		foreach (GameObject shield in shieldObjects) {
+			shield.SetActive (true);
 		}
 		shieldsUp = true;
+		shieldStartTime = Time.time;
 	}
 
-	private void ShieldsDown() {
-		foreach (ShieldController shield in shieldControllers) shield.Disable();
+	public void ShieldsDown() {
+		foreach (GameObject shield in shieldObjects) shield.SetActive(false);
 		shieldsUp = false;
 	}	
 
 	void Update() {
-
-		p = GetComponent<Rigidbody>().velocity.magnitude/audioClipSpeed;
-		GetComponent<AudioSource>().pitch = Mathf.Clamp( p, p2, p2); // p is clamped to sane values
-
-
 		if (Input.GetButton(fireButton)) {
 			Debug.Log (fireButton + " : " + powerup);
 			switch (powerup) {
-				case Powerups.blackhole:
-					DropBlackHole();
-					powerup = Powerups.none;
-					break;
-				case Powerups.shield:
-					ShieldsUp();
-					powerup = Powerups.none;
-					break;
-				case Powerups.attack:
-					ShootLightGun();
-					powerup = Powerups.none;
-					break;
-				case Powerups.boost:
-					ActivateBoost();
-					powerup = Powerups.none;
-					break;
-				default:
-					powerup = Powerups.none;
-					break;
+			case Powerups.blackhole:
+				DropBlackHole();
+				powerup = Powerups.none;
+				break;
+			case Powerups.shield:
+				ShieldsUp();
+				powerup = Powerups.none;
+				break;
+			case Powerups.attack:
+				ShootLightGun();
+				powerup = Powerups.none;
+				break;
+			case Powerups.boost:
+				ActivateBoost();
+				powerup = Powerups.none;
+				break;
+			default:
+				powerup = Powerups.none;
+				break;
 			}
 		}
 	}
-
 
 	void FixedUpdate() {
 		if (yaxis != "") {
@@ -171,6 +155,9 @@ public class CarController : MonoBehaviour {
 		if (this.transform.position.y <= -40) {
 			respawn ();
 		}
+
+		if (shieldsUp && (Time.time - shieldStartTime > shieldTime))
+			ShieldsDown();
 	}
 
 	void orbitBlackHole() {
@@ -216,10 +203,37 @@ public class CarController : MonoBehaviour {
 				//Keyboard input
 
 			}
-			Vector3 forwardForce = transform.forward * acceleration * yfloat;
-			//Correct force for deltatime and vehicle mass
-			forwardForce = forwardForce * Time.deltaTime * rb.mass;
-			rb.AddForce(forwardForce);
+
+			if (!inMedium) {
+				float adjustedMaxSpeed = maxTrackSpeed - maxTrackSpeedReduction *
+					(1.0f - ((float) (wavelength - 380) / 400.0f));
+				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
+					float adjustedAcceleration = acceleration - maxTrackAccelerationReduction *
+						((float) (wavelength - 380) / 400.0f);
+					Vector3 forwardForce = transform.forward * adjustedAcceleration * yfloat;
+					//Correct force for deltatime and vehicle mass
+					forwardForce = forwardForce * Time.deltaTime * rb.mass;
+					rb.AddForce(forwardForce);
+				}
+
+				if (Time.time - boostStartTime < boostTime)
+					rb.AddForce(transform.forward * boostStrength * Time.deltaTime * rb.mass);
+			} else {
+				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
+					(1.0f - ((float) (wavelength - 380) / 400.0f));
+
+				if (Time.time < attackStartTime + attackLength)
+					adjustedMaxSpeed -= attackSpeedReduction;
+
+				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
+					float adjustedAcceleration = acceleration - maxMediumAccelerationReduction *
+						(1.0f - ((float) (wavelength - 380) / 400.0f));
+					Vector3 forwardForce = transform.forward * adjustedAcceleration * yfloat;
+					//Correct force for deltatime and vehicle mass
+					forwardForce = forwardForce * Time.deltaTime * rb.mass;
+					rb.AddForce(forwardForce);
+				}
+			}
 		} else {
 			rb.drag = 0;
 		}
@@ -250,22 +264,18 @@ public class CarController : MonoBehaviour {
 	}
 
 	public void EnterBlackHoleOrbit(Vector3 center) {
-		if (!shieldsUp) {
-			inBlackHoleOrbit = true;
-			bhOrbitTime = Time.time;
-			bhOrbitInitialPhase = 0.0f;
-			orbitCenter = center;
-			rb.velocity = Vector3.zero;
-			rb.angularVelocity = Vector3.zero;
-			rb.Sleep();
-			transform.rotation = Quaternion.LookRotation(new Vector3
-														 (center.x, 0.0f,
-														  center.z));
-		} else {
-			ShieldsDown();
-		}
+		inBlackHoleOrbit = true;
+		bhOrbitTime = Time.time;
+		bhOrbitInitialPhase = 0.0f;
+		orbitCenter = center;
+		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+		rb.Sleep();
+		transform.rotation = Quaternion.LookRotation(new Vector3
+			(center.x, 0.0f,
+				center.z));
 	}
-		
+
 	public void LeaveBlackHoleOrbit() {
 		inBlackHoleOrbit = false;
 	}
@@ -274,7 +284,7 @@ public class CarController : MonoBehaviour {
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
-				
+
 				// create weights out of 1.0 for each powerup
 				float blackhole = 0.5f * success;
 				float boost = blackhole + (0.5f - 0.5f * success);
@@ -291,6 +301,23 @@ public class CarController : MonoBehaviour {
 					powerup = Powerups.attack;
 				}
 			}
+		} else if (other.name == "Medium") {
+			inMedium = true;
+			waveTailController.SetRefractiveIndex(1.5f);
+		}
+	}
+
+	void OnTriggerExit (Collider other) {
+		if (other.name == "Medium") {
+			inMedium = false;
+			waveTailController.SetRefractiveIndex(1.0f);
+		}
+	}
+
+	void OnCollisionEnter (Collision collision) {
+		if (collision.gameObject.tag == "homingBall"
+			&& (Time.time > attackStartTime + attackLength + 1f)) {
+			attackStartTime = Time.time;
 		}
 	}
 }
