@@ -1745,9 +1745,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 95b8b2be5694e4af8ad40af71617d427, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.528
   m_Pitch: 0.1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -1796,7 +1796,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2287,6 +2287,15 @@ MonoBehaviour:
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
   shieldControllers:
   - {fileID: 11417892}
+  boostAudio: {fileID: 8300000, guid: 4a948a3d967714d4aa9d8b4ffbbf1f9f, type: 3}
+  blackHoleAudio: {fileID: 8300000, guid: 8004be4af213b43e7a41bcf113277dd0, type: 3}
+  shieldAudio: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
+  laserAudio: {fileID: 8300000, guid: e8f2edf4e131b45049aeb1a40b6d3392, type: 3}
+  hum: {fileID: 0}
+  audioClipSpeed: 10
+  p: 0
+  p1: 0
+  p2: 0
   xaxis: ArrowKeyboard_X axis
   yaxis: ArrowKeyboard_RT
   brakeaxis: 

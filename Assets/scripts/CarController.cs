@@ -47,6 +47,22 @@ public class CarController : MonoBehaviour {
 	private bool inElectronOrbit;
 	private bool inBlackHoleOrbit;
 
+	//Powerup Sound effect variables
+	public AudioClip boostAudio;
+	AudioSource boostAudioSource;
+	public AudioClip blackHoleAudio;
+	AudioSource blackHoleAudioSource;
+	public AudioClip shieldAudio;
+	AudioSource shieldAudioSource;
+	public AudioClip laserAudio;
+	AudioSource laserAudioSource;
+	public AudioClip hum;
+	AudioSource humSource;
+	public int audioClipSpeed = 10;
+	public float p;
+	public float p1;
+	public float p2;
+
 	public string xaxis;
 	public string yaxis;
 	public string brakeaxis;
@@ -62,6 +78,16 @@ public class CarController : MonoBehaviour {
 		drivingAllowed = false;
 		shieldsUp = false;
 		powerup = Powerups.boost;
+
+		boostAudioSource = GetComponent<AudioSource> ();
+		blackHoleAudioSource = GetComponent<AudioSource> ();
+		shieldAudioSource = GetComponent<AudioSource> ();
+		laserAudioSource = GetComponent<AudioSource> ();
+		humSource = GetComponent<AudioSource> ();
+
+		p1 = 0.1f;
+		p2 = 4.0f;
+
 	}
 
 	public void startDriving() {
@@ -70,22 +96,26 @@ public class CarController : MonoBehaviour {
 
 	private void ActivateBoost() {
 		boostStartTime = Time.time;
+		boostAudioSource.PlayOneShot (boostAudio, 1);
 	}
 
 	private void DropBlackHole() {
 		Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
 					Quaternion.identity);
+		blackHoleAudioSource.PlayOneShot (blackHoleAudio, 1);
 	}
 
 	private void ShootLightGun() {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
 										transform.position + (3.0f * transform.forward),
 										Quaternion.identity);
+		laserAudioSource.PlayOneShot (laserAudio, 1);
 	}
 
 	private void ShieldsUp() {
 		foreach (ShieldController shield in shieldControllers) {
 			shield.Enable ();
+			shieldAudioSource.PlayOneShot (shieldAudio, 1);
 		}
 		shieldsUp = true;
 	}
@@ -96,6 +126,11 @@ public class CarController : MonoBehaviour {
 	}	
 
 	void Update() {
+
+		p = GetComponent<Rigidbody>().velocity.magnitude/audioClipSpeed;
+		GetComponent<AudioSource>().pitch = Mathf.Clamp( p, p2, p2); // p is clamped to sane values
+
+
 		if (Input.GetButton(fireButton)) {
 			Debug.Log (fireButton + " : " + powerup);
 			switch (powerup) {
@@ -121,6 +156,7 @@ public class CarController : MonoBehaviour {
 			}
 		}
 	}
+
 
 	void FixedUpdate() {
 		if (yaxis != "") {

@@ -8300,6 +8300,15 @@ MonoBehaviour:
   blackHolePrefab: {fileID: 0}
   lightBallPrefab: {fileID: 0}
   shieldControllers: []
+  boostAudio: {fileID: 0}
+  blackHoleAudio: {fileID: 0}
+  shieldAudio: {fileID: 0}
+  laserAudio: {fileID: 0}
+  hum: {fileID: 0}
+  audioClipSpeed: 10
+  p: 0
+  p1: 0
+  p2: 0
   xaxis: 
   yaxis: 
   brakeaxis: 
@@ -9992,6 +10001,15 @@ MonoBehaviour:
   blackHolePrefab: {fileID: 0}
   lightBallPrefab: {fileID: 0}
   shieldControllers: []
+  boostAudio: {fileID: 0}
+  blackHoleAudio: {fileID: 0}
+  shieldAudio: {fileID: 0}
+  laserAudio: {fileID: 0}
+  hum: {fileID: 0}
+  audioClipSpeed: 10
+  p: 0
+  p1: 0
+  p2: 0
   xaxis: 
   yaxis: 
   brakeaxis: 
@@ -35777,7 +35795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbffee07721344b679216069db550a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woosh1: {fileID: 0}
+  woosh1: {fileID: 8300000, guid: 802bf31d4cd9c46b781647aecad11f9b, type: 3}
 --- !u!82 &1678499763
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35787,8 +35805,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 802bf31d4cd9c46b781647aecad11f9b, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
