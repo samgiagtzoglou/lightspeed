@@ -129,6 +129,14 @@ Material:
         second: 0
       data:
         first:
+          name: _Amplitude
+        second: 0
+      data:
+        first:
+          name: _Wavelength
+        second: 700
+      data:
+        first:
           name: _TransitionPhase
         second: 0
       data:
@@ -141,10 +149,6 @@ Material:
         second: 5
       data:
         first:
-          name: _Wavelength
-        second: 500
-      data:
-        first:
           name: _RefractiveIndex
         second: 1
       data:
@@ -155,10 +159,6 @@ Material:
         first:
           name: _BackAmplitude
         second: 0.5
-      data:
-        first:
-          name: _Amplitude
-        second: 1
       data:
         first:
           name: _BoundaryLength
@@ -179,7 +179,7 @@ Material:
       data:
         first:
           name: _Direction
-        second: {r: 0, g: 0, b: 0, a: 0}
+        second: {r: 1, g: 1, b: 1, a: 0}
       data:
         first:
           name: _Displacement
