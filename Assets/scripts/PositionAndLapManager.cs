@@ -11,6 +11,7 @@ public class PositionAndLapManager : MonoBehaviour {
 	public Dictionary<string,int> cartPositions;
 	public int numLaps = 1;
 	public Text timerText;
+	public IntroloopAudio myIntroloopAudio;
 
 	public void Start() {
 		numPlayers = SceneConfig.players;
@@ -28,6 +29,8 @@ public class PositionAndLapManager : MonoBehaviour {
 		foreach (CartPosition pos in allCarts) {
 			cartPositions.Add (pos.tag, 1);
 		}
+		IntroloopPlayer.Instance.Play (myIntroloopAudio);
+
 //		timerText = GameObject.Find("timerText").text;
 	}
 

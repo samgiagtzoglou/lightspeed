@@ -8297,19 +8297,26 @@ MonoBehaviour:
   maxMediumAccelerationReduction: 0
   maxMediumSpeed: 0
   maxMediumSpeedReduction: 0
+  maxTrackAccelerationReduction: 0
+  maxTrackSpeed: 0
+  maxTrackSpeedReduction: 0
   boostStrength: 0
   boostTime: 0
   blackHoleOrbitRadius: 0
   blackHoleOrbitSpeed: 0
   blackHolePrefab: {fileID: 0}
   lightBallPrefab: {fileID: 0}
-  shieldControllers: []
+  shieldObjects: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: 
   yaxis: 
   brakeaxis: 
   fireButton: 
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &375788725
 MonoBehaviour:
@@ -10038,19 +10045,26 @@ MonoBehaviour:
   maxMediumAccelerationReduction: 0
   maxMediumSpeed: 0
   maxMediumSpeedReduction: 0
+  maxTrackAccelerationReduction: 0
+  maxTrackSpeed: 0
+  maxTrackSpeedReduction: 0
   boostStrength: 0
   boostTime: 0
   blackHoleOrbitRadius: 0
   blackHoleOrbitSpeed: 0
   blackHolePrefab: {fileID: 0}
   lightBallPrefab: {fileID: 0}
-  shieldControllers: []
+  shieldObjects: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: 
   yaxis: 
   brakeaxis: 
   fireButton: 
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &496498243
 MonoBehaviour:
@@ -35681,6 +35695,7 @@ MonoBehaviour:
   carOrder: []
   numLaps: 1
   timerText: {fileID: 0}
+  myIntroloopAudio: {fileID: 11400000, guid: bc824161552d74a6383021224095342e, type: 2}
 --- !u!114 &1675558738
 MonoBehaviour:
   m_ObjectHideFlags: 0

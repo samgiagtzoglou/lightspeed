@@ -2095,6 +2095,10 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  shieldIcon: {fileID: 2800000, guid: d346e1a2d917b4832ba19df54b782c3a, type: 3}
+  attackIcon: {fileID: 2800000, guid: 0a510e4b850c441caa7395194a0de631, type: 3}
+  blackholeIcon: {fileID: 2800000, guid: 403bc8f361ca34493b4bc4365e439a2e, type: 3}
+  boostIcon: {fileID: 2800000, guid: 671124b6c96f84aaca35e888eb038747, type: 3}
   waveTailController: {fileID: 11450900}
 --- !u!114 &11410364
 MonoBehaviour:

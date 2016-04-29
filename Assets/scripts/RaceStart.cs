@@ -8,7 +8,6 @@ public class RaceStart : MonoBehaviour {
 	private int secondsLeft;
 	public Transform karts;
 
-
 	// Use this for initialization
 	void Start () {
 		karts = (Transform) GameObject.Find ("allCarts").transform;
