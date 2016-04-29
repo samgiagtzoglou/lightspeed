@@ -67,6 +67,14 @@ public class CarController : MonoBehaviour {
 	public string brakeaxis;
 	public string fireButton;
 
+	//Powerup icons
+	private bool showIcon;
+	public Texture shieldIcon;
+	public Texture attackIcon;
+	public Texture blackholeIcon;
+	public Texture boostIcon;
+	private Texture powerupSprite;
+
 	private Rigidbody rb;
 	public WaveTailController waveTailController;
 	
@@ -135,6 +143,7 @@ public class CarController : MonoBehaviour {
 					powerup = Powerups.none;
 					break;
 			}
+			showIcon = false;
 		}
 	}
 
@@ -272,6 +281,26 @@ public class CarController : MonoBehaviour {
 		inBlackHoleOrbit = false;
 	}
 
+	private void drawPowerupIndicator(Powerups pwr) {
+		showIcon = true;
+		if (pwr == Powerups.attack) {
+			powerupSprite = attackIcon;
+		} else if (pwr == Powerups.blackhole) {
+			powerupSprite = blackholeIcon;
+		} else if (pwr == Powerups.boost) {
+			powerupSprite = boostIcon;
+		} else {
+			powerupSprite = shieldIcon;
+		}
+	}
+
+	void OnGUI() {
+		if (showIcon) {
+			Rect iconRect = new Rect (Screen.width / 2f, -5f, 320f,320f);
+			GUI.DrawTexture(iconRect, powerupSprite, ScaleMode.ScaleToFit);
+		}
+	}
+
 	public void OnTriggerEnter(Collider other) {
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
@@ -292,6 +321,7 @@ public class CarController : MonoBehaviour {
 				} else {
 					powerup = Powerups.attack;
 				}
+				drawPowerupIndicator (powerup);
 			}
 		} else if (other.name == "Medium") {
 			inMedium = true;
