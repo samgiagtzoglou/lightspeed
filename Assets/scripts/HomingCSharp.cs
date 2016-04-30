@@ -72,9 +72,13 @@ public class HomingCSharp : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 		if ((collision.gameObject.tag == target.tag) && (attackStartTime < 0)) {
-			attackStartTime = Time.time;
-			reachedTarget = true;
-			boltVelocity = 80f;
+			if (!targetCtrl.shieldsUp) {
+				attackStartTime = Time.time;
+				reachedTarget = true;
+				boltVelocity = 80f;
+			} else {
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }

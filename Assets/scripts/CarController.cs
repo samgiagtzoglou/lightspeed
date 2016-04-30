@@ -80,7 +80,11 @@ public class CarController : MonoBehaviour {
 		shieldsUp = false;
 		inMedium = false;
 		attackStartTime = 0f;
-		powerup = Powerups.attack;
+		if (wavelength == 400) {
+			powerup = Powerups.attack;
+		} else {
+			powerup = Powerups.shield;
+		}
 	}
 
 	public void startDriving() {
@@ -321,7 +325,11 @@ public class CarController : MonoBehaviour {
 	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.tag == "homingBall"
 			&& (Time.time > attackStartTime + attackLength + 1f)) {
-			attackStartTime = Time.time;
+			if (!shieldsUp) {
+				attackStartTime = Time.time;
+			} else {
+				ShieldsDown();
+			}
 		}
 	}
 }
