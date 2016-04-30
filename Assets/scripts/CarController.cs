@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
 	// Powerup enum
@@ -50,6 +49,10 @@ public class CarController : MonoBehaviour {
 
 	// Lightgun powerup variables
 	public GameObject lightBallPrefab;
+	public float attackSpeedReduction;
+	public float attackLength;
+
+	private float attackStartTime;
 
 	// Shield powerup variables
 	public GameObject[] shieldObjects;
@@ -76,7 +79,8 @@ public class CarController : MonoBehaviour {
 		drivingAllowed = false;
 		shieldsUp = false;
 		inMedium = false;
-		powerup = Powerups.shield;
+		attackStartTime = 0f;
+		powerup = Powerups.attack;
 	}
 
 	public void startDriving() {
@@ -96,6 +100,9 @@ public class CarController : MonoBehaviour {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
 										transform.position + (3.0f * transform.forward),
 										Quaternion.identity);
+		HomingCSharp bulletHoming = (HomingCSharp) bullet.GetComponent("HomingCSharp");
+		bulletHoming.launcher = this.gameObject;
+		bulletHoming.launchCart = this.gameObject;
 	}
 
 	private void ShieldsUp() {
@@ -203,6 +210,10 @@ public class CarController : MonoBehaviour {
 			if (!inMedium) {
 				float adjustedMaxSpeed = maxTrackSpeed - maxTrackSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
+
+				if (Time.time < attackStartTime + attackLength)
+					adjustedMaxSpeed -= attackSpeedReduction;
+				
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxTrackAccelerationReduction *
 						((float) (wavelength - 380) / 400.0f);
@@ -217,6 +228,7 @@ public class CarController : MonoBehaviour {
 			} else {
 				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
+				
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxMediumAccelerationReduction *
 						(1.0f - ((float) (wavelength - 380) / 400.0f));
@@ -303,6 +315,13 @@ public class CarController : MonoBehaviour {
 		if (other.name == "Medium") {
 			inMedium = false;
 			waveTailController.SetRefractiveIndex(1.0f);
+		}
+	}
+
+	void OnCollisionEnter (Collision collision) {
+		if (collision.gameObject.tag == "homingBall"
+			&& (Time.time > attackStartTime + attackLength + 1f)) {
+			attackStartTime = Time.time;
 		}
 	}
 }

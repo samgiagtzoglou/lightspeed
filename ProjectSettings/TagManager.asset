@@ -9,6 +9,8 @@ TagManager:
   - player3
   - player4
   - finishLine
+  - target
+  - homingBall
   layers:
   - Default
   - TransparentFX
