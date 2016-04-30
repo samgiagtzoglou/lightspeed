@@ -44,7 +44,8 @@ public class Configurator : MonoBehaviour {
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player1.transform.parent = allCarts.transform;
 
-		
+			
+			
 			setColorForCart(player1, SceneConfig.playersColors[1]);
 
 			CarController controller = (CarController) player1.GetComponent ("CarController");

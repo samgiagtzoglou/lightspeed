@@ -14500,7 +14500,7 @@ MonoBehaviour:
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 5391b74f0aaac4f1d83cb8816ce52e0b, type: 2}
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
-  shieldControllers: []
+  shieldObjects: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: ArrowKeyboard_X axis
@@ -17861,7 +17861,7 @@ MonoBehaviour:
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 5391b74f0aaac4f1d83cb8816ce52e0b, type: 2}
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
-  shieldControllers: []
+  shieldObjects: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: ArrowKeyboard_X axis
@@ -19177,7 +19177,7 @@ MonoBehaviour:
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 5391b74f0aaac4f1d83cb8816ce52e0b, type: 2}
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
-  shieldControllers: []
+  shieldObjects: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: ArrowKeyboard_X axis
@@ -33681,7 +33681,7 @@ MonoBehaviour:
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 5391b74f0aaac4f1d83cb8816ce52e0b, type: 2}
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
-  shieldControllers: []
+  shieldObjects: []
   shieldTime: 0
   shieldsUp: 0
   xaxis: ArrowKeyboard_X axis

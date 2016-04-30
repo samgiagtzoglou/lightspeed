@@ -80,7 +80,11 @@ public class CarController : MonoBehaviour {
 		shieldsUp = false;
 		inMedium = false;
 		attackStartTime = 0f;
-		powerup = Powerups.attack;
+		if (wavelength == 400) {
+			powerup = Powerups.attack;
+		} else {
+			powerup = Powerups.shield;
+		}
 	}
 
 	public void startDriving() {
@@ -98,8 +102,11 @@ public class CarController : MonoBehaviour {
 
 	private void ShootLightGun() {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
-			transform.position + (3.0f * transform.forward),
-			Quaternion.identity);
+										transform.position + (3.0f * transform.forward),
+										Quaternion.identity);
+		HomingCSharp bulletHoming = (HomingCSharp) bullet.GetComponent("HomingCSharp");
+		bulletHoming.launcher = this.gameObject;
+		bulletHoming.launchCart = this.gameObject;
 	}
 
 	private void ShieldsUp() {
@@ -207,6 +214,10 @@ public class CarController : MonoBehaviour {
 			if (!inMedium) {
 				float adjustedMaxSpeed = maxTrackSpeed - maxTrackSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
+
+				if (Time.time < attackStartTime + attackLength)
+					adjustedMaxSpeed -= attackSpeedReduction;
+				
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxTrackAccelerationReduction *
 						((float) (wavelength - 380) / 400.0f);
@@ -221,10 +232,7 @@ public class CarController : MonoBehaviour {
 			} else {
 				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
-
-				if (Time.time < attackStartTime + attackLength)
-					adjustedMaxSpeed -= attackSpeedReduction;
-
+				
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxMediumAccelerationReduction *
 						(1.0f - ((float) (wavelength - 380) / 400.0f));
@@ -317,7 +325,11 @@ public class CarController : MonoBehaviour {
 	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.tag == "homingBall"
 			&& (Time.time > attackStartTime + attackLength + 1f)) {
-			attackStartTime = Time.time;
+			if (!shieldsUp) {
+				attackStartTime = Time.time;
+			} else {
+				ShieldsDown();
+			}
 		}
 	}
 }
