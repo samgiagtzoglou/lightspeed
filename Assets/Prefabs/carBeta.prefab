@@ -529,7 +529,7 @@ GameObject:
   - 114: {fileID: 11420586}
   - 114: {fileID: 11427638}
   - 82: {fileID: 8245326}
-  - 114: {fileID: 11494800}
+  - 114: {fileID: 11481506}
   m_Layer: 0
   m_Name: carBeta
   m_TagString: player1
@@ -2107,6 +2107,10 @@ MonoBehaviour:
   yaxis: KWasd_RT
   brakeaxis: 
   fireButton: KWasd_Start
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
   waveTailController: {fileID: 11450900}
 --- !u!114 &11416094
 MonoBehaviour:
@@ -2262,7 +2266,7 @@ MonoBehaviour:
   minimumHeight: 0
 --- !u!114 &11481506
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193444}
