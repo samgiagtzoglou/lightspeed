@@ -4,20 +4,20 @@ using UnityEngine.UI;
 
 public class ShieldController : MonoBehaviour {
 
-	private Renderer rend;
+	private Animation anime;
 
 	void Start() {
-		rend = this.GetComponent<Renderer> ();
-		Debug.Log (rend);
-		rend.enabled = false;
+		anime= this.GetComponent<Renderer> ();
+		Debug.Log (anime);
+		anime.enabled = false;
 		Debug.Log(this.transform.position);
 	}
 
 	public void Enable() {
-		rend.enabled = true;
+		anime.enabled = true;
 	}
 
 	public void Disable () {
-		rend.enabled = false;
+		anime.enabled = false;
 	}
 }
