@@ -67,6 +67,7 @@ public class Configurator : MonoBehaviour {
 			c1.worldCamera = (Camera) camera1p.GetComponent<Camera>();
 			c1.gameObject.SetActive (true);
 			c1.planeDistance = 1;
+			player1.GetComponent<CarController>().myCanvas = c1;
 
 		} else if (SceneConfig.players == 2) {
 				
@@ -123,6 +124,10 @@ public class Configurator : MonoBehaviour {
 			c2.worldCamera = (Camera) camera22p.GetComponent<Camera>();
 			c2.gameObject.SetActive (true);
 			c2.planeDistance = 1;
+
+			//Set canvases
+			player1.GetComponent<CarController>().myCanvas = c1;
+			player2.GetComponent<CarController>().myCanvas = c2;
 
 		} else if (SceneConfig.players == 3) {
 			camera13p.gameObject.SetActive (true);
@@ -203,6 +208,11 @@ public class Configurator : MonoBehaviour {
 			c3.worldCamera = (Camera) camera33p.GetComponent<Camera>();
 			c3.gameObject.SetActive (true);
 			c3.planeDistance = 1;
+
+			//Set canvases
+			player1.GetComponent<CarController>().myCanvas = c1;
+			player2.GetComponent<CarController>().myCanvas = c2;
+			player3.GetComponent<CarController>().myCanvas = c3;
 
 		} else if (SceneConfig.players == 4) {
 			camera14p.gameObject.SetActive (true);
@@ -306,6 +316,13 @@ public class Configurator : MonoBehaviour {
 			c4.worldCamera = (Camera) camera44p.GetComponent<Camera>();
 			c4.gameObject.SetActive (true);
 			c4.planeDistance = 1;
+
+			//Set canvases
+			player1.GetComponent<CarController>().myCanvas = c1;
+			player2.GetComponent<CarController>().myCanvas = c2;
+			player3.GetComponent<CarController>().myCanvas = c3;
+			player4.GetComponent<CarController>().myCanvas = c4;
+
 		}
 //		raceManager = (GameObject)Instantiate (raceManagerPrefab);
 		PositionAndLapManager lapsMgr = (PositionAndLapManager)raceManager.GetComponent ("PositionAndLapManager");

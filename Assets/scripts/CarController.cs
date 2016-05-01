@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
 	// Powerup enum
@@ -71,12 +72,15 @@ public class CarController : MonoBehaviour {
 	public string fireButton;
 
 	//Powerup icons
-	private bool showIcon;
-	public Texture shieldIcon;
-	public Texture attackIcon;
-	public Texture blackholeIcon;
-	public Texture boostIcon;
-	private Texture powerupSprite;
+	public Sprite shieldIcon;
+	public Sprite attackIcon;
+	public Sprite blackholeIcon;
+	public Sprite boostIcon;
+
+	private Sprite powerupSprite;
+
+	//Canvas
+	public Canvas myCanvas;
 
 	private Rigidbody rb;
 	public WaveTailController waveTailController;
@@ -90,7 +94,7 @@ public class CarController : MonoBehaviour {
 		attackStartTime = 0f;
 		powerup = Powerups.attack;
 	}
-
+		
 	public void startDriving() {
 		drivingAllowed = true;
 	}
@@ -147,7 +151,6 @@ public class CarController : MonoBehaviour {
 				powerup = Powerups.none;
 				break;
 			}
-			showIcon = false;
 		}
 	}
 
@@ -290,7 +293,6 @@ public class CarController : MonoBehaviour {
 	}
 
 	private void drawPowerupIndicator(Powerups pwr) {
-		showIcon = true;
 		if (pwr == Powerups.attack) {
 			powerupSprite = attackIcon;
 		} else if (pwr == Powerups.blackhole) {
@@ -300,13 +302,10 @@ public class CarController : MonoBehaviour {
 		} else {
 			powerupSprite = shieldIcon;
 		}
-	}
-
-	void OnGUI() {
-		if (showIcon) {
-			Rect iconRect = new Rect (Screen.width / 2f, -5f, 320f,320f);
-			GUI.DrawTexture(iconRect, powerupSprite, ScaleMode.ScaleToFit);
-		}
+		Image img = myCanvas.transform.FindChild("Image").GetComponent<Image>();
+		img.sprite = powerupSprite;
+		img.color = new Color (255, 255, 255);
+		Debug.Log (img.sprite);
 	}
 
 	public void OnTriggerEnter(Collider other) {
