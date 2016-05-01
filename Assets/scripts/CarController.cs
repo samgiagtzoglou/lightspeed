@@ -151,6 +151,10 @@ public class CarController : MonoBehaviour {
 				powerup = Powerups.none;
 				break;
 			}
+			myCanvas.transform.Find ("Image").GetComponent<Image> ().sprite = null;
+			Color newColor = new Color (0, 0, 0);
+			newColor.a = 0;
+			myCanvas.transform.Find ("Image").GetComponent<Image> ().color = newColor;
 		}
 	}
 
