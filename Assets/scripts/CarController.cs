@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
 	// Powerup enum
@@ -71,12 +72,14 @@ public class CarController : MonoBehaviour {
 	public string fireButton;
 
 	//Powerup icons
-	private bool showIcon;
-	public Texture shieldIcon;
-	public Texture attackIcon;
-	public Texture blackholeIcon;
-	public Texture boostIcon;
-	private Texture powerupSprite;
+	public Sprite shieldIcon;
+	public Sprite attackIcon;
+	public Sprite blackholeIcon;
+	public Sprite boostIcon;
+	private Sprite powerupSprite;
+
+	//Canvas
+	public Canvas myCanvas;
 
 	private Rigidbody rb;
 	public WaveTailController waveTailController;
@@ -94,7 +97,7 @@ public class CarController : MonoBehaviour {
 			powerup = Powerups.shield;
 		}
 	}
-
+		
 	public void startDriving() {
 		drivingAllowed = true;
 	}
@@ -154,7 +157,11 @@ public class CarController : MonoBehaviour {
 				powerup = Powerups.none;
 				break;
 			}
-			showIcon = false;
+			//Set the image area to transparent
+			myCanvas.transform.Find ("Image").GetComponent<Image> ().sprite = null;
+			Color newColor = new Color (0, 0, 0);
+			newColor.a = 0;
+			myCanvas.transform.Find ("Image").GetComponent<Image> ().color = newColor;
 		}
 	}
 
@@ -298,7 +305,6 @@ public class CarController : MonoBehaviour {
 	}
 
 	private void drawPowerupIndicator(Powerups pwr) {
-		showIcon = true;
 		if (pwr == Powerups.attack) {
 			powerupSprite = attackIcon;
 		} else if (pwr == Powerups.blackhole) {
@@ -308,13 +314,10 @@ public class CarController : MonoBehaviour {
 		} else {
 			powerupSprite = shieldIcon;
 		}
-	}
-
-	void OnGUI() {
-		if (showIcon) {
-			Rect iconRect = new Rect (Screen.width / 2f, -5f, 320f,320f);
-			GUI.DrawTexture(iconRect, powerupSprite, ScaleMode.ScaleToFit);
-		}
+		//Draw a powerup icon
+		Image img = myCanvas.transform.FindChild("Image").GetComponent<Image>();
+		img.sprite = powerupSprite;
+		img.color = new Color (255, 255, 255);
 	}
 
 	public void OnTriggerEnter(Collider other) {
