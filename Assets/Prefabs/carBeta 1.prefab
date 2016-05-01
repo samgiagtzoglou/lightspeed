@@ -2240,12 +2240,17 @@ MonoBehaviour:
   maxMediumAccelerationReduction: 2000
   maxMediumSpeed: 65
   maxMediumSpeedReduction: 40
+  maxTrackAccelerationReduction: 0
+  maxTrackSpeed: 0
+  maxTrackSpeedReduction: 0
   boostStrength: 2000
   boostTime: 2
   blackHoleOrbitRadius: 3
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 5391b74f0aaac4f1d83cb8816ce52e0b, type: 2}
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
+  attackSpeedReduction: 0
+  attackLength: 0
   shieldObjects:
   - {fileID: 112024}
   shieldTime: 5
@@ -2254,6 +2259,11 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  shieldIcon: {fileID: 21300000, guid: d346e1a2d917b4832ba19df54b782c3a, type: 3}
+  attackIcon: {fileID: 21300000, guid: 0a510e4b850c441caa7395194a0de631, type: 3}
+  blackholeIcon: {fileID: 21300000, guid: 403bc8f361ca34493b4bc4365e439a2e, type: 3}
+  boostIcon: {fileID: 21300000, guid: 671124b6c96f84aaca35e888eb038747, type: 3}
+  myCanvas: {fileID: 0}
   waveTailController: {fileID: 11421484}
 --- !u!114 &11468092
 MonoBehaviour:
