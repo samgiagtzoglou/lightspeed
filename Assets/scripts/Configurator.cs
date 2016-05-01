@@ -44,7 +44,8 @@ public class Configurator : MonoBehaviour {
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player1.transform.parent = allCarts.transform;
 
-		
+			
+			
 			setColorForCart(player1, SceneConfig.playersColors[1]);
 
 			CarController controller = (CarController) player1.GetComponent ("CarController");
@@ -62,6 +63,11 @@ public class Configurator : MonoBehaviour {
 			TrackObject script = (TrackObject) camera1p.GetComponent("TrackObject");
 			player1.tag = "player1";
 			script.target = player1.transform;
+
+			Canvas c1 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p1Canvas").GetComponent<Canvas> ();
+			c1.worldCamera = (Camera) camera1p.GetComponent<Camera>();
+			c1.gameObject.SetActive (true);
+			c1.planeDistance = 1;
 
 		} else if (SceneConfig.players == 2) {
 				
@@ -108,6 +114,17 @@ public class Configurator : MonoBehaviour {
 
 			script1.target = player1.transform;
 			script2.target = player2.transform;
+
+			Canvas c1 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p1Canvas").GetComponent<Canvas> ();
+			c1.worldCamera = (Camera) camera12p.GetComponent<Camera>();
+			c1.gameObject.SetActive (true);
+			c1.planeDistance = 1;
+
+			Canvas c2 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p2Canvas").GetComponent<Canvas> ();
+			c2.worldCamera = (Camera) camera22p.GetComponent<Camera>();
+			c2.gameObject.SetActive (true);
+			c2.planeDistance = 1;
+
 		} else if (SceneConfig.players == 3) {
 			camera13p.gameObject.SetActive (true);
 			camera23p.gameObject.SetActive (true);
@@ -172,6 +189,21 @@ public class Configurator : MonoBehaviour {
 			script1.target = player1.transform;
 			script2.target = player2.transform;
 			script3.target = player3.transform;
+
+			Canvas c1 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p1Canvas").GetComponent<Canvas> ();
+			c1.worldCamera = (Camera) camera13p.GetComponent<Camera>();
+			c1.gameObject.SetActive (true);
+			c1.planeDistance = 1;
+
+			Canvas c2 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p2Canvas").GetComponent<Canvas> ();
+			c2.worldCamera = (Camera) camera23p.GetComponent<Camera>();
+			c2.gameObject.SetActive (true);
+			c2.planeDistance = 1;
+
+			Canvas c3 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p3Canvas").GetComponent<Canvas> ();
+			c3.worldCamera = (Camera) camera33p.GetComponent<Camera>();
+			c3.gameObject.SetActive (true);
+			c3.planeDistance = 1;
 
 		} else if (SceneConfig.players == 4) {
 			camera14p.gameObject.SetActive (true);
@@ -255,6 +287,26 @@ public class Configurator : MonoBehaviour {
 			script2.target = player2.transform;
 			script3.target = player3.transform;
 			script4.target = player4.transform;
+
+			Canvas c1 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p1Canvas").GetComponent<Canvas> ();
+			c1.worldCamera = (Camera) camera14p.GetComponent<Camera>();
+			c1.gameObject.SetActive (true);
+			c1.planeDistance = 1;
+
+			Canvas c2 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p2Canvas").GetComponent<Canvas> ();
+			c2.worldCamera = (Camera) camera24p.GetComponent<Camera>();
+			c2.gameObject.SetActive (true);
+			c2.planeDistance = 1;
+
+			Canvas c3 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p3Canvas").GetComponent<Canvas> ();
+			c3.worldCamera = (Camera) camera34p.GetComponent<Camera>();
+			c3.gameObject.SetActive (true);
+			c3.planeDistance = 1;
+
+			Canvas c4 = (Canvas) GameObject.Find("PlayerCanvases").transform.FindChild("p4Canvas").GetComponent<Canvas> ();
+			c4.worldCamera = (Camera) camera44p.GetComponent<Camera>();
+			c4.gameObject.SetActive (true);
+			c4.planeDistance = 1;
 		}
 //		raceManager = (GameObject)Instantiate (raceManagerPrefab);
 		PositionAndLapManager lapsMgr = (PositionAndLapManager)raceManager.GetComponent ("PositionAndLapManager");
