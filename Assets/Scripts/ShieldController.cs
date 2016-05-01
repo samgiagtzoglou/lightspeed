@@ -7,7 +7,7 @@ public class ShieldController : MonoBehaviour {
 	private Animation anime;
 
 	void Start() {
-		anime= this.GetComponent<Renderer> ();
+		anime= this.GetComponent<Animation> ();
 		Debug.Log (anime);
 		anime.enabled = false;
 		Debug.Log(this.transform.position);
