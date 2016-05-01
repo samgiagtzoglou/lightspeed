@@ -71,8 +71,8 @@ public class Configurator : MonoBehaviour {
 
 		} else if (SceneConfig.players == 2) {
 				
-			camera12p.gameObject.SetActive (true);
-			camera22p.gameObject.SetActive (true);
+			camera12p.SetActive (true);
+			camera22p.SetActive (true);
 
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player2 = (GameObject) Instantiate(car, position2, Quaternion.identity);
