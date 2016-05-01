@@ -15,6 +15,7 @@ public class ShieldController : MonoBehaviour {
 
 	public void Enable() {
 		anime.enabled = true;
+		anime.Play();
 	}
 
 	public void Disable () {
