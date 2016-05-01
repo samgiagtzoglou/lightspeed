@@ -14509,6 +14509,10 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &688563585
 MonoBehaviour:
@@ -17872,6 +17876,10 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &828331944
 MonoBehaviour:
@@ -19190,6 +19198,10 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &982879373
 MonoBehaviour:
@@ -33696,6 +33708,10 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &1758323098
 MonoBehaviour:

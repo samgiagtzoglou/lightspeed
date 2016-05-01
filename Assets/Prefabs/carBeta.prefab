@@ -529,7 +529,7 @@ GameObject:
   - 114: {fileID: 11420586}
   - 114: {fileID: 11427638}
   - 82: {fileID: 8245326}
-  - 114: {fileID: 11494800}
+  - 114: {fileID: 11481506}
   m_Layer: 0
   m_Name: carBeta
   m_TagString: player1
@@ -1033,7 +1033,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: c208e6a2f52c949e394e3d61d1067901, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1527,7 +1527,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a1474636e4d15448595f6752d5dd6f43, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2107,6 +2107,10 @@ MonoBehaviour:
   yaxis: KWasd_RT
   brakeaxis: 
   fireButton: KWasd_Start
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
   waveTailController: {fileID: 11450900}
 --- !u!114 &11416094
 MonoBehaviour:
