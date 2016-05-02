@@ -2107,10 +2107,15 @@ MonoBehaviour:
   yaxis: KWasd_RT
   brakeaxis: 
   fireButton: KWasd_Start
+  roidsAnimation: {fileID: 15200000, guid: 5b8e07c07b4ac4fe2b1076736d7a075e, type: 3}
+  plasmaAnimation: {fileID: 15200000, guid: ee0d9c23315494d3db90c390bad6fbe5, type: 3}
+  leftArrow: {fileID: 0}
+  rightArrow: {fileID: 0}
   shieldIcon: {fileID: 21300000, guid: d346e1a2d917b4832ba19df54b782c3a, type: 3}
   attackIcon: {fileID: 21300000, guid: 0a510e4b850c441caa7395194a0de631, type: 3}
   blackholeIcon: {fileID: 21300000, guid: 403bc8f361ca34493b4bc4365e439a2e, type: 3}
   boostIcon: {fileID: 21300000, guid: 671124b6c96f84aaca35e888eb038747, type: 3}
+  myCamera: {fileID: 0}
   myCanvas: {fileID: 0}
   waveTailController: {fileID: 11450900}
 --- !u!114 &11416094
