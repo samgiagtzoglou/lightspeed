@@ -445,8 +445,26 @@ public class CarController : MonoBehaviour {
 		animationTexture.Play ();
 	}
 
+	void startPlasmaAnim() {
+		RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
+		Color notTransparant = new Color (255, 255, 255);
+		notTransparant.a = 255;
+		rimg.color = notTransparant;
+		animationTexture = plasmaAnimation;
+		rimg.texture = animationTexture;
+		Debug.Log(rimg.texture);
+		animationTexture.Play ();
+	}
+
 	public void OnTriggerEnter(Collider other) {
+		if (other.name == "PlasmaTrigger"){
+			startPlasmaAnim();
+		}
+		if (other.name == "RoidsTrigger"){
+			startRoidsAnim();
+		}
 		if (other.name == "Item Box") {
+			Debug.Log ("get powerup!");
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
 
@@ -474,7 +492,7 @@ public class CarController : MonoBehaviour {
 	}
 
 	void stopMovieAnim() {
-		if (!(animationTexture.isPlaying)) {
+		if (animationTexture.isPlaying) {
 			animationTexture.Stop ();
 			animationTexture = null;
 			RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
