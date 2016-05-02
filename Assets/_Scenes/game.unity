@@ -28236,10 +28236,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19849734, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
       propertyPath: EmissionModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 154788, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19884690, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19838862, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19825738, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19871344, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -39025,6 +39041,26 @@ Prefab:
     - target: {fileID: 154788, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19849734, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19884690, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19838862, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19825738, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19871344, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a4de83653b054df9a0ccef8af5519db, type: 2}

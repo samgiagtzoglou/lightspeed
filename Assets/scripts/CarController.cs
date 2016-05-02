@@ -89,7 +89,7 @@ public class CarController : MonoBehaviour {
 
 	//Boost FX
 	public GameObject myCamera;
-	private bool boostActivated = false;
+	private bool boostActivated;
 
 	//Canvas
 	public Canvas myCanvas;
@@ -110,6 +110,7 @@ public class CarController : MonoBehaviour {
 //			powerup = Powerups.shield;
 //		}
 		powerup = Powerups.boost;
+		boostActivated = false;
 	}
 
 	Color wavelengthToColor(int newWavelength) {
@@ -182,9 +183,11 @@ public class CarController : MonoBehaviour {
 	private void ActivateBoost() {
 		boostActivated = true;
 		boostStartTime = Time.time;
-		Transform speedupFX = myCamera.transform.Find ("SPEEDUPFX"); 
+		Transform speedupFX = myCamera.transform.Find ("SPEEDUPFX");
+		ParticleSystem.EmissionModule prt = speedupFX.GetComponent<ParticleSystem> ().emission;
+		prt.enabled = true;
 		foreach (Transform warp in speedupFX) {
-			ParticleSystem.EmissionModule prt = warp.GetComponent<ParticleSystem> ().emission;
+			prt = warp.GetComponent<ParticleSystem> ().emission;
 			prt.enabled = true;
 		}
 		Debug.Log ("ran");
@@ -193,14 +196,17 @@ public class CarController : MonoBehaviour {
 	private void killBoostFX() {
 		if (boostActivated) {
 			boostActivated = false;
-			Transform speedupFX = myCamera.transform.Find ("SPEEDUPFX"); 
+			Transform speedupFX = myCamera.transform.Find ("SPEEDUPFX");
+			ParticleSystem.EmissionModule prt = speedupFX.GetComponent<ParticleSystem> ().emission;
+			prt.enabled = false;
 			foreach (Transform warp in speedupFX) {
-				ParticleSystem.EmissionModule prt = warp.GetComponent<ParticleSystem> ().emission;
+				prt = warp.GetComponent<ParticleSystem> ().emission;
 				prt.enabled = false;
 			}
 		} else {
 			return;
 		}
+		Debug.Log ("ran the kill function");
 	}
 
 	private void DropBlackHole() {
@@ -343,7 +349,6 @@ public class CarController : MonoBehaviour {
 				if (Time.time - boostStartTime < boostTime) {
 					rb.AddForce (transform.forward * boostStrength * Time.deltaTime * rb.mass);
 				} else {
-					boostActivated = false;
 					killBoostFX ();
 				}
 			} else {

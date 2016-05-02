@@ -12,6 +12,7 @@ public class PositionAndLapManager : MonoBehaviour {
 	public int numLaps = 1;
 	public Text timerText;
 	public bool isPause = false;
+
 	public void Start() {
 		numPlayers = SceneConfig.players;
 		// set up the car objects
