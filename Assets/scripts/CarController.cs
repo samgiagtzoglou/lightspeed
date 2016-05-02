@@ -24,7 +24,7 @@ public class CarController : MonoBehaviour {
 	// Handling travelling in medium
 	public int wavelength;
 	private bool inMedium;
-
+	
 	public float maxMediumAccelerationReduction;
 	public float maxMediumSpeed;
 	public float maxMediumSpeedReduction;
@@ -104,11 +104,11 @@ public class CarController : MonoBehaviour {
 		shieldsUp = false;
 		inMedium = false;
 		attackStartTime = 0f;
-		//		if (wavelength == 400) {
-		//			powerup = Powerups.attack;
-		//		} else {
-		//			powerup = Powerups.shield;
-		//		}
+//		if (wavelength == 400) {
+//			powerup = Powerups.attack;
+//		} else {
+//			powerup = Powerups.shield;
+//		}
 		powerup = Powerups.boost;
 	}
 
@@ -145,7 +145,7 @@ public class CarController : MonoBehaviour {
 			green = 0.0f;
 			blue = 0.0f;
 		}
-
+    
 		if ((newWavelength >= 380) && (newWavelength<420)){
 			factor = 0.3f + 0.7f * (float) (newWavelength - 380) / (420 - 380);
 		} else if((newWavelength >= 420) && (newWavelength<701)) {
@@ -155,7 +155,7 @@ public class CarController : MonoBehaviour {
 		} else {
 			factor = 0.0f;
 		}
-
+    
 		if (red != 0){
 			red = IntensityMax * Mathf.Pow(red * factor, Gamma);
 		}
@@ -210,8 +210,8 @@ public class CarController : MonoBehaviour {
 
 	private void ShootLightGun() {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
-			transform.position + (3.0f * transform.forward),
-			Quaternion.identity);
+										transform.position + (3.0f * transform.forward),
+										Quaternion.identity);
 		HomingCSharp bulletHoming = (HomingCSharp) bullet.GetComponent("HomingCSharp");
 		bulletHoming.launcher = this.gameObject;
 		bulletHoming.launchCart = this.gameObject;
@@ -330,7 +330,7 @@ public class CarController : MonoBehaviour {
 
 				if (Time.time < attackStartTime + attackLength)
 					adjustedMaxSpeed -= attackSpeedReduction;
-
+				
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxTrackAccelerationReduction *
 						((float) (wavelength - 380) / 400.0f);
@@ -349,7 +349,7 @@ public class CarController : MonoBehaviour {
 			} else {
 				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
-
+				
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxMediumAccelerationReduction *
 						(1.0f - ((float) (wavelength - 380) / 400.0f));

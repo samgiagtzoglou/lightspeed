@@ -44,8 +44,6 @@ public class Configurator : MonoBehaviour {
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player1.transform.parent = allCarts.transform;
 
-			
-			
 			setColorForCart(player1, SceneConfig.playersColors[1]);
 
 			CarController controller = (CarController) player1.GetComponent ("CarController");
@@ -69,6 +67,7 @@ public class Configurator : MonoBehaviour {
 			c1.gameObject.SetActive (true);
 			c1.planeDistance = 1;
 			player1.GetComponent<CarController>().myCanvas = c1;
+			player1.GetComponent<CarController> ().myCamera = camera1p;
 
 		} else if (SceneConfig.players == 2) {
 				
@@ -129,6 +128,8 @@ public class Configurator : MonoBehaviour {
 			//Set canvases
 			player1.GetComponent<CarController>().myCanvas = c1;
 			player2.GetComponent<CarController>().myCanvas = c2;
+			player1.GetComponent<CarController> ().myCamera = camera12p;
+			player2.GetComponent<CarController> ().myCamera = camera22p;
 
 		} else if (SceneConfig.players == 3) {
 			camera13p.gameObject.SetActive (true);
@@ -214,6 +215,10 @@ public class Configurator : MonoBehaviour {
 			player1.GetComponent<CarController>().myCanvas = c1;
 			player2.GetComponent<CarController>().myCanvas = c2;
 			player3.GetComponent<CarController>().myCanvas = c3;
+
+			player1.GetComponent<CarController> ().myCamera = camera13p;
+			player2.GetComponent<CarController> ().myCamera = camera23p;
+			player3.GetComponent<CarController> ().myCamera = camera33p;
 
 		} else if (SceneConfig.players == 4) {
 			camera14p.gameObject.SetActive (true);
@@ -323,6 +328,11 @@ public class Configurator : MonoBehaviour {
 			player2.GetComponent<CarController>().myCanvas = c2;
 			player3.GetComponent<CarController>().myCanvas = c3;
 			player4.GetComponent<CarController>().myCanvas = c4;
+
+			player1.GetComponent<CarController> ().myCamera = camera14p;
+			player2.GetComponent<CarController> ().myCamera = camera24p;
+			player3.GetComponent<CarController> ().myCamera = camera34p;
+			player4.GetComponent<CarController> ().myCamera = camera44p;
 
 		}
 //		raceManager = (GameObject)Instantiate (raceManagerPrefab);
