@@ -43,6 +43,7 @@ public class SceneConfig : MonoBehaviour {
 		GameObject.Find ("armedGameText").gameObject.GetComponent<Text>().enabled = false;
 		GameObject.Find ("pressToJoinText").gameObject.GetComponent<Text>().enabled = true;
 		GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (false);
+		GameObject.Find ("buttonSet2").transform.GetChild (1).gameObject.SetActive (false);
 		GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (true);
 		GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
 		audio = GetComponent<AudioSource> ();
@@ -67,6 +68,7 @@ public class SceneConfig : MonoBehaviour {
 			GameObject.Find ("armedGameText").gameObject.GetComponent<Text> ().enabled = true;
 			GameObject.Find ("pressToJoinText").gameObject.GetComponent<Text>().enabled = false;
 			GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (true);
+			GameObject.Find ("buttonSet2").transform.GetChild (1).gameObject.SetActive (true);
 			GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (false);
 			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (false);
 
