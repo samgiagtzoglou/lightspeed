@@ -325,6 +325,7 @@ public class SceneConfig : MonoBehaviour {
 	
 
 	}
+	
 	void setColorForCart(GameObject player, int color) {
 		CarController playerController = (CarController) player.GetComponent(typeof(CarController));
 		playerController.wavelength = color;

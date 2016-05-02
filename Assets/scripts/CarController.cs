@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour {
 	// Powerup enum
@@ -23,6 +24,7 @@ public class CarController : MonoBehaviour {
 	// Handling travelling in medium
 	public int wavelength;
 	private bool inMedium;
+	
 	public float maxMediumAccelerationReduction;
 	public float maxMediumSpeed;
 	public float maxMediumSpeedReduction;
@@ -70,6 +72,16 @@ public class CarController : MonoBehaviour {
 	public string brakeaxis;
 	public string fireButton;
 
+	//Powerup icons
+	public Sprite shieldIcon;
+	public Sprite attackIcon;
+	public Sprite blackholeIcon;
+	public Sprite boostIcon;
+	private Sprite powerupSprite;
+
+	//Canvas
+	public Canvas myCanvas;
+
 	private Rigidbody rb;
 	public WaveTailController waveTailController;
 
@@ -85,6 +97,69 @@ public class CarController : MonoBehaviour {
 		} else {
 			powerup = Powerups.shield;
 		}
+	}
+
+	Color wavelengthToColor(int newWavelength) {
+		float factor, red, green, blue;
+		float Gamma = 0.8f;
+		float IntensityMax = 1.0f;
+		if ((newWavelength >= 380) && (newWavelength<440)){
+			red = -(float) (newWavelength - 440) / (440 - 380);
+			green = 0.0f;
+			blue = 1.0f;
+		} else if((newWavelength >= 440) && (newWavelength<490)){
+			red = 0.0f;
+			green = (float) (newWavelength - 440) / (490 - 440);
+			blue = 1.0f;
+		} else if((newWavelength >= 490) && (newWavelength<510)){
+			red = 0.0f;
+			green = 1.0f;
+			blue = -(float) (newWavelength - 510) / (510 - 490);
+		} else if((newWavelength >= 510) && (newWavelength<580)){
+			red = (float) (newWavelength - 510) / (580 - 510);
+			green = 1.0f;
+			blue = 0.0f;
+		} else if((newWavelength >= 580) && (newWavelength<645)){
+			red = 1.0f;
+			green = -(float) (newWavelength - 645) / (645 - 580);
+			blue = 0.0f;
+		} else if((newWavelength >= 645) && (newWavelength<781)){
+			red = 1.0f;
+			green = 0.0f;
+			blue = 0.0f;
+		} else {
+			red = 0.0f;
+			green = 0.0f;
+			blue = 0.0f;
+		}
+    
+		if ((newWavelength >= 380) && (newWavelength<420)){
+			factor = 0.3f + 0.7f * (float) (newWavelength - 380) / (420 - 380);
+		} else if((newWavelength >= 420) && (newWavelength<701)) {
+			factor = 1.0f;
+		} else if((newWavelength >= 701) && (newWavelength<781)) {
+			factor = 0.3f + 0.7f *(float) (780 - newWavelength) / (780 - 700);
+		} else {
+			factor = 0.0f;
+		}
+    
+		if (red != 0){
+			red = IntensityMax * Mathf.Pow(red * factor, Gamma);
+		}
+		if (green != 0){
+			green = IntensityMax * Mathf.Pow(green * factor, Gamma);
+		}
+		if (blue != 0){
+			blue = IntensityMax * Mathf.Pow(blue * factor, Gamma);
+		}
+
+		return new Color(red, green, blue, 1.0f);
+	}	
+
+	public void updateWavelength(int color) {
+		wavelength = color;
+		Renderer shieldRend = shieldObjects[0].GetComponent<Renderer>();
+		shieldRend.material.SetColor("_EmissionColor", wavelengthToColor(color));
 	}
 
 	public void startDriving() {
@@ -146,6 +221,11 @@ public class CarController : MonoBehaviour {
 				powerup = Powerups.none;
 				break;
 			}
+			//Set the image area to transparent
+			myCanvas.transform.Find ("Image").GetComponent<Image> ().sprite = null;
+			Color newColor = new Color (0, 0, 0);
+			newColor.a = 0;
+			myCanvas.transform.Find ("Image").GetComponent<Image> ().color = newColor;
 		}
 	}
 
@@ -288,6 +368,22 @@ public class CarController : MonoBehaviour {
 		inBlackHoleOrbit = false;
 	}
 
+	private void drawPowerupIndicator(Powerups pwr) {
+		if (pwr == Powerups.attack) {
+			powerupSprite = attackIcon;
+		} else if (pwr == Powerups.blackhole) {
+			powerupSprite = blackholeIcon;
+		} else if (pwr == Powerups.boost) {
+			powerupSprite = boostIcon;
+		} else {
+			powerupSprite = shieldIcon;
+		}
+		//Draw a powerup icon
+		Image img = myCanvas.transform.FindChild("Image").GetComponent<Image>();
+		img.sprite = powerupSprite;
+		img.color = new Color (255, 255, 255);
+	}
+
 	public void OnTriggerEnter(Collider other) {
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
@@ -308,6 +404,7 @@ public class CarController : MonoBehaviour {
 				} else {
 					powerup = Powerups.attack;
 				}
+				drawPowerupIndicator (powerup);
 			}
 		} else if (other.name == "Medium") {
 			inMedium = true;

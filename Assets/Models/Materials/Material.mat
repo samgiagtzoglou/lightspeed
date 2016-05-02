@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Material
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
+  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _METALLICGLOSSMAP
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
@@ -21,8 +21,8 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 2800000, guid: 6f8a546222f3c4ad38879b3a5a635bb1, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Scale: {x: 23.25, y: 5.5}
+          m_Offset: {x: 1.05, y: 1.08}
       data:
         first:
           name: _BumpMap
@@ -56,8 +56,8 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+          m_Scale: {x: 23.25, y: 5.5}
+          m_Offset: {x: 1.05, y: 1.08}
       data:
         first:
           name: _DetailMask
@@ -75,6 +75,13 @@ Material:
       data:
         first:
           name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 0806cdadfa27c40d69a557dd45cea77f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -103,7 +110,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.5
+        second: 1
       data:
         first:
           name: _BumpScale
@@ -127,7 +134,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0
+        second: 0.372
       data:
         first:
           name: _Amplitude
@@ -172,11 +179,15 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0.034639675, g: 0.37199998, b: 0.20448305, a: 1}
+        second: {r: 0.060340125, g: 0.088709824, b: 0.648, a: 1}
       data:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 0.178}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
       data:
         first:
           name: _Direction
