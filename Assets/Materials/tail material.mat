@@ -130,7 +130,7 @@ Material:
       data:
         first:
           name: _Amplitude
-        second: 0.5
+        second: 0.3
       data:
         first:
           name: _Wavelength
@@ -154,11 +154,11 @@ Material:
       data:
         first:
           name: _BoundaryLength
-        second: 0.3
+        second: 0.31
       data:
         first:
           name: _TailLength
-        second: 0.95
+        second: 0.64
     m_Colors:
       data:
         first:
