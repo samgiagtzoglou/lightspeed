@@ -72,12 +72,24 @@ public class CarController : MonoBehaviour {
 	public string brakeaxis;
 	public string fireButton;
 
+	//Animations
+	public MovieTexture roidsAnimation;
+	public MovieTexture plasmaAnimation;
+	private MovieTexture animationTexture;
+	public Sprite leftArrow;
+	public Sprite rightArrow;
+	private Sprite arrowSprite;
+
 	//Powerup icons
 	public Sprite shieldIcon;
 	public Sprite attackIcon;
 	public Sprite blackholeIcon;
 	public Sprite boostIcon;
 	private Sprite powerupSprite;
+
+	//Boost FX
+	public GameObject myCamera;
+	private bool boostActivated = false;
 
 	//Canvas
 	public Canvas myCanvas;
@@ -92,11 +104,12 @@ public class CarController : MonoBehaviour {
 		shieldsUp = false;
 		inMedium = false;
 		attackStartTime = 0f;
-		if (wavelength == 400) {
-			powerup = Powerups.attack;
-		} else {
-			powerup = Powerups.shield;
-		}
+//		if (wavelength == 400) {
+//			powerup = Powerups.attack;
+//		} else {
+//			powerup = Powerups.shield;
+//		}
+		powerup = Powerups.boost;
 	}
 
 	Color wavelengthToColor(int newWavelength) {
@@ -167,7 +180,27 @@ public class CarController : MonoBehaviour {
 	}
 
 	private void ActivateBoost() {
+		boostActivated = true;
 		boostStartTime = Time.time;
+		Transform speedupFX = myCamera.transform.Find ("SPEEDUPFX"); 
+		foreach (Transform warp in speedupFX) {
+			ParticleSystem.EmissionModule prt = warp.GetComponent<ParticleSystem> ().emission;
+			prt.enabled = true;
+		}
+		Debug.Log ("ran");
+	}
+
+	private void killBoostFX() {
+		if (boostActivated) {
+			boostActivated = false;
+			Transform speedupFX = myCamera.transform.Find ("SPEEDUPFX"); 
+			foreach (Transform warp in speedupFX) {
+				ParticleSystem.EmissionModule prt = warp.GetComponent<ParticleSystem> ().emission;
+				prt.enabled = false;
+			}
+		} else {
+			return;
+		}
 	}
 
 	private void DropBlackHole() {
@@ -307,8 +340,12 @@ public class CarController : MonoBehaviour {
 					rb.AddForce(forwardForce);
 				}
 
-				if (Time.time - boostStartTime < boostTime)
-					rb.AddForce(transform.forward * boostStrength * Time.deltaTime * rb.mass);
+				if (Time.time - boostStartTime < boostTime) {
+					rb.AddForce (transform.forward * boostStrength * Time.deltaTime * rb.mass);
+				} else {
+					boostActivated = false;
+					killBoostFX ();
+				}
 			} else {
 				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
@@ -384,6 +421,25 @@ public class CarController : MonoBehaviour {
 		img.color = new Color (255, 255, 255);
 	}
 
+	void startRightArrow() {
+		Image img = myCanvas.transform.FindChild("Arrow").GetComponent<Image>();
+		Color notTransparant = new Color (255, 255, 255);
+		notTransparant.a = 255;
+		img.color = notTransparant;
+		animationTexture = roidsAnimation;
+	}
+
+	void startRoidsAnim() {
+		RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
+		Color notTransparant = new Color (255, 255, 255);
+		notTransparant.a = 255;
+		rimg.color = notTransparant;
+		animationTexture = roidsAnimation;
+		rimg.texture = animationTexture;
+		Debug.Log(rimg.texture);
+		animationTexture.Play ();
+	}
+
 	public void OnTriggerEnter(Collider other) {
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
@@ -412,10 +468,24 @@ public class CarController : MonoBehaviour {
 		}
 	}
 
+	void stopMovieAnim() {
+		if (!(animationTexture.isPlaying)) {
+			animationTexture.Stop ();
+			animationTexture = null;
+			RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
+			Color transparant = new Color (255, 255, 255);
+			transparant.a = 0;
+			rimg.color = transparant;
+		}
+	}
+
 	void OnTriggerExit (Collider other) {
 		if (other.name == "Medium") {
 			inMedium = false;
 			waveTailController.SetRefractiveIndex(1.0f);
+		}
+		if (other.name == "PlasmaTrigger" || other.name == "RoidsTrigger") {
+			stopMovieAnim ();
 		}
 	}
 
