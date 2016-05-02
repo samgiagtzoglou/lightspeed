@@ -326,7 +326,7 @@ public class Configurator : MonoBehaviour {
 
 	void setColorForCart(GameObject player, int color) {
 		CarController playerController = (CarController) player.GetComponent(typeof(CarController));
-		playerController.wavelength = color;
+		playerController.updateWavelength(color);
 		Renderer cartRenderer = (Renderer) player.transform.Find("Meshes/cart").GetComponent<Renderer> ();
 		cartRenderer.material.SetInt ("_Wavelength", color);
 		Renderer tailRenderer = (Renderer) player.transform.Find("Meshes/tail").GetComponent<Renderer> ();
