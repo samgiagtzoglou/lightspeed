@@ -154,11 +154,11 @@ Material:
       data:
         first:
           name: _BoundaryLength
-        second: 0.3
+        second: 0.5
       data:
         first:
           name: _TailLength
-        second: 0.95
+        second: 0.6
     m_Colors:
       data:
         first:
