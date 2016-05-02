@@ -1587,7 +1587,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1996,21 +1996,40 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: 10
   groundAngleVelocity: 1
+  wavelength: 0
+  maxMediumAccelerationReduction: 0
+  maxMediumSpeed: 0
+  maxMediumSpeedReduction: 0
+  maxTrackAccelerationReduction: 0
+  maxTrackSpeed: 0
+  maxTrackSpeedReduction: 0
   boostStrength: 0
   boostTime: 0
   blackHoleOrbitRadius: 0
   blackHoleOrbitSpeed: 0
   blackHolePrefab: {fileID: 0}
   lightBallPrefab: {fileID: 0}
-  shieldControllers: []
-  boostAudio: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
-  blackHoleAudio: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
-  shieldAudio: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
-  laserAudio: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
+  attackSpeedReduction: 0
+  attackLength: 0
+  shieldObjects: []
+  shieldTime: 0
+  shieldsUp: 0
   xaxis: 
   yaxis: 
   brakeaxis: 
   fireButton: 
+  roidsAnimation: {fileID: 0}
+  plasmaAnimation: {fileID: 0}
+  leftArrow: {fileID: 0}
+  rightArrow: {fileID: 0}
+  beep: {fileID: 0}
+  shieldIcon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  blackholeIcon: {fileID: 0}
+  boostIcon: {fileID: 0}
+  myCamera: {fileID: 0}
+  myCanvas: {fileID: 0}
+  waveTailController: {fileID: 0}
 --- !u!114 &11452796
 MonoBehaviour:
   m_ObjectHideFlags: 1

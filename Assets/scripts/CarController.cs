@@ -80,6 +80,8 @@ public class CarController : MonoBehaviour {
 	public Sprite rightArrow;
 	private Sprite arrowSprite;
 
+	public AudioClip puSound;
+
 
 	//blink
 	private bool guiShow;
@@ -518,6 +520,10 @@ public class CarController : MonoBehaviour {
 
 	public void OnTriggerEnter(Collider other) {
 
+//		if (other.name.Contains("Item Box"){
+//			puSound.playone
+//		}
+
 		if (other.name == "PlasmaTrigger"){
 			startPlasmaAnim();
 		}
@@ -529,6 +535,7 @@ public class CarController : MonoBehaviour {
 
 
 		if (other.name == "Item Box") {
+			print ("hit");
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
 
