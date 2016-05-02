@@ -5260,7 +5260,7 @@ GameObject:
   - 114: {fileID: 196171842}
   - 82: {fileID: 196171841}
   m_Layer: 0
-  m_Name: RightArrowTrigger
+  m_Name: ArrowTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5358,7 +5358,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 196171839}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9b14ace7840f4b21a6acc5fa62d6c4a, type: 3}
   m_Name: 
@@ -17028,7 +17028,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 675386237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -311.20123, y: 0.824386, z: 80.8}
+  m_LocalPosition: {x: -954.6, y: 5.83, z: 429}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 162558056}
@@ -22228,7 +22228,7 @@ GameObject:
   - 114: {fileID: 838727666}
   - 114: {fileID: 838727665}
   m_Layer: 0
-  m_Name: PlasmaTrigger (1)
+  m_Name: 'PlasmaTrigger '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22264,7 +22264,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 838727663}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0053db005e021481da2b6b280707cc21, type: 3}
   m_Name: 
@@ -23529,7 +23529,7 @@ GameObject:
   - 114: {fileID: 937712664}
   - 111: {fileID: 937712663}
   m_Layer: 0
-  m_Name: RoidsTrigger (1)
+  m_Name: RoidsTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24894,7 +24894,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1037466374}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0053db005e021481da2b6b280707cc21, type: 3}
   m_Name: 
@@ -26301,6 +26301,90 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1123042217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1123042218}
+  - 222: {fileID: 1123042220}
+  - 114: {fileID: 1123042219}
+  - 114: {fileID: 1123042221}
+  m_Layer: 5
+  m_Name: Arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1123042218
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1123042217}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1182619172}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.18399048, y: -18}
+  m_SizeDelta: {x: 800, y: 38}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1123042219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1123042217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: b6f490ebdc0b943e39a94da8811371a4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1123042220
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1123042217}
+--- !u!114 &1123042221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1123042217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd29fb6b0002d4be69bdddcae7a09060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageToToggle: {fileID: 0}
+  interval: 1
+  startDelay: 0.8
+  currentState: 1
+  defaultState: 1
 --- !u!4 &1123083535 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
@@ -26541,6 +26625,7 @@ RectTransform:
   - {fileID: 139061047}
   - {fileID: 1476265486}
   - {fileID: 357966502}
+  - {fileID: 1123042218}
   m_Father: {fileID: 494751862}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -32014,7 +32099,7 @@ GameObject:
   - 114: {fileID: 1389134767}
   - 82: {fileID: 1389134766}
   m_Layer: 0
-  m_Name: RightArrowTrigger (1)
+  m_Name: ArrowTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46204,7 +46289,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1989018148}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f4930c4ca2444c02bca5cc911fbdd8b, type: 3}
   m_Name: 

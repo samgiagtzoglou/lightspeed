@@ -75,10 +75,20 @@ public class CarController : MonoBehaviour {
 	//Animations
 	public MovieTexture roidsAnimation;
 	public MovieTexture plasmaAnimation;
-	private MovieTexture animationTexture;
+	private MovieTexture animationTexture = null;
 	public Sprite leftArrow;
 	public Sprite rightArrow;
 	private Sprite arrowSprite;
+
+
+	//blink
+	private bool guiShow;
+	private bool blink;
+
+	private bool blinkNew;
+	private int counter;
+	private int blinkSpeed;
+	public AudioClip beep;
 
 	//Powerup icons
 	public Sprite shieldIcon;
@@ -98,6 +108,10 @@ public class CarController : MonoBehaviour {
 	public WaveTailController waveTailController;
 
 	void Start() {
+		counter = 11;
+		blinkSpeed = 22;
+		blinkNew = false;
+		guiShow = false;
 		rb = GetComponent<Rigidbody> ();
 		inElectronOrbit = false;
 		drivingAllowed = false;
@@ -260,6 +274,37 @@ public class CarController : MonoBehaviour {
 			newColor.a = 0;
 			myCanvas.transform.Find ("Image").GetComponent<Image> ().color = newColor;
 		}
+		if (!(animationTexture.isPlaying)) {
+			stopMovieAnim ();
+		}
+
+		//blink stuff
+
+		if (guiShow){
+			if(counter < (blinkSpeed/2)) {
+				blinkNew = false;
+				counter++;
+			} 
+
+			if(counter > (blinkSpeed/2)){
+				blinkNew = true;
+				counter++;
+			}
+
+			if (counter == blinkSpeed/2){
+				blinkNew = true;
+				counter++;
+				GetComponent<AudioSource>().PlayOneShot(beep);
+
+			}
+
+			if(counter == blinkSpeed){
+				blinkNew = true;
+				counter = 0;
+
+			}
+		}
+		print (counter);
 	}
 
 	void FixedUpdate() {
@@ -421,12 +466,32 @@ public class CarController : MonoBehaviour {
 		img.color = new Color (255, 255, 255);
 	}
 
-	void startRightArrow() {
-		Image img = myCanvas.transform.FindChild("Arrow").GetComponent<Image>();
+	void startPlasmaAnim() {
+		RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
 		Color notTransparant = new Color (255, 255, 255);
 		notTransparant.a = 255;
-		img.color = notTransparant;
-		animationTexture = roidsAnimation;
+		rimg.color = notTransparant;
+		animationTexture = plasmaAnimation;
+		rimg.texture = animationTexture;
+		Debug.Log(rimg.texture);
+		animationTexture.Play ();
+
+	}
+	void startRightArrow() {
+		if (blinkNew) {
+			arrowSprite = rightArrow;
+			Image img = myCanvas.transform.FindChild ("Arrow").GetComponent<Image> ();
+			img.sprite = arrowSprite;
+			img.color = new Color (255, 255, 255);
+		}
+
+//		Image img = myCanvas.transform.FindChild("Arrow").GetComponent<Image>();
+//		Color notTransparant = new Color (255, 255, 255);
+//		notTransparant.a = 255;
+//		img.color = notTransparant;
+//		arrowSprite = rightArrow;
+//		img.sprite = arrowSprite;
+//		Debug.Log(img.sprite);
 	}
 
 	void startRoidsAnim() {
@@ -440,7 +505,29 @@ public class CarController : MonoBehaviour {
 		animationTexture.Play ();
 	}
 
+	public void OnTriggerStay(Collider other){
+
+		if (other.name == "ArrowTrigger") {
+			startRightArrow ();
+			guiShow = true;
+			print ("blink" + blinkNew);
+		}
+
+
+	}
+
 	public void OnTriggerEnter(Collider other) {
+
+		if (other.name == "PlasmaTrigger"){
+			startPlasmaAnim();
+		}
+
+		if (other.name == "RoidsTrigger"){
+			startRoidsAnim();
+		}
+
+
+
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
@@ -469,15 +556,24 @@ public class CarController : MonoBehaviour {
 	}
 
 	void stopMovieAnim() {
-		if (!(animationTexture.isPlaying)) {
+		
 			animationTexture.Stop ();
 			animationTexture = null;
 			RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
 			Color transparant = new Color (255, 255, 255);
 			transparant.a = 0;
 			rimg.color = transparant;
-		}
 	}
+
+	void stopRightArrow() {
+		
+		arrowSprite = null;
+		Image img = myCanvas.transform.FindChild("Arrow").GetComponent<Image>();
+		Color transparant = new Color (255, 255, 255);
+		transparant.a = 0;
+		img.color = transparant;
+	}
+
 
 	void OnTriggerExit (Collider other) {
 		if (other.name == "Medium") {
@@ -486,6 +582,11 @@ public class CarController : MonoBehaviour {
 		}
 		if (other.name == "PlasmaTrigger" || other.name == "RoidsTrigger") {
 			stopMovieAnim ();
+		}
+
+		if (other.name == "ArrowTrigger") {
+			stopRightArrow ();
+			guiShow = false;
 		}
 	}
 

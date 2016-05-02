@@ -60,7 +60,7 @@ public class SceneConfig : MonoBehaviour {
 	}
 
 	void Update() {
-		if (SceneManager.GetActiveScene().name == "movietrigger"){
+		if (SceneManager.GetActiveScene().name == "game"){
 			return;
 		}
 		if (playersReady [1] && playersReady [2] && playersReady [3] && playersReady [4]) {
