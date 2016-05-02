@@ -14513,6 +14513,7 @@ MonoBehaviour:
   attackIcon: {fileID: 0}
   blackholeIcon: {fileID: 0}
   boostIcon: {fileID: 0}
+  myCanvas: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &688563585
 MonoBehaviour:
@@ -17880,6 +17881,7 @@ MonoBehaviour:
   attackIcon: {fileID: 0}
   blackholeIcon: {fileID: 0}
   boostIcon: {fileID: 0}
+  myCanvas: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &828331944
 MonoBehaviour:
@@ -18186,6 +18188,7 @@ GameObject:
   - 223: {fileID: 864300134}
   - 114: {fileID: 864300133}
   - 114: {fileID: 864300132}
+  - 82: {fileID: 864300136}
   m_Layer: 5
   m_Name: JackCanvas
   m_TagString: Untagged
@@ -18278,6 +18281,80 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!82 &864300136
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864300131}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4df7520634caa4d70b751e7da49ccb17, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &870080555
 GameObject:
   m_ObjectHideFlags: 0
@@ -19202,6 +19279,7 @@ MonoBehaviour:
   attackIcon: {fileID: 0}
   blackholeIcon: {fileID: 0}
   boostIcon: {fileID: 0}
+  myCanvas: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &982879373
 MonoBehaviour:
@@ -33712,6 +33790,7 @@ MonoBehaviour:
   attackIcon: {fileID: 0}
   blackholeIcon: {fileID: 0}
   boostIcon: {fileID: 0}
+  myCanvas: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &1758323098
 MonoBehaviour:
