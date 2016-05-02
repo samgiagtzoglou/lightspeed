@@ -316,11 +316,11 @@ public class CarController : MonoBehaviour {
 			if (brakeaxis.EndsWith("LT")){
 
 				//Controller, set axis for triggers
-				float rt = (Input.GetAxis(yaxis)+1)/2;
+				float rt = Input.GetAxis(yaxis);
 				float lt = 0;
 				Debug.Log ("Controller: " + rt + ", " + lt);
 				if (Input.GetAxis (brakeaxis) != 0.0) {
-					lt = (Input.GetAxis (brakeaxis) + 1) / (-2);
+					lt = - Input.GetAxis (brakeaxis);
 				}
 				yfloat = (rt + lt);
 
