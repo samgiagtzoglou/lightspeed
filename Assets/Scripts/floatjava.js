@@ -11,12 +11,12 @@
          floatingdown();
  }
  function floatingup(){
-     transform.position.y += 2 * Time.deltaTime;
+     transform.position.y += 1 * Time.deltaTime;
      yield WaitForSeconds(2);
      floatup = false;
  }
  function floatingdown(){
-     transform.position.y -= 2 * Time.deltaTime;;
+     transform.position.y -= 1 * Time.deltaTime;;
      yield WaitForSeconds(2);
      floatup = true;
  }
