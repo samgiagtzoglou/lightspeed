@@ -2426,7 +2426,7 @@ MonoBehaviour:
   maxTrackSpeedReduction: 10
   boostStrength: 2000
   boostTime: 2
-  blackHoleOrbitRadius: 3
+  blackHoleOrbitRadius: 6
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 5391b74f0aaac4f1d83cb8816ce52e0b, type: 2}
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
