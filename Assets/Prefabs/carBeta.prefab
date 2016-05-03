@@ -2448,9 +2448,9 @@ MonoBehaviour:
   plasmaAnimation: {fileID: 15200000, guid: ee0d9c23315494d3db90c390bad6fbe5, type: 3}
   leftArrow: {fileID: 21300000, guid: b6a13159579724df3899573400b0623d, type: 3}
   rightArrow: {fileID: 21300000, guid: 1850c9b02771c402a96f69df5feb3e3b, type: 3}
-  shieldIcon: {fileID: 21300000, guid: d346e1a2d917b4832ba19df54b782c3a, type: 3}
-  attackIcon: {fileID: 21300000, guid: 0a510e4b850c441caa7395194a0de631, type: 3}
-  blackholeIcon: {fileID: 21300000, guid: 403bc8f361ca34493b4bc4365e439a2e, type: 3}
+  shieldIcon: {fileID: 21300000, guid: 4db6585792ba745e280eaf025d8c2f79, type: 3}
+  attackIcon: {fileID: 21300000, guid: 94b04801750004368bd39bd2c3b9cbc8, type: 3}
+  blackholeIcon: {fileID: 21300000, guid: b26125d8a850e4d7a96c1c08899f6a52, type: 3}
   boostIcon: {fileID: 21300000, guid: 671124b6c96f84aaca35e888eb038747, type: 3}
   myCamera: {fileID: 0}
   myCanvas: {fileID: 0}
