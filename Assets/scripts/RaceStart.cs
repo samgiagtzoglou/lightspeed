@@ -13,7 +13,7 @@ public class RaceStart : MonoBehaviour {
 		timerText.text = "";
 		karts = (Transform) GameObject.Find ("allCarts").transform;
 		InvokeRepeating ("startRace", 0.1f, 1);
-		secondsLeft = 20;
+		secondsLeft = 17;
 		GameObject.Find("Cameras").transform.FindChild("IntroCamera").gameObject.SetActive(true);
 	}
 
