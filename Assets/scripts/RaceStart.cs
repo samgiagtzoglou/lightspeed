@@ -14,7 +14,8 @@ public class RaceStart : MonoBehaviour {
 		karts = (Transform) GameObject.Find ("allCarts").transform;
 		InvokeRepeating ("startRace", 0.1f, 1);
 		secondsLeft = 17;
-		GameObject.Find("Cameras").transform.FindChild("IntroCamera").gameObject.SetActive(true);
+		Configurator conf = GameObject.Find("Configurator").GetComponent<Configurator>();
+		conf.introCamera.gameObject.SetActive (true);
 	}
 
 
@@ -45,7 +46,7 @@ public class RaceStart : MonoBehaviour {
 					conf.camera44p.gameObject.SetActive (true);
 					break;
 			}
-			GameObject.Find("Cameras").transform.FindChild("IntroCamera").gameObject.SetActive(false);
+			conf.introCamera.gameObject.SetActive (false);
 			if (secondsLeft > 0) {
 				timerText.text = "" + secondsLeft;
 			} else if (secondsLeft > -2) {

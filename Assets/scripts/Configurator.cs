@@ -15,7 +15,7 @@ public class Configurator : MonoBehaviour {
 	public GameObject camera24p;
 	public GameObject camera34p;
 	public GameObject camera44p;
-
+	public GameObject introCamera;
 	//The Carts
 	public GameObject allCarts;
 	public GameObject player1;
