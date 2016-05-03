@@ -48,3 +48,5 @@ auto-save-list
 tramp
 .\#*
 Lightspeed.app/*
+
+*.meta

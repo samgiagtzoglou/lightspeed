@@ -8,7 +8,8 @@ public class PositionAndLapManager : MonoBehaviour {
 	private int numPlayers;
 	private CartPosition[] allCarts;
 	public CartPosition[] carOrder;
-	public Dictionary<string,int> cartPositions;
+	public Dictionary<string,int> cartPositions = new Dictionary<string, int>();
+	public Dictionary<string,int> cartLap = new Dictionary<string, int>();
 	public int numLaps = 1;
 	public Text timerText;
 	public bool isPause = false;
@@ -17,13 +18,11 @@ public class PositionAndLapManager : MonoBehaviour {
 		numPlayers = SceneConfig.players;
 		// set up the car objects
 		carOrder = new CartPosition[numPlayers];
-		cartPositions = new Dictionary<string, int>();
 		allCarts = new CartPosition[numPlayers];
 		Configurator config = (Configurator) GameObject.Find ("Configurator").GetComponent("Configurator");
 		for (int i = 1; i <= numPlayers; i++) {
 			string curPlayerName = "player" + i;
 			GameObject curPlayerObject = GameObject.FindWithTag (curPlayerName);
-			Debug.Log (curPlayerObject);
 			allCarts[i-1] = (CartPosition) curPlayerObject.GetComponent<CartPosition>();
 		}
 		foreach (CartPosition pos in allCarts) {
@@ -49,18 +48,20 @@ public class PositionAndLapManager : MonoBehaviour {
 		}
 	
 		foreach (CartPosition pos in allCarts) {
-			Debug.Log (pos);
-			Debug.Log (pos.lastWaypoint);
 			if (pos.lastWaypoint == null) {
 				return;
 			}
 			int val = pos.GetCarPosition (allCarts);
 			cartPositions [pos.tag] = val - 1;
-			Debug.Log (pos.tag);
+			cartLap [pos.tag] = pos.currentLap;
 			CarController cartController = (CarController) pos.GetComponent("CarController");
 			cartController.position = val;
+
 			if (pos.currentLap == numLaps) {
-				timerText.text = pos.tag + "Wins!";
+				Debug.Log("Player finished " + pos.tag);
+				PolePosition pp = GameObject.Find("raceManager").GetComponent<PolePosition>();
+				pp.finish ((int) char.GetNumericValue(pos.tag[pos.tag.Length-1]));
+//				timerText.text = pos.tag + "Wins!";
 			}
 			if (pos.tag == "kart1") {
 				GameObject posTextObj = GameObject.Find ("position");
