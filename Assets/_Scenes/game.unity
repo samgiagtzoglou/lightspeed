@@ -8820,6 +8820,10 @@ MonoBehaviour:
   yaxis: 
   brakeaxis: 
   fireButton: 
+  shieldSound: {fileID: 0}
+  boostSound: {fileID: 0}
+  laserSound: {fileID: 0}
+  blackholeSound: {fileID: 0}
   roidsAnimation: {fileID: 0}
   plasmaAnimation: {fileID: 0}
   leftArrow: {fileID: 0}
@@ -10706,6 +10710,10 @@ MonoBehaviour:
   yaxis: 
   brakeaxis: 
   fireButton: 
+  shieldSound: {fileID: 0}
+  boostSound: {fileID: 0}
+  laserSound: {fileID: 0}
+  blackholeSound: {fileID: 0}
   roidsAnimation: {fileID: 0}
   plasmaAnimation: {fileID: 0}
   leftArrow: {fileID: 0}
@@ -34707,7 +34715,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &1480294688
 Prefab:
   m_ObjectHideFlags: 0
@@ -38956,6 +38964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dac6f62a9da14a49b7eb3b269dcdf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numPlayers: 0
   carOrder: []
   numLaps: 1
   timerText: {fileID: 361753980}
