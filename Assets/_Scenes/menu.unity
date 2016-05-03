@@ -10195,6 +10195,7 @@ MonoBehaviour:
   rotationVelocity: -0.00002700022
   groundAngleVelocity: 1
   wavelength: 0
+  maxVacuumSpeed: 0
   maxMediumAccelerationReduction: 0
   maxMediumSpeed: 0
   maxMediumSpeedReduction: 0
@@ -14228,6 +14229,7 @@ MonoBehaviour:
   rotationVelocity: -0.00002700022
   groundAngleVelocity: 1
   wavelength: 0
+  maxVacuumSpeed: 0
   maxMediumAccelerationReduction: 0
   maxMediumSpeed: 0
   maxMediumSpeedReduction: 0
@@ -20798,7 +20800,7 @@ GameObject:
   - 224: {fileID: 1072409913}
   - 114: {fileID: 1072409914}
   m_Layer: 0
-  m_Name: 1ColorToggles
+  m_Name: 2ColorToggles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21008,6 +21010,7 @@ MonoBehaviour:
   rotationVelocity: -0.00002700022
   groundAngleVelocity: 1
   wavelength: 0
+  maxVacuumSpeed: 0
   maxMediumAccelerationReduction: 0
   maxMediumSpeed: 0
   maxMediumSpeedReduction: 0
@@ -31798,7 +31801,7 @@ GameObject:
   - 224: {fileID: 1574315431}
   - 114: {fileID: 1574315432}
   m_Layer: 0
-  m_Name: 1ColorToggles
+  m_Name: 4ColorToggles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35924,7 +35927,7 @@ GameObject:
   - 224: {fileID: 1887518754}
   - 114: {fileID: 1887518755}
   m_Layer: 0
-  m_Name: 1ColorToggles
+  m_Name: 3ColorToggles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36832,6 +36835,7 @@ MonoBehaviour:
   rotationVelocity: -0.00002700022
   groundAngleVelocity: 1
   wavelength: 0
+  maxVacuumSpeed: 0
   maxMediumAccelerationReduction: 0
   maxMediumSpeed: 0
   maxMediumSpeedReduction: 0
