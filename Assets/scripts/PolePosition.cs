@@ -10,14 +10,14 @@ public class PolePosition : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		for (int i = 1; i <= SceneConfig.players; i++) {
-			GameObject places = GameObject.Find("p" + i.ToString() + "Canvas").transform.FindChild("Places").gameObject;
-
-			for (int j = 1; j <= SceneConfig.players; j++) {
-				places.transform.FindChild (j.ToString()).gameObject.SetActive(true);
-		
-			}
-		}
+//		for (int i = 1; i <= SceneConfig.players; i++) {
+//			GameObject places = GameObject.Find("p" + i.ToString() + "Canvas").transform.FindChild("Places").gameObject;
+//
+//			for (int j = 1; j <= SceneConfig.players; j++) {
+//				places.transform.FindChild (j.ToString()).gameObject.SetActive(true);
+//		
+//			}
+//		}
 	}
 	public void finish(int player) {
 		if (finishOrder [player] == 0) {
@@ -31,17 +31,10 @@ public class PolePosition : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		for (int i = 1; i <= SceneConfig.players; i++) {
-			if (finishOrder[i] > 0) {
-				GameObject places = GameObject.Find ("p" + i.ToString() + "Canvas").transform.FindChild ("Places").gameObject;
-				for (int j = 1; j <= SceneConfig.players; j++) {
-					if (finishOrder[j] > 0) {
-						Text placeText = places.transform.FindChild (j.ToString()).gameObject.GetComponent<Text> ();
-						int place = finishOrder [j];
-						placeText.text = place + ": Player " + (j);
-					}
-				}
-			}
-		}
+//		for (int i = 1; i <= SceneConfig.players; i++) {
+//			if (finishOrder[i] > 0) {
+//				
+//			}
+//		}
 	}
 }

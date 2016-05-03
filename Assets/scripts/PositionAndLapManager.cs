@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PositionAndLapManager : MonoBehaviour {
-	private int numPlayers;
+	public int numPlayers;
 	private CartPosition[] allCarts;
 	public CartPosition[] carOrder;
 	public Dictionary<string,int> cartPositions = new Dictionary<string, int>();
