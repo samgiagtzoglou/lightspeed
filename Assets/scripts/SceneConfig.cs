@@ -222,16 +222,17 @@ public class SceneConfig : MonoBehaviour {
 				controllersActive ["KArrow"] = players + 1;
 				players = players + 1;
 				setPlayerInput ("KArrow", players);
-			} else if (Input.GetButton ("KArrow_Start") && gameArmed) {
+			} else if (Input.GetButtonDown ("KArrow_Start") && gameArmed) {
 				LoadLevel ("game");
 			}
 
-			if (Input.GetButtonDown ("KWasd_Start") && controllersActive ["KWasd"]==0) {
+			if (Input.GetButtonDown ("KWasd_Start") && controllersActive ["KWasd"] == 0) {
+//				kwasd_start_pressed = true;
 				playersReady [players + 1] = false;
 				controllersActive ["KWasd"] = players + 1;
 				players = players + 1;
 				setPlayerInput ("KWasd", players);
-			} else if (Input.GetButton ("KWasd_Start") && gameArmed) {
+			} else if (Input.GetButtonDown ("KWasd_Start") && gameArmed) {
 				LoadLevel ("game");
 			}
 
