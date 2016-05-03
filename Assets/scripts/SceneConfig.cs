@@ -80,7 +80,6 @@ public class SceneConfig : MonoBehaviour {
 			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
 		}
 		if (players > 0) {
-			Debug.Log ("C2 "+Input.GetAxis ("C2_X axis"));
 			if (Mathf.Abs(Input.GetAxis ("C1_X axis"))>0.5 && (controllersActive ["C1"] > 0) && !xaxis1inuse) {
 				xaxis1inuse = true;
 				bool right = Input.GetAxis ("C1_X axis") > 0 ? true : false;
@@ -208,10 +207,8 @@ public class SceneConfig : MonoBehaviour {
 		}
 	}
 	public void setPlayerInput(string controlCode, int player) {
-		Debug.Log ("Called setPlayerInput");
 		switch (player) {
 		case 1:
-			Debug.Log ("Setting P1");
 //			GameObject.Find ("Player1Text").gameObject.GetComponent<Text>().material.color = None;
 			GameObject.Find("JackCanvas").transform.FindChild("P1Box").gameObject.SetActive(true);
 //			GameObject.Find("P1Box").gameObject.activeInHierarchy = true;
@@ -219,19 +216,16 @@ public class SceneConfig : MonoBehaviour {
 			audio.PlayOneShot (alert, 1);
 			break;
 		case 2:
-			Debug.Log ("Setting P2");
 			GameObject.Find("JackCanvas").transform.FindChild("P2Box").gameObject.SetActive(true);
 			player2ControlCode = controlCode;
 			audio.PlayOneShot (alert, 1);
 			break;
 		case 3:
-			Debug.Log ("Setting P3");
 			GameObject.Find("JackCanvas").transform.FindChild("P3Box").gameObject.SetActive(true);
 			player3ControlCode = controlCode;
 			audio.PlayOneShot (alert, 1);
 			break;
 		case 4:
-			Debug.Log ("Setting P4");
 			GameObject.Find("JackCanvas").transform.FindChild("P4Box").gameObject.SetActive(true);
 			player4ControlCode = controlCode;
 			audio.PlayOneShot (alert, 1);
@@ -270,13 +264,11 @@ public class SceneConfig : MonoBehaviour {
 		Toggle color = GameObject.Find(player+"ColorToggles").gameObject.GetComponent<ToggleGroup>().ActiveToggles().FirstOrDefault();
 		playersColors [player] = getLightwaveForColor(color.name);
 		playersReady [player] = true;
-			Debug.Log ("Ready P"+player);
 		GameObject.Find("P"+player+"Box").transform.FindChild("Ready").gameObject.SetActive(true);
 		GameObject.Find("P"+player+"Box").transform.FindChild(player+"ColorToggles").gameObject.SetActive(false);
 		audio.PlayOneShot (alert2, 1);
 	}
 	private int getLightwaveForColor(string color){
-		Debug.Log ("retrieving color " + color);
 		switch (color) {
 		case "Black":
 			return 0;
@@ -319,7 +311,6 @@ public class SceneConfig : MonoBehaviour {
 	}
 
 	public void LoadLevel(string level){
-		Debug.Log (players);
 		audio.PlayOneShot (alert3, 1);
 		Application.LoadLevel(level);
 	

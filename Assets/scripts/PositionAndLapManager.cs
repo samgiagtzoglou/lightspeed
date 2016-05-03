@@ -23,7 +23,6 @@ public class PositionAndLapManager : MonoBehaviour {
 		for (int i = 1; i <= numPlayers; i++) {
 			string curPlayerName = "player" + i;
 			GameObject curPlayerObject = GameObject.FindWithTag (curPlayerName);
-			Debug.Log (curPlayerObject);
 			allCarts[i-1] = (CartPosition) curPlayerObject.GetComponent<CartPosition>();
 		}
 		foreach (CartPosition pos in allCarts) {
@@ -49,15 +48,12 @@ public class PositionAndLapManager : MonoBehaviour {
 		}
 	
 		foreach (CartPosition pos in allCarts) {
-			Debug.Log (pos);
-			Debug.Log (pos.lastWaypoint);
 			if (pos.lastWaypoint == null) {
 				return;
 			}
 			int val = pos.GetCarPosition (allCarts);
 			cartPositions [pos.tag] = val - 1;
 			cartLap [pos.tag] = pos.currentLap;
-			Debug.Log (pos.tag);
 			CarController cartController = (CarController) pos.GetComponent("CarController");
 			cartController.position = val;
 
