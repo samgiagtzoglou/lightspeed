@@ -502,14 +502,10 @@ public class CarController : MonoBehaviour {
 	}
 
 	void stopMovieAnim() {
-		if (animationTexture.isPlaying) {
-			animationTexture.Stop ();
-			animationTexture = null;
-			RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
-			Color transparant = new Color (255, 255, 255);
-			transparant.a = 0;
-			rimg.color = transparant;
-		}
+		animationTexture.Stop ();
+		animationTexture = null;
+		RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
+		rimg.color = transparent;
 	}
 
 	void OnTriggerExit (Collider other) {
