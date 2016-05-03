@@ -30,6 +30,7 @@ public class Configurator : MonoBehaviour {
 	public string finishTag = "finishLine";
 
 	void Awake() {
+		
 		allCarts = GameObject.Find ("allCarts");
 		Vector3 position1 = GameObject.Find ("firstStart").transform.position;
 		Vector3 position2 = GameObject.Find ("secondStart").transform.position;
@@ -40,7 +41,7 @@ public class Configurator : MonoBehaviour {
 			SceneConfig.players = 1;
 		}
 		if (SceneConfig.players == 1) {
-			camera1p.gameObject.SetActive (true);
+//			camera1p.gameObject.SetActive (true);
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player1.transform.parent = allCarts.transform;
 
@@ -71,8 +72,8 @@ public class Configurator : MonoBehaviour {
 
 		} else if (SceneConfig.players == 2) {
 				
-			camera12p.SetActive (true);
-			camera22p.SetActive (true);
+//			camera12p.SetActive (true);
+//			camera22p.SetActive (true);
 
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player2 = (GameObject) Instantiate(car, position2, Quaternion.identity);
@@ -132,9 +133,9 @@ public class Configurator : MonoBehaviour {
 			player2.GetComponent<CarController> ().myCamera = camera22p;
 
 		} else if (SceneConfig.players == 3) {
-			camera13p.gameObject.SetActive (true);
-			camera23p.gameObject.SetActive (true);
-			camera33p.gameObject.SetActive (true);
+//			camera13p.gameObject.SetActive (true);
+//			camera23p.gameObject.SetActive (true);
+//			camera33p.gameObject.SetActive (true);
 
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player2 = (GameObject) Instantiate(car, position2, Quaternion.identity);
@@ -221,10 +222,10 @@ public class Configurator : MonoBehaviour {
 			player3.GetComponent<CarController> ().myCamera = camera33p;
 
 		} else if (SceneConfig.players == 4) {
-			camera14p.gameObject.SetActive (true);
-			camera24p.gameObject.SetActive (true);
-			camera34p.gameObject.SetActive (true);
-			camera44p.gameObject.SetActive (true);
+//			camera14p.gameObject.SetActive (true);
+//			camera24p.gameObject.SetActive (true);
+//			camera34p.gameObject.SetActive (true);
+//			camera44p.gameObject.SetActive (true);
 
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
 			player2 = (GameObject) Instantiate(car, position2, Quaternion.identity);

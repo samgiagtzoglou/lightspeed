@@ -24,6 +24,10 @@ public class CarController : MonoBehaviour {
 	// Handling travelling in medium
 	public int wavelength;
 	private bool inMedium;
+
+	// handle atom field
+	private bool inField;
+	public float maxVacuumSpeed;
 	
 	public float maxMediumAccelerationReduction;
 	public float maxMediumSpeed;
@@ -113,8 +117,9 @@ public class CarController : MonoBehaviour {
 		drivingAllowed = false;
 		shieldsUp = false;
 		inMedium = false;
+		inField = false;
 		attackStartTime = 0f;
-		powerup = Powerups.shield;
+		powerup = Powerups.attack;
 		boostActivated = false;
 		opaque = new Color(255,255,255,255);
 		transparent = new Color(255,255,255,0);
@@ -175,7 +180,7 @@ public class CarController : MonoBehaviour {
 			blue = IntensityMax * Mathf.Pow(blue * factor, Gamma);
 		}
 
-		return new Color(red, green, blue, 1.0f);
+		return new Color(red, green, blue, 0.8f);
 	}	
 
 	public void updateWavelength(int color) {
@@ -341,7 +346,7 @@ public class CarController : MonoBehaviour {
 
 			}
 
-			if (!inMedium) {
+			if (!inMedium && !inField) {
 				float adjustedMaxSpeed = maxTrackSpeed - maxTrackSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
 
@@ -362,7 +367,7 @@ public class CarController : MonoBehaviour {
 				} else {
 					killBoostFX ();
 				}
-			} else {
+			} else if (inMedium) {
 				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
 				
@@ -374,7 +379,14 @@ public class CarController : MonoBehaviour {
 					forwardForce = forwardForce * Time.deltaTime * rb.mass;
 					rb.AddForce(forwardForce);
 				}
-			}
+			} else {
+				if (Vector3.Magnitude(rb.velocity) < maxVacuumSpeed) {
+					Vector3 forwardForce = transform.forward * acceleration * yfloat;
+					//Correct force for deltatime and vehicle mass
+					forwardForce = forwardForce * Time.deltaTime * rb.mass;
+					rb.AddForce(forwardForce);
+				}
+				
 		} else {
 			rb.drag = 0;
 		}
@@ -509,7 +521,10 @@ public class CarController : MonoBehaviour {
 			}
 		} else if (other.name == "Medium") {
 			inMedium = true;
-			waveTailController.SetRefractiveIndex(1.5f);
+			waveTailController.SetRefractiveIndex(2.5f);
+		} else if (other.name == "Field") {
+			inField = true;
+			waveTailController.SetRefractiveIndex(1.0f);
 		}
 	}
 
@@ -523,7 +538,11 @@ public class CarController : MonoBehaviour {
 	void OnTriggerExit (Collider other) {
 		if (other.name == "Medium") {
 			inMedium = false;
-			waveTailController.SetRefractiveIndex(1.0f);
+			waveTailController.SetRefractiveIndex(1.5f);
+		}
+		if (other.name == "Field") {
+			inField = false;
+			waveTailController.SetRefractiveIndex(1.5f);
 		}
 		if (other.name == "PlasmaTrigger" || other.name == "RoidsTrigger") {
 			stopMovieAnim ();
