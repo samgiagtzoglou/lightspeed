@@ -1748,7 +1748,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: bb0692cfbd0984b09b2b3a427dd27191, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: bb0692cfbd0984b09b2b3a427dd27191, type: 3}
       propertyPath: m_Enabled
@@ -1767,7 +1767,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &65204383 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 400008, guid: bb0692cfbd0984b09b2b3a427dd27191, type: 3}
   m_PrefabInternal: {fileID: 65204382}
 --- !u!1 &65204384 stripped
 GameObject:
@@ -15993,7 +15993,7 @@ Transform:
   - {fileID: 1434081254}
   - {fileID: 430972686}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
 --- !u!1001 &623212971
 Prefab:
   m_ObjectHideFlags: 0
@@ -26025,12 +26025,9 @@ GameObject:
   - 33: {fileID: 1109871608}
   - 65: {fileID: 1109871607}
   - 23: {fileID: 1109871606}
-  - 114: {fileID: 1109871605}
-  - 114: {fileID: 1109871604}
-  - 114: {fileID: 1109871603}
   - 111: {fileID: 1109871602}
   m_Layer: 0
-  m_Name: RoidsTrigger (1)
+  m_Name: RoidsTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26063,43 +26060,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &1109871603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109871600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f40fb2b571a4b78b6bb9404cadbd59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: fab05cd5c72284de0880afa9236561de, type: 3}
---- !u!114 &1109871604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109871600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4efbfd00a6c04bb8b5eb68eedd58786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1109871605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109871600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f4930c4ca2444c02bca5cc911fbdd8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  riddle: {fileID: 15200000, guid: fab05cd5c72284de0880afa9236561de, type: 3}
-  riddle1: {fileID: 2800000, guid: 4f6d362be25af4251bc33f2c1dff72eb, type: 3}
-  riddle2: {fileID: 2800000, guid: 4f6d362be25af4251bc33f2c1dff72eb, type: 3}
 --- !u!23 &1109871606
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33699,9 +33659,6 @@ GameObject:
   - 33: {fileID: 1410273789}
   - 65: {fileID: 1410273788}
   - 23: {fileID: 1410273787}
-  - 114: {fileID: 1410273786}
-  - 114: {fileID: 1410273785}
-  - 114: {fileID: 1410273784}
   - 111: {fileID: 1410273783}
   m_Layer: 0
   m_Name: RoidsTrigger
@@ -33737,43 +33694,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &1410273784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1410273781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f40fb2b571a4b78b6bb9404cadbd59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: fab05cd5c72284de0880afa9236561de, type: 3}
---- !u!114 &1410273785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1410273781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4efbfd00a6c04bb8b5eb68eedd58786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1410273786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1410273781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f4930c4ca2444c02bca5cc911fbdd8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  riddle: {fileID: 15200000, guid: fab05cd5c72284de0880afa9236561de, type: 3}
-  riddle1: {fileID: 2800000, guid: 4f6d362be25af4251bc33f2c1dff72eb, type: 3}
-  riddle2: {fileID: 2800000, guid: 4f6d362be25af4251bc33f2c1dff72eb, type: 3}
 --- !u!23 &1410273787
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35601,7 +35521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1485339346
 GameObject:
   m_ObjectHideFlags: 0
@@ -41716,10 +41636,8 @@ GameObject:
   - 65: {fileID: 1846242046}
   - 114: {fileID: 1846242045}
   - 111: {fileID: 1846242044}
-  - 114: {fileID: 1846242043}
-  - 114: {fileID: 1846242042}
   m_Layer: 0
-  m_Name: PlasmaTrigger (1)
+  m_Name: PlasmaTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41737,32 +41655,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 255449711}
   m_RootOrder: 6
---- !u!114 &1846242042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1846242040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f40fb2b571a4b78b6bb9404cadbd59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: 94918b0b7a65e4a7e9da69bf86823d73, type: 3}
---- !u!114 &1846242043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1846242040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0053db005e021481da2b6b280707cc21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  riddle: {fileID: 15200000, guid: 94918b0b7a65e4a7e9da69bf86823d73, type: 3}
-  riddle1: {fileID: 2800000, guid: 4f6d362be25af4251bc33f2c1dff72eb, type: 3}
-  riddle2: {fileID: 2800000, guid: 4f6d362be25af4251bc33f2c1dff72eb, type: 3}
 --- !u!111 &1846242044
 Animation:
   m_ObjectHideFlags: 0
@@ -42100,7 +41992,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422196, guid: 786985f5265b94a78be28c505c1ad166, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 167078, guid: 786985f5265b94a78be28c505c1ad166, type: 2}
       propertyPath: m_Name
@@ -45569,8 +45461,6 @@ GameObject:
   - 65: {fileID: 1956454757}
   - 114: {fileID: 1956454756}
   - 111: {fileID: 1956454755}
-  - 114: {fileID: 1956454754}
-  - 114: {fileID: 1956454753}
   m_Layer: 0
   m_Name: PlasmaTrigger
   m_TagString: Untagged
@@ -45590,32 +45480,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 255449711}
   m_RootOrder: 4
---- !u!114 &1956454753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1956454751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f40fb2b571a4b78b6bb9404cadbd59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: 94918b0b7a65e4a7e9da69bf86823d73, type: 3}
---- !u!114 &1956454754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1956454751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0053db005e021481da2b6b280707cc21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  riddle: {fileID: 15200000, guid: 94918b0b7a65e4a7e9da69bf86823d73, type: 3}
-  riddle1: {fileID: 2800000, guid: 4f6d362be25af4251bc33f2c1dff72eb, type: 3}
-  riddle2: {fileID: 2800000, guid: 4f6d362be25af4251bc33f2c1dff72eb, type: 3}
 --- !u!111 &1956454755
 Animation:
   m_ObjectHideFlags: 0
