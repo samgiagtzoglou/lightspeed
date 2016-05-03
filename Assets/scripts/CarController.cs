@@ -464,10 +464,13 @@ public class CarController : MonoBehaviour {
 		}
 		if (other.name == "ArrowTrigger") {
 			arrowImage = myCanvas.transform.Find("Arrow").GetComponent<Image>();
-			//Set arrow to the right one here;
-			arrowImage.sprite = leftArrow;
+			//Teal, green, purple and blue go to atom field
+			if (wavelength == 490 || wavelength == 450 || wavelength == 400 || wavelength == 530) {
+				arrowImage.sprite = rightArrow;
+			} else {
+				arrowImage.sprite = leftArrow;
+			}
 			arrowImage.color = opaque;
-			Debug.Log (arrowImage);
 			InvokeRepeating ("BlinkArrow", 0f, .5f);
 		}
 		if (other.name == "Item Box") {
@@ -519,6 +522,7 @@ public class CarController : MonoBehaviour {
 		}
 		if (other.name == "ArrowTrigger") {
 			CancelInvoke ("BlinkArrow");
+			arrowImage.color = transparent;
 		}
 	}
 
