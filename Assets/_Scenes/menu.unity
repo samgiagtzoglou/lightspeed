@@ -14451,10 +14451,15 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  roidsAnimation: {fileID: 0}
+  plasmaAnimation: {fileID: 0}
+  leftArrow: {fileID: 0}
+  rightArrow: {fileID: 0}
   shieldIcon: {fileID: 0}
   attackIcon: {fileID: 0}
   blackholeIcon: {fileID: 0}
   boostIcon: {fileID: 0}
+  myCamera: {fileID: 0}
   myCanvas: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &688563585
@@ -17819,10 +17824,15 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  roidsAnimation: {fileID: 0}
+  plasmaAnimation: {fileID: 0}
+  leftArrow: {fileID: 0}
+  rightArrow: {fileID: 0}
   shieldIcon: {fileID: 0}
   attackIcon: {fileID: 0}
   blackholeIcon: {fileID: 0}
   boostIcon: {fileID: 0}
+  myCamera: {fileID: 0}
   myCanvas: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &828331944
@@ -18295,7 +18305,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 864300131}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4df7520634caa4d70b751e7da49ccb17, type: 3}
@@ -19225,10 +19235,15 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  roidsAnimation: {fileID: 0}
+  plasmaAnimation: {fileID: 0}
+  leftArrow: {fileID: 0}
+  rightArrow: {fileID: 0}
   shieldIcon: {fileID: 0}
   attackIcon: {fileID: 0}
   blackholeIcon: {fileID: 0}
   boostIcon: {fileID: 0}
+  myCamera: {fileID: 0}
   myCanvas: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &982879373
@@ -33736,10 +33751,15 @@ MonoBehaviour:
   yaxis: ArrowKeyboard_RT
   brakeaxis: 
   fireButton: 
+  roidsAnimation: {fileID: 0}
+  plasmaAnimation: {fileID: 0}
+  leftArrow: {fileID: 0}
+  rightArrow: {fileID: 0}
   shieldIcon: {fileID: 0}
   attackIcon: {fileID: 0}
   blackholeIcon: {fileID: 0}
   boostIcon: {fileID: 0}
+  myCamera: {fileID: 0}
   myCanvas: {fileID: 0}
   waveTailController: {fileID: 0}
 --- !u!114 &1758323098
