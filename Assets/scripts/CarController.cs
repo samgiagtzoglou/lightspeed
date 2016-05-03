@@ -119,7 +119,7 @@ public class CarController : MonoBehaviour {
 		inMedium = false;
 		inField = false;
 		attackStartTime = 0f;
-		powerup = Powerups.blackhole;
+		powerup = Powerups.boost;
 		boostActivated = false;
 		opaque = new Color(255,255,255,255);
 		transparent = new Color(255,255,255,0);

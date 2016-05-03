@@ -2417,7 +2417,7 @@ MonoBehaviour:
   rotationVelocity: -0.0004871239
   groundAngleVelocity: 1
   wavelength: 500
-  maxVacuumSpeed: 0
+  maxVacuumSpeed: 100
   maxMediumAccelerationReduction: 2000
   maxMediumSpeed: 65
   maxMediumSpeedReduction: 20
