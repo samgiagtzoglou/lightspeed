@@ -567,7 +567,7 @@ Transform:
   - {fileID: 312266502}
   - {fileID: 1600787581}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!1001 &15258729
 Prefab:
   m_ObjectHideFlags: 0
@@ -1392,6 +1392,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &57027620
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1410,6 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &57027622
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3852,6 +3872,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &127630028
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3870,6 +3909,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &127630030
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8072,7 +8112,7 @@ Transform:
   - {fileID: 865278938}
   - {fileID: 2020786355}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!4 &320100137 stripped
 Transform:
   m_PrefabParentObject: {fileID: 495010, guid: d798f9d4e4b3bc34ab128dd5ac83da1c, type: 2}
@@ -8678,6 +8718,11 @@ MonoBehaviour:
   yaxis: 
   brakeaxis: 
   fireButton: 
+  shieldSound: {fileID: 0}
+  boostSound: {fileID: 0}
+  laserSound: {fileID: 0}
+  blackholeSound: {fileID: 0}
+  pickupSound: {fileID: 0}
   roidsAnimation: {fileID: 0}
   plasmaAnimation: {fileID: 0}
   leftArrow: {fileID: 0}
@@ -9502,7 +9547,7 @@ Transform:
   - {fileID: 1755975028}
   - {fileID: 625559095}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &428130971
 GameObject:
   m_ObjectHideFlags: 0
@@ -9783,7 +9828,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 2399970, guid: f6f4f5b4b7d9d434296397b47dfa5e4c, type: 2}
       propertyPath: m_Materials.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 499970, guid: f6f4f5b4b7d9d434296397b47dfa5e4c, type: 2}
       propertyPath: m_LocalPosition.x
@@ -9836,7 +9881,7 @@ Prefab:
     - target: {fileID: 2399970, guid: f6f4f5b4b7d9d434296397b47dfa5e4c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4dd15c27ea55bc64b99254f6c7e42f08, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a48359a5e2e50347af56a654ef49c5c, type: 2}
     - target: {fileID: 2399970, guid: f6f4f5b4b7d9d434296397b47dfa5e4c, type: 2}
       propertyPath: m_Materials.Array.data[3]
       value: 
@@ -9856,11 +9901,11 @@ Prefab:
     - target: {fileID: 2399970, guid: f6f4f5b4b7d9d434296397b47dfa5e4c, type: 2}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 4dd15c27ea55bc64b99254f6c7e42f08, type: 2}
+      objectReference: {fileID: 2100000, guid: 535a36e0721e6c3478f757193071b481, type: 2}
     - target: {fileID: 2399970, guid: f6f4f5b4b7d9d434296397b47dfa5e4c, type: 2}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 4dd15c27ea55bc64b99254f6c7e42f08, type: 2}
+      objectReference: {fileID: 2100000, guid: fdbf5a91467a46d4d91d6f986efdb17b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6f4f5b4b7d9d434296397b47dfa5e4c, type: 2}
   m_IsPrefabParent: 0
@@ -10215,7 +10260,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &467776261
 GameObject:
   m_ObjectHideFlags: 0
@@ -10271,6 +10316,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &467776265
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10289,6 +10353,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &467776267
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10535,7 +10600,7 @@ Transform:
   - {fileID: 1223295040}
   - {fileID: 1779417535}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!1 &496498239
 GameObject:
   m_ObjectHideFlags: 0
@@ -10630,6 +10695,11 @@ MonoBehaviour:
   yaxis: 
   brakeaxis: 
   fireButton: 
+  shieldSound: {fileID: 0}
+  boostSound: {fileID: 0}
+  laserSound: {fileID: 0}
+  blackholeSound: {fileID: 0}
+  pickupSound: {fileID: 0}
   roidsAnimation: {fileID: 0}
   plasmaAnimation: {fileID: 0}
   leftArrow: {fileID: 0}
@@ -16080,7 +16150,7 @@ Transform:
   - {fileID: 1434081254}
   - {fileID: 430972686}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
 --- !u!1 &625559094
 GameObject:
   m_ObjectHideFlags: 0
@@ -16582,7 +16652,7 @@ Transform:
   - {fileID: 841823284}
   - {fileID: 771617662}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1001 &635728652
 Prefab:
   m_ObjectHideFlags: 0
@@ -17252,7 +17322,7 @@ Transform:
   - {fileID: 1531047725}
   - {fileID: 378712923}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &675777629
 GameObject:
   m_ObjectHideFlags: 0
@@ -20116,7 +20186,7 @@ Transform:
   - {fileID: 506086788}
   - {fileID: 1440551905}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
 --- !u!1 &739093729
 GameObject:
   m_ObjectHideFlags: 0
@@ -24943,7 +25013,7 @@ Transform:
   - {fileID: 1606179886}
   - {fileID: 150296033}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1001 &1030851528
 Prefab:
   m_ObjectHideFlags: 0
@@ -25496,6 +25566,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1047848286
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25514,6 +25603,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1047848288
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27180,6 +27270,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1198595172
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27198,6 +27307,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1198595174
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31680,6 +31790,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1341337563
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -31698,6 +31827,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1341337565
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31836,6 +31966,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1374911170
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32687,6 +32836,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1398028412
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32705,6 +32873,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1398028414
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32832,7 +33001,7 @@ Transform:
   - {fileID: 1302336384}
   - {fileID: 1256366266}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
 --- !u!4 &1404358188 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
@@ -34613,7 +34782,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!1001 &1550123847
 Prefab:
   m_ObjectHideFlags: 0
@@ -35022,15 +35191,15 @@ Prefab:
     - target: {fileID: 2395010, guid: d798f9d4e4b3bc34ab128dd5ac83da1c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4dd15c27ea55bc64b99254f6c7e42f08, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a48359a5e2e50347af56a654ef49c5c, type: 2}
     - target: {fileID: 2395010, guid: d798f9d4e4b3bc34ab128dd5ac83da1c, type: 2}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 4dd15c27ea55bc64b99254f6c7e42f08, type: 2}
+      objectReference: {fileID: 2100000, guid: 535a36e0721e6c3478f757193071b481, type: 2}
     - target: {fileID: 2395010, guid: d798f9d4e4b3bc34ab128dd5ac83da1c, type: 2}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 631f2ffa3083f5348b37a66ffe18ea01, type: 2}
+      objectReference: {fileID: 2100000, guid: fdbf5a91467a46d4d91d6f986efdb17b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d798f9d4e4b3bc34ab128dd5ac83da1c, type: 2}
   m_IsPrefabParent: 0
@@ -36175,6 +36344,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1608484558
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36193,6 +36381,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1608484560
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -36677,7 +36866,11 @@ Prefab:
     - target: {fileID: 2300004, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b7dcbda6d35c6ab4fb9444a109b3b674, type: 2}
+      objectReference: {fileID: 2100000, guid: 535a36e0721e6c3478f757193071b481, type: 2}
+    - target: {fileID: 2300004, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: fdbf5a91467a46d4d91d6f986efdb17b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
   m_IsPrefabParent: 0
@@ -37599,7 +37792,7 @@ Prefab:
     - target: {fileID: 2300004, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b7dcbda6d35c6ab4fb9444a109b3b674, type: 2}
+      objectReference: {fileID: 2100000, guid: 535a36e0721e6c3478f757193071b481, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
   m_IsPrefabParent: 0
@@ -37772,7 +37965,7 @@ Transform:
   - {fileID: 1807990206}
   - {fileID: 697862377}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &1666154125
 GameObject:
   m_ObjectHideFlags: 0
@@ -37929,7 +38122,7 @@ RectTransform:
   - {fileID: 361753979}
   - {fileID: 1326933110}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -41254,6 +41447,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1838915545
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41272,6 +41484,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1838915547
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41797,6 +42010,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1845687762
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41815,6 +42047,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1845687764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -43130,96 +43363,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!1001 &1908217074
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2300000, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -812.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -160.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 31.302383
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 10.8006
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 6.9730964
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8b86df80b03d94b4497b5fb7472c3693, type: 2}
-    - target: {fileID: 2300002, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8b86df80b03d94b4497b5fb7472c3693, type: 2}
-    - target: {fileID: 2300000, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7c5ef4e6a4032ac4aa2a9e4dd5dcc14a, type: 2}
-    - target: {fileID: 2300000, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 36d60d2bc0aca2f4ea7563049301c03f, type: 2}
-    - target: {fileID: 2300000, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 36d60d2bc0aca2f4ea7563049301c03f, type: 2}
-    - target: {fileID: 2300000, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 36d60d2bc0aca2f4ea7563049301c03f, type: 2}
-    - target: {fileID: 2300002, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 415a7a280efc3438aac90a116210cab1, type: 3}
-  m_IsPrefabParent: 0
 --- !u!1001 &1909135191
 Prefab:
   m_ObjectHideFlags: 0
@@ -45652,6 +45795,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1978029152
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -45670,6 +45832,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1978029154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46561,6 +46724,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &1994085433
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -46579,6 +46761,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &1994085435
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47118,6 +47301,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &2007665269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47136,6 +47338,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &2007665271
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47313,6 +47516,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &2019462675
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47331,6 +47553,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &2019462677
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47665,6 +47888,25 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _quads: []
+  _sharedIndices: []
+  _vertices: []
+  _uv: []
+  _uv3: []
+  _uv4: []
+  _sharedIndicesUV: []
+  _colors: []
+  angleError: 8
+  areaError: 15
+  hardAngle: 88
+  packMargin: 20
+  previousTransform: {x: 0, y: 0, z: 0}
+  userCollisions: 0
+  isSelectable: 1
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &2032845261
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47683,6 +47925,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entityType: 0
 --- !u!23 &2032845263
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48288,7 +48531,7 @@ Prefab:
     - target: {fileID: 2300004, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eb11836f727b70146bd20e383f9818f7, type: 2}
+      objectReference: {fileID: 2100000, guid: 535a36e0721e6c3478f757193071b481, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
   m_IsPrefabParent: 0
