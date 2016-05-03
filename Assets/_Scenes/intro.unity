@@ -27452,7 +27452,7 @@ GameObject:
   - 114: {fileID: 1217812078}
   - 114: {fileID: 1217812080}
   - 114: {fileID: 1217812079}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Camera (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27569,14 +27569,14 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 78.10828
+  far clip plane: 1011.1
+  field of view: 88.6
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -90.2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 33
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 7
@@ -27592,8 +27592,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1217812068}
-  m_LocalRotation: {x: 0.4224552, y: -0.70835906, z: 0.44545537, w: 0.34832266}
-  m_LocalPosition: {x: -1047.8589, y: 105.42617, z: 443.7301}
+  m_LocalRotation: {x: 0.049116828, y: -0.024564235, z: -0.017105484, w: 0.9983444}
+  m_LocalPosition: {x: 598, y: 476.96875, z: -1066}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -27612,23 +27612,23 @@ MonoBehaviour:
   tweakMode: 1
   screenBlendMode: 1
   hdr: 0
-  sepBlurSpread: 10
+  sepBlurSpread: 0.1
   quality: 1
-  bloomIntensity: 1.62
-  bloomThreshold: 3.49
+  bloomIntensity: 0.9
+  bloomThreshold: 4
   bloomThresholdColor: {r: 0, g: 0, b: 0, a: 1}
   bloomBlurIterations: 4
-  hollywoodFlareBlurIterations: 1
-  flareRotation: 0
-  lensflareMode: 2
-  hollyStretchWidth: -200.9
-  lensflareIntensity: 25.7
-  lensflareThreshold: 1.87
-  lensFlareSaturation: 27.79
-  flareColorA: {r: 0.4, g: 0.4, b: 0.8, a: 0.75}
+  hollywoodFlareBlurIterations: 2
+  flareRotation: 2.24
+  lensflareMode: 1
+  hollyStretchWidth: 0
+  lensflareIntensity: 1
+  lensflareThreshold: 1
+  lensFlareSaturation: 3.25
+  flareColorA: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 0.75}
   flareColorB: {r: 0.4, g: 0.8, b: 0.8, a: 0.75}
-  flareColorC: {r: 0.8, g: 0.4, b: 0.8, a: 0.75}
-  flareColorD: {r: 0.8, g: 0.4, b: 0, a: 0.75}
+  flareColorC: {r: 0.7941176, g: 0.40140796, b: 0.25692043, a: 0.75}
+  flareColorD: {r: 0.098291524, g: 0.74264705, b: 0.1827244, a: 0.75}
   lensFlareVignetteMask: {fileID: 2800000, guid: 95ef4804fe0be4c999ddaa383536cde8,
     type: 3}
   lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
@@ -27648,12 +27648,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
-  intensity: 0.409
+  intensity: 0.216
   chromaticAberration: 0
-  axialAberration: 0.12
-  blur: 0
-  blurSpread: 0.75
-  luminanceDependency: 1
+  axialAberration: 2.68
+  blur: 0.437
+  blurSpread: 0.516
+  luminanceDependency: 0.419
   blurDistance: 0.001
   vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
@@ -27672,10 +27672,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QualityLevel: 1
   QualitySteps: 6
-  MotionScale: 3
-  CameraMotionMult: 1
-  MinVelocity: 2.68
-  MaxVelocity: 6.18
+  MotionScale: 4.76
+  CameraMotionMult: 1.35
+  MinVelocity: 2.82
+  MaxVelocity: 15.4
   DepthThreshold: 2.39
   Noise: 0
   OverlayCameras: []
@@ -27685,7 +27685,7 @@ MonoBehaviour:
   AutoRegisterObjs: 1
   MinResetDeltaDist: 1000
   ResetFrameDelay: 1
-  WorkerThreads: 0
+  WorkerThreads: 27
   SystemThreadPool: 0
   ForceCPUOnly: 0
   DebugMode: 0
