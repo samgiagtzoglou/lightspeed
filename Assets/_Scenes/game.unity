@@ -1392,25 +1392,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &57027620
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1429,7 +1410,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &57027622
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3872,25 +3852,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &127630028
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3909,7 +3870,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &127630030
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5480,12 +5440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4a028fc8a0b4f1b9c3eee751faa028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightArrow: {fileID: 21300000, guid: 1850c9b02771c402a96f69df5feb3e3b, type: 3}
-  leftArrow: {fileID: 21300000, guid: b6a13159579724df3899573400b0623d, type: 3}
-  interval: 1
-  startDelay: 0.8
-  currentState: 1
-  defaultState: 1
 --- !u!23 &196171843
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10316,25 +10270,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &467776265
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10353,7 +10288,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &467776267
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25566,25 +25500,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1047848286
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25603,7 +25518,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1047848288
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27270,25 +27184,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1198595172
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27307,7 +27202,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1198595174
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28278,6 +28172,173 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1256997377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1256997383}
+  - 20: {fileID: 1256997382}
+  - 124: {fileID: 1256997381}
+  - 92: {fileID: 1256997380}
+  - 81: {fileID: 1256997379}
+  - 95: {fileID: 1256997378}
+  - 114: {fileID: 1256997385}
+  - 114: {fileID: 1256997384}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &1256997378
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256997377}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1cd67d761c5c3401c9bf4d7caa848e57, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!81 &1256997379
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256997377}
+  m_Enabled: 1
+--- !u!92 &1256997380
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256997377}
+  m_Enabled: 1
+--- !u!124 &1256997381
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256997377}
+  m_Enabled: 1
+--- !u!20 &1256997382
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256997377}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 52.99983
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 7
+  m_TargetEye: 3
+  m_HDR: 1
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
+--- !u!4 &1256997383
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256997377}
+  m_LocalRotation: {x: 0.13667774, y: -0.2293299, z: 0.06655611, w: 0.96140385}
+  m_LocalPosition: {x: -477.79834, y: 31.33404, z: 460.3293}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+--- !u!114 &1256997384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256997377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  intensity: 0.28
+  chromaticAberration: 0.2
+  axialAberration: 0.5
+  blur: 0.33
+  blurSpread: 0.75
+  luminanceDependency: 0.25
+  blurDistance: 2.5
+  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
+  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
+    type: 3}
+--- !u!114 &1256997385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256997377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweakMode: 1
+  screenBlendMode: 1
+  hdr: 0
+  sepBlurSpread: 0.1
+  quality: 1
+  bloomIntensity: 0.72
+  bloomThreshold: 0.11
+  bloomThresholdColor: {r: 1, g: 0.98215014, b: 0.83823526, a: 1}
+  bloomBlurIterations: 4
+  hollywoodFlareBlurIterations: 2
+  flareRotation: 0
+  lensflareMode: 1
+  hollyStretchWidth: 2.5
+  lensflareIntensity: 0
+  lensflareThreshold: 0.3
+  lensFlareSaturation: 0.75
+  flareColorA: {r: 0.4, g: 0.4, b: 0.8, a: 0.75}
+  flareColorB: {r: 0.4, g: 0.8, b: 0.8, a: 0.75}
+  flareColorC: {r: 0.8, g: 0.4, b: 0.8, a: 0.75}
+  flareColorD: {r: 0.8, g: 0.4, b: 0, a: 0.75}
+  lensFlareVignetteMask: {fileID: 2800000, guid: 95ef4804fe0be4c999ddaa383536cde8,
+    type: 3}
+  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
+  screenBlendShader: {fileID: 4800000, guid: 7856cbff0a0ca45c787d5431eb805bb0, type: 3}
+  blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
+  brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
+    type: 3}
 --- !u!1001 &1257946993
 Prefab:
   m_ObjectHideFlags: 0
@@ -31790,25 +31851,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1341337563
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -31827,7 +31869,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1341337565
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31966,25 +32007,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1374911170
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32574,12 +32596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4a028fc8a0b4f1b9c3eee751faa028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightArrow: {fileID: 21300000, guid: 1850c9b02771c402a96f69df5feb3e3b, type: 3}
-  leftArrow: {fileID: 21300000, guid: b6a13159579724df3899573400b0623d, type: 3}
-  interval: 1
-  startDelay: 0.8
-  currentState: 1
-  defaultState: 1
 --- !u!23 &1389134768
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32836,25 +32852,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1398028412
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32873,7 +32870,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1398028414
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33001,7 +32997,7 @@ Transform:
   - {fileID: 1302336384}
   - {fileID: 1256366266}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
 --- !u!4 &1404358188 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 784e3eb045fe2904389651da9cacc81b, type: 3}
@@ -34106,7 +34102,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &1480294688
 Prefab:
   m_ObjectHideFlags: 0
@@ -36344,25 +36340,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1608484558
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -36381,7 +36358,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1608484560
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41447,25 +41423,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1838915545
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41484,7 +41441,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1838915547
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42010,25 +41966,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1845687762
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42047,7 +41984,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1845687764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -45795,25 +45731,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1978029152
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -45832,7 +45749,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1978029154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46724,25 +46640,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &1994085433
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -46761,7 +46658,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &1994085435
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47301,25 +47197,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &2007665269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47338,7 +47215,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &2007665271
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47516,25 +47392,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &2019462675
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47553,7 +47410,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &2019462677
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47888,25 +47744,6 @@ MonoBehaviour:
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quads: []
-  _sharedIndices: []
-  _vertices: []
-  _uv: []
-  _uv3: []
-  _uv4: []
-  _sharedIndicesUV: []
-  _colors: []
-  angleError: 8
-  areaError: 15
-  hardAngle: 88
-  packMargin: 20
-  previousTransform: {x: 0, y: 0, z: 0}
-  userCollisions: 0
-  isSelectable: 1
-  dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
 --- !u!33 &2032845261
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47925,7 +47762,6 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
 --- !u!23 &2032845263
 MeshRenderer:
   m_ObjectHideFlags: 0
