@@ -2408,7 +2408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18200a69f39047df9ab7cfa08a1f981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 3500
+  acceleration: 4000
   rotationRate: 400
   position: 1
   totalRacers: 2
@@ -2421,7 +2421,7 @@ MonoBehaviour:
   maxMediumSpeed: 65
   maxMediumSpeedReduction: 20
   maxTrackAccelerationReduction: 500
-  maxTrackSpeed: 70
+  maxTrackSpeed: 80
   maxTrackSpeedReduction: 10
   boostStrength: 2000
   boostTime: 2
