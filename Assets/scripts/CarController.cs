@@ -73,12 +73,14 @@ public class CarController : MonoBehaviour {
 	public string fireButton;
 
 	//Animations
+	private Color transparent;
+	private Color opaque;
 	public MovieTexture roidsAnimation;
 	public MovieTexture plasmaAnimation;
 	private MovieTexture animationTexture;
 	public Sprite leftArrow;
 	public Sprite rightArrow;
-	private Sprite arrowSprite;
+	private Image arrowImage;
 
 	//Powerup icons
 	public Sprite shieldIcon;
@@ -104,13 +106,10 @@ public class CarController : MonoBehaviour {
 		shieldsUp = false;
 		inMedium = false;
 		attackStartTime = 0f;
-//		if (wavelength == 400) {
-//			powerup = Powerups.attack;
-//		} else {
-//			powerup = Powerups.shield;
-//		}
 		powerup = Powerups.boost;
 		boostActivated = false;
+		opaque = new Color(255,255,255,255);
+		transparent = new Color(255,255,255,0);
 	}
 
 	Color wavelengthToColor(int newWavelength) {
@@ -426,12 +425,12 @@ public class CarController : MonoBehaviour {
 		img.color = new Color (255, 255, 255);
 	}
 
-	void startRightArrow() {
-		Image img = myCanvas.transform.FindChild("Arrow").GetComponent<Image>();
-		Color notTransparant = new Color (255, 255, 255);
-		notTransparant.a = 255;
-		img.color = notTransparant;
-		animationTexture = roidsAnimation;
+	void BlinkArrow() {
+		if (arrowImage.color == transparent) {
+			arrowImage.color = opaque;
+		} else {
+			arrowImage.color = transparent;
+		}
 	}
 
 	void startRoidsAnim() {
@@ -462,6 +461,14 @@ public class CarController : MonoBehaviour {
 		}
 		if (other.name == "RoidsTrigger"){
 			startRoidsAnim();
+		}
+		if (other.name == "ArrowTrigger") {
+			arrowImage = myCanvas.transform.Find("Arrow").GetComponent<Image>();
+			//Set arrow to the right one here;
+			arrowImage.sprite = leftArrow;
+			arrowImage.color = opaque;
+			Debug.Log (arrowImage);
+			InvokeRepeating ("BlinkArrow", 0f, .5f);
 		}
 		if (other.name == "Item Box") {
 			Debug.Log ("get powerup!");
@@ -509,6 +516,9 @@ public class CarController : MonoBehaviour {
 		}
 		if (other.name == "PlasmaTrigger" || other.name == "RoidsTrigger") {
 			stopMovieAnim ();
+		}
+		if (other.name == "ArrowTrigger") {
+			CancelInvoke ("BlinkArrow");
 		}
 	}
 
