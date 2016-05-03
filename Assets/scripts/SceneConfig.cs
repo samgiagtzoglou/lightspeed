@@ -14,7 +14,6 @@ public class SceneConfig : MonoBehaviour {
 	public static string player3ControlCode;
 	public static string player4ControlCode;
 	public static int players;
-	public static bool controllerControl;
 	public static bool gameArmed;
 	public static Dictionary<string, int> controllersActive = new Dictionary<string, int>{{"C1",0},{"C2",0},{"C3",0},{"C4",0},{"KArrow",0},{"KWasd",0}};
 	public AudioClip alert;
@@ -36,8 +35,47 @@ public class SceneConfig : MonoBehaviour {
 	public static Dictionary<int, bool> playersReady = new Dictionary<int, bool>{{1,false},{2,true},{3,true},{4,true}};
 	public static Dictionary<int, int> playersColors = new Dictionary<int, int>{{1,0},{2,0},{3,0},{4,0}};
 
-
+//	public static void Reset() {
+//		player1ControlCode = null;
+//		player2ControlCode = null;
+//		player3ControlCode = null;
+//		player4ControlCode = null;
+//		players = 0;
+//		gameArmed = false;
+//		controllersActive = new Dictionary<string, int>{{"C1",0},{"C2",0},{"C3",0},{"C4",0},{"KArrow",0},{"KWasd",0}};
+//		playersReady = new Dictionary<int, bool>{{1,false},{2,true},{3,true},{4,true}};
+//		playersColors = new Dictionary<int, int>{{1,0},{2,0},{3,0},{4,0}};
+//	
+////		Start ();
+//	}
 	void Start() {
+//		players = 0;
+//		gameArmed = false;
+//		GameObject.Find ("armedGameText").gameObject.GetComponent<Text>().enabled = false;
+//		GameObject.Find ("pressToJoinText").gameObject.GetComponent<Text>().enabled = true;
+//		GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (false);
+//		GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (true);
+//		GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
+//		audio = GetComponent<AudioSource> ();
+//		audio1 = GetComponent<AudioSource> ();
+//		audio2 = GetComponent<AudioSource> ();
+//		audio3 = GetComponent<AudioSource> ();
+
+
+		//GameObject.Find ("MenuScreen").GetComponent<AudioSource>().PlayOneShot(alert);
+	}
+
+	void Awake()
+	{
+		player1ControlCode = null;
+		player2ControlCode = null;
+		player3ControlCode = null;
+		player4ControlCode = null;
+		players = 0;
+		gameArmed = false;
+		controllersActive = new Dictionary<string, int>{{"C1",0},{"C2",0},{"C3",0},{"C4",0},{"KArrow",0},{"KWasd",0}};
+		playersReady = new Dictionary<int, bool>{{1,false},{2,true},{3,true},{4,true}};
+		playersColors = new Dictionary<int, int>{{1,0},{2,0},{3,0},{4,0}};
 		players = 0;
 		gameArmed = false;
 		GameObject.Find ("armedGameText").gameObject.GetComponent<Text>().enabled = false;
@@ -49,14 +87,7 @@ public class SceneConfig : MonoBehaviour {
 		audio1 = GetComponent<AudioSource> ();
 		audio2 = GetComponent<AudioSource> ();
 		audio3 = GetComponent<AudioSource> ();
-
-
-		//GameObject.Find ("MenuScreen").GetComponent<AudioSource>().PlayOneShot(alert);
-	}
-
-	void Awake()
-	{
-		DontDestroyOnLoad(this);
+//		DontDestroyOnLoad(this);
 	}
 
 	void Update() {
@@ -307,7 +338,7 @@ public class SceneConfig : MonoBehaviour {
 			players = 4;
 		}
 
-		controllerControl = false;
+		
 	}
 
 	public void LoadLevel(string level){

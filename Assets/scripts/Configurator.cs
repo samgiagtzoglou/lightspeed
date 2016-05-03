@@ -29,7 +29,7 @@ public class Configurator : MonoBehaviour {
 
 	public string finishTag = "finishLine";
 
-	void Start() {
+	void Awake() {
 		allCarts = GameObject.Find ("allCarts");
 		Vector3 position1 = GameObject.Find ("firstStart").transform.position;
 		Vector3 position2 = GameObject.Find ("secondStart").transform.position;
@@ -347,9 +347,9 @@ public class Configurator : MonoBehaviour {
 			cart.GetComponent<CartPosition> ().setLastWaypoint (GameObject.FindWithTag ("finishLine").transform);
 		}
 	}
-	void Awake() {
-		DontDestroyOnLoad(this);
-	}
+//	void Awake() {
+////		DontDestroyOnLoad(this);
+//	}
 
 	void setColorForCart(GameObject player, int color) {
 		CarController playerController = (CarController) player.GetComponent(typeof(CarController));
