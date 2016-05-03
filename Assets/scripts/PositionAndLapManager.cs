@@ -13,6 +13,7 @@ public class PositionAndLapManager : MonoBehaviour {
 	public int numLaps = 1;
 	public Text timerText;
 	public bool isPause = false;
+	public int quitTimer = 0;
 
 	public void Start() {
 		numPlayers = SceneConfig.players;
@@ -33,7 +34,11 @@ public class PositionAndLapManager : MonoBehaviour {
 
 	// this gets called every frame
 	public void Update() {
-		
+		if (quitTimer > 120) {//Quitting the game
+			Time.timeScale = 1;
+//			SceneConfig.Reset ();
+			Application.LoadLevel("menu");
+		}
 		if( Input.GetButtonDown("C1_Start") || Input.GetButtonDown("C2_Start") || 
 			Input.GetButtonDown("C3_Start") || Input.GetButtonDown("C4_Start") ||
 			Input.GetButtonDown("Pause")){
@@ -45,6 +50,13 @@ public class PositionAndLapManager : MonoBehaviour {
 					GameObject.Find ("raceManager").transform.FindChild ("pauseText").gameObject.SetActive(false);
 					Time.timeScale = 1;
 				}
+		}
+		if (isPause && (Input.GetButton ("C1_Fire") || Input.GetButton ("C2_Fire") ||
+		    Input.GetButton ("C3_Fire") || Input.GetButton ("C4_Fire") ||
+			Input.GetButton ("KArrow_Start") || Input.GetButton ("KWasd_Start"))) {
+			quitTimer++;
+		} else {
+			quitTimer = 0;
 		}
 	
 		foreach (CartPosition pos in allCarts) {
