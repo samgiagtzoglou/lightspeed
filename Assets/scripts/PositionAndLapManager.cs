@@ -34,7 +34,7 @@ public class PositionAndLapManager : MonoBehaviour {
 
 	// this gets called every frame
 	public void Update() {
-		if (quitTimer > 120) {//Quitting the game
+		if (quitTimer > 90) {//Quitting the game
 			Time.timeScale = 1;
 //			SceneConfig.Reset ();
 			Application.LoadLevel("menu");
