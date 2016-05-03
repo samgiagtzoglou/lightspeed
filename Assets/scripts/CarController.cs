@@ -72,6 +72,14 @@ public class CarController : MonoBehaviour {
 	public string brakeaxis;
 	public string fireButton;
 
+	//Audio
+	private AudioSource powerupSource;
+	public AudioClip shieldSound;
+	public AudioClip boostSound;
+	public AudioClip laserSound;
+	public AudioClip blackholeSound;
+	public AudioClip pickupSound;
+
 	//Animations
 	private Color transparent;
 	private Color opaque;
@@ -106,10 +114,11 @@ public class CarController : MonoBehaviour {
 		shieldsUp = false;
 		inMedium = false;
 		attackStartTime = 0f;
-		powerup = Powerups.boost;
+		powerup = Powerups.shield;
 		boostActivated = false;
 		opaque = new Color(255,255,255,255);
 		transparent = new Color(255,255,255,0);
+		powerupSource = this.transform.Find ("powerupEffects").GetComponent<AudioSource>();
 	}
 
 	Color wavelengthToColor(int newWavelength) {
@@ -189,7 +198,7 @@ public class CarController : MonoBehaviour {
 			prt = warp.GetComponent<ParticleSystem> ().emission;
 			prt.enabled = true;
 		}
-		Debug.Log ("ran");
+		powerupSource.PlayOneShot (boostSound);
 	}
 
 	private void killBoostFX() {
@@ -211,6 +220,7 @@ public class CarController : MonoBehaviour {
 	private void DropBlackHole() {
 		Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
 			Quaternion.identity);
+		powerupSource.PlayOneShot (blackholeSound);
 	}
 
 	private void ShootLightGun() {
@@ -220,6 +230,7 @@ public class CarController : MonoBehaviour {
 		HomingCSharp bulletHoming = (HomingCSharp) bullet.GetComponent("HomingCSharp");
 		bulletHoming.launcher = this.gameObject;
 		bulletHoming.launchCart = this.gameObject;
+		powerupSource.PlayOneShot (laserSound);
 	}
 
 	private void ShieldsUp() {
@@ -228,6 +239,7 @@ public class CarController : MonoBehaviour {
 		}
 		shieldsUp = true;
 		shieldStartTime = Time.time;
+		powerupSource.PlayOneShot (shieldSound);
 	}
 
 	public void ShieldsDown() {
@@ -474,7 +486,6 @@ public class CarController : MonoBehaviour {
 			InvokeRepeating ("BlinkArrow", 0f, .5f);
 		}
 		if (other.name == "Item Box") {
-			Debug.Log ("get powerup!");
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
 
@@ -494,6 +505,7 @@ public class CarController : MonoBehaviour {
 					powerup = Powerups.attack;
 				}
 				drawPowerupIndicator (powerup);
+				powerupSource.PlayOneShot (pickupSound);
 			}
 		} else if (other.name == "Medium") {
 			inMedium = true;
