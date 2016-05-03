@@ -150,7 +150,7 @@ Material:
       data:
         first:
           name: _RefractiveIndex
-        second: 1
+        second: 1.5
       data:
         first:
           name: _BoundaryLength
