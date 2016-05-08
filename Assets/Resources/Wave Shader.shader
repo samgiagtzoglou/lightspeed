@@ -104,7 +104,7 @@
             float4 vertexDisplacement = wpos - _Displacement;
             float offset = (0.25f * dot(_Direction,
                       vertexDisplacement) / length(_Direction));
-            float renderWavelength = (0.0015f * _Wavelength - 0.37f) * _RefractiveIndex;
+            float renderWavelength = (0.0015f * _Wavelength - 0.37f) / _RefractiveIndex;
             
             float locationAmplitude = _Amplitude;
             if (offset > _TailLength / 2.0f - _BoundaryLength) {
