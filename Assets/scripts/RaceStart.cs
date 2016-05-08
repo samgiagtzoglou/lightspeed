@@ -21,8 +21,9 @@ public class RaceStart : MonoBehaviour {
 
 	void startRace() {
 		Configurator conf = GameObject.Find("Configurator").GetComponent<Configurator>();
-
 		secondsLeft--;
+
+
 		if (secondsLeft < 4) {
 			
 			switch( SceneConfig.players ) {
@@ -68,6 +69,10 @@ public class RaceStart : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if( Input.GetButtonDown("C1_Fire") || Input.GetButtonDown("C2_Fire") || 
+			Input.GetButtonDown("C3_Fire") || Input.GetButtonDown("C4_Fire") ||
+			Input.GetButtonDown("KWasd_Start") || Input.GetButtonDown("KArrow_Start")){
+			secondsLeft = 4;
+		}
 	}
 }

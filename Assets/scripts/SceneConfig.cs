@@ -302,11 +302,11 @@ public class SceneConfig : MonoBehaviour {
 	}
 	private int getLightwaveForColor(string color){
 		switch (color) {
-		case "Black":
-			return 0;
+		case "Orange":
+			return 630;
 		case "Purple":
 			return 400;
-		case "Orange":
+		case "Yellow":
 			return 600;
 		case "Green":
 			return 530;

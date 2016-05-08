@@ -37,9 +37,9 @@ public class Configurator : MonoBehaviour {
 		Vector3 position3 = GameObject.Find ("thirdStart").transform.position;
 		Vector3 position4 = GameObject.Find ("fourthStart").transform.position;
 
-		if (SceneConfig.players == 0) {
-			SceneConfig.players = 1;
-		}
+//		if (SceneConfig.players == 0) {
+//			SceneConfig.players = 1;
+//		}
 		if (SceneConfig.players == 1) {
 //			camera1p.gameObject.SetActive (true);
 			player1 = (GameObject) Instantiate(car, position1, Quaternion.identity);
