@@ -2448,7 +2448,7 @@ MonoBehaviour:
   blackholeSound: {fileID: 8300000, guid: 29b2fa81a2992c84bae0bf40c2bf4e52, type: 3}
   pickupSound: {fileID: 8300000, guid: 784bed9f7e5374ec79d35af04d29d059, type: 3}
   roidsAnimation: {fileID: 15200000, guid: 5b8e07c07b4ac4fe2b1076736d7a075e, type: 3}
-  plasmaAnimation: {fileID: 15200000, guid: ee0d9c23315494d3db90c390bad6fbe5, type: 3}
+  plasmaAnimation: {fileID: 15200000, guid: e785c228718b74913ae5806b52800444, type: 3}
   leftArrow: {fileID: 21300000, guid: b6a13159579724df3899573400b0623d, type: 3}
   rightArrow: {fileID: 21300000, guid: 1850c9b02771c402a96f69df5feb3e3b, type: 3}
   shieldIcon: {fileID: 21300000, guid: 4db6585792ba745e280eaf025d8c2f79, type: 3}
