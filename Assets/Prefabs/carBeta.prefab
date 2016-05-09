@@ -2416,6 +2416,8 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: -0.0004871239
   groundAngleVelocity: 1
+  trackIndex: 1.5
+  mediumIndex: 2.5
   wavelength: 500
   maxVacuumSpeed: 100
   maxMediumAccelerationReduction: 2000

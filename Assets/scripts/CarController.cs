@@ -21,6 +21,10 @@ public class CarController : MonoBehaviour {
 	public float rotationVelocity;
 	public float groundAngleVelocity;
 
+	// general medium stuff
+	public float trackIndex;
+	public float mediumIndex;
+
 	// Handling travelling in medium
 	public int wavelength;
 	private bool inMedium;
@@ -521,7 +525,7 @@ public class CarController : MonoBehaviour {
 			}
 		} else if (other.name == "Medium") {
 			inMedium = true;
-			waveTailController.SetRefractiveIndex(2.5f);
+			waveTailController.SetRefractiveIndex(mediumIndex);
 		} else if (other.name == "Field") {
 			inField = true;
 			waveTailController.SetRefractiveIndex(1.0f);
@@ -538,11 +542,11 @@ public class CarController : MonoBehaviour {
 	void OnTriggerExit (Collider other) {
 		if (other.name == "Medium") {
 			inMedium = false;
-			waveTailController.SetRefractiveIndex(1.5f);
+			waveTailController.SetRefractiveIndex(trackIndex);
 		}
 		if (other.name == "Field") {
 			inField = false;
-			waveTailController.SetRefractiveIndex(1.5f);
+			waveTailController.SetRefractiveIndex(trackIndex);
 		}
 		if (other.name == "PlasmaTrigger" || other.name == "RoidsTrigger") {
 			stopMovieAnim ();
