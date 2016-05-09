@@ -82,7 +82,7 @@ public class SceneConfig : MonoBehaviour {
 		GameObject.Find ("pressToJoinText").gameObject.GetComponent<Text>().enabled = true;
 		GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (false);
 		GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (true);
-		GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
+		//GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
 		audio = GetComponent<AudioSource> ();
 		audio1 = GetComponent<AudioSource> ();
 		audio2 = GetComponent<AudioSource> ();
@@ -99,7 +99,7 @@ public class SceneConfig : MonoBehaviour {
 			GameObject.Find ("pressToJoinText").gameObject.GetComponent<Text>().enabled = false;
 			GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (true);
 			GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (false);
-			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (false);
+//			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (false);
 
 			gameArmed = true;
 		} else {
@@ -108,7 +108,7 @@ public class SceneConfig : MonoBehaviour {
 			GameObject.Find ("buttonSet2").transform.GetChild (0).gameObject.SetActive (false);
 
 			GameObject.Find ("buttonSet1").transform.GetChild (0).gameObject.SetActive (true);
-			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
+//			GameObject.Find ("buttonSet1").transform.GetChild (1).gameObject.SetActive (true);
 		}
 		if (players > 0) {
 			if (Mathf.Abs(Input.GetAxis ("C1_X axis"))>0.5 && (controllersActive ["C1"] > 0) && !xaxis1inuse) {
