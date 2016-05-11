@@ -2263,7 +2263,7 @@ MonoBehaviour:
   currentWaypoint: 0
   currentLap: 0
   lastWaypoint: {fileID: 0}
-  nbWaypoint: 8
+  nbWaypoint: 17
 --- !u!114 &11447030
 MonoBehaviour:
   m_ObjectHideFlags: 1
