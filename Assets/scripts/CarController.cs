@@ -25,19 +25,18 @@ public class CarController : MonoBehaviour {
 	public float trackIndex;
 	public float mediumIndex;
 
-	// Handling travelling in medium
+	// Handling traveling in medium
 	public int wavelength;
 	private bool inMedium;
-
-	// handle atom field
-	private bool inField;
-	public float maxVacuumSpeed;
-	
 	public float maxMediumAccelerationReduction;
 	public float maxMediumSpeed;
 	public float maxMediumSpeedReduction;
 
-	// Handling travelling in the track
+	// Handle traveling field
+	private bool inField;
+	public float maxVacuumSpeed;
+
+	// Handling traveling in the track
 	public float maxTrackAccelerationReduction;
 	public float maxTrackSpeed;
 	public float maxTrackSpeedReduction;
@@ -236,8 +235,7 @@ public class CarController : MonoBehaviour {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
 										transform.position + (3.0f * transform.forward),
 										Quaternion.identity);
-		HomingCSharp bulletHoming = (HomingCSharp) bullet.GetComponent("HomingCSharp");
-		bulletHoming.launcher = this.gameObject;
+		Homing bulletHoming = (Homing) bullet.GetComponent("HomingCSharp");
 		bulletHoming.launchCart = this.gameObject;
 		powerupSource.PlayOneShot (laserSound);
 	}
