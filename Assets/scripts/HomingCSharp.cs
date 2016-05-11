@@ -22,7 +22,7 @@ public class HomingCSharp : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		instantiateTime = Time.time;
-		boltVelocity = 55f;
+		boltVelocity = 75f;
 		turningSpeed = 20f;
 		attackStartTime = -1f;
 		reachedTarget = false;

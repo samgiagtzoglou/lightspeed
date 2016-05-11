@@ -49,4 +49,5 @@ tramp
 .\#*
 Lightspeed.app/*
 
-*.meta
+Assets/Scripts/#PositionManager.cs#.meta
+Assets/Prefabs/#*merge*#4573IMk#.meta

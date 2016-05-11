@@ -912,7 +912,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196114}
   m_LocalRotation: {x: 0.0000017823947, y: 0.35192102, z: -0.00000060084426, w: -0.9360297}
-  m_LocalPosition: {x: 483.06268, y: 908.6901, z: 559.4546}
+  m_LocalPosition: {x: -191.24902, y: 0.15577823, z: 44.949383}
   m_LocalScale: {x: 3, y: 0.7, z: 4}
   m_Children:
   - {fileID: 444952}
@@ -1929,7 +1929,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2263,7 +2263,7 @@ MonoBehaviour:
   currentWaypoint: 0
   currentLap: 0
   lastWaypoint: {fileID: 0}
-  nbWaypoint: 2
+  nbWaypoint: 17
 --- !u!114 &11447030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2416,6 +2416,8 @@ MonoBehaviour:
   turnRotationSeekSpeed: 0.28
   rotationVelocity: -0.0004871239
   groundAngleVelocity: 1
+  trackIndex: 1.5
+  mediumIndex: 2.5
   wavelength: 500
   maxVacuumSpeed: 100
   maxMediumAccelerationReduction: 2000
@@ -2424,13 +2426,13 @@ MonoBehaviour:
   maxTrackAccelerationReduction: 500
   maxTrackSpeed: 80
   maxTrackSpeedReduction: 10
-  boostStrength: 2000
+  boostStrength: 2500
   boostTime: 2
   blackHoleOrbitRadius: 6
   blackHoleOrbitSpeed: 4
   blackHolePrefab: {fileID: 175740, guid: 5391b74f0aaac4f1d83cb8816ce52e0b, type: 2}
   lightBallPrefab: {fileID: 147938, guid: f8670ff85eccd456cb6e1938e3738c58, type: 2}
-  attackSpeedReduction: 20
+  attackSpeedReduction: 40
   attackLength: 5
   shieldObjects:
   - {fileID: 181724}
@@ -2441,17 +2443,17 @@ MonoBehaviour:
   brakeaxis: 
   fireButton: KWasd_Start
   shieldSound: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
-  boostSound: {fileID: 8300000, guid: bd534043f3cdc49f380fcf5f85590791, type: 3}
-  laserSound: {fileID: 8300000, guid: 940c25594161b4cf28d0accc157400c4, type: 3}
+  boostSound: {fileID: 8300000, guid: 10a28034a4e7d481d99949b7e1ee6989, type: 3}
+  laserSound: {fileID: 8300000, guid: 25fe98471082e4617ae49a831dbfa709, type: 3}
   blackholeSound: {fileID: 8300000, guid: 29b2fa81a2992c84bae0bf40c2bf4e52, type: 3}
   pickupSound: {fileID: 8300000, guid: 784bed9f7e5374ec79d35af04d29d059, type: 3}
   roidsAnimation: {fileID: 15200000, guid: 5b8e07c07b4ac4fe2b1076736d7a075e, type: 3}
-  plasmaAnimation: {fileID: 15200000, guid: ee0d9c23315494d3db90c390bad6fbe5, type: 3}
+  plasmaAnimation: {fileID: 15200000, guid: 9cf552e0348e9401ca7f6b873b8ebda0, type: 3}
   leftArrow: {fileID: 21300000, guid: b6a13159579724df3899573400b0623d, type: 3}
   rightArrow: {fileID: 21300000, guid: 1850c9b02771c402a96f69df5feb3e3b, type: 3}
-  shieldIcon: {fileID: 21300000, guid: 6bdeaaf8e6b2645108025556b22fb885, type: 3}
-  attackIcon: {fileID: 21300000, guid: 2768ecf5f30a54dc7b8c7a10681ada45, type: 3}
-  blackholeIcon: {fileID: 21300000, guid: 6df440f8874224be8aad2d334bfffbdb, type: 3}
+  shieldIcon: {fileID: 21300000, guid: 4db6585792ba745e280eaf025d8c2f79, type: 3}
+  attackIcon: {fileID: 21300000, guid: 94b04801750004368bd39bd2c3b9cbc8, type: 3}
+  blackholeIcon: {fileID: 21300000, guid: b26125d8a850e4d7a96c1c08899f6a52, type: 3}
   boostIcon: {fileID: 21300000, guid: 671124b6c96f84aaca35e888eb038747, type: 3}
   myCamera: {fileID: 0}
   myCanvas: {fileID: 0}
