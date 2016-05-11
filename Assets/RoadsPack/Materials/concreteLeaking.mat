@@ -50,12 +50,12 @@ Material:
         second: 0.078125
       data:
         first:
-          name: _EmissionLM
-        second: 0
-      data:
-        first:
           name: _Emission
         second: 1
+      data:
+        first:
+          name: _EmissionLM
+        second: 0
     m_Colors:
       data:
         first:
