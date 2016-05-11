@@ -66,7 +66,7 @@ public class PositionAndLapManager : MonoBehaviour {
 			int val = pos.GetCarPosition (allCarts);
 			cartPositions [pos.tag] = val - 1;
 			cartLap [pos.tag] = pos.currentLap;
-			CarController cartController = (CarController) pos.GetComponent("CarController");
+			KartController cartController = (KartController) pos.GetComponent("KartController");
 			cartController.position = val;
 
 			if (pos.currentLap == numLaps) {

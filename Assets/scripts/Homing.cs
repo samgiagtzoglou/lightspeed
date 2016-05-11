@@ -7,7 +7,7 @@ public class Homing : MonoBehaviour {
 	public GameObject launchKart;
 	//Information about the target
 	private Transform target;
-	public CarController targetCtrl;
+	public KartController targetCtrl;
 	//How long effects last
 	public float attackTime;
 	//How long the shot stays active
@@ -32,16 +32,16 @@ public class Homing : MonoBehaviour {
 		turningSpeed = 20f;
 		attackStartTime = -1f;
 		reachedTarget = false;
-		allKarts = GameObject.Find ("allKarts").transform;
+		allKarts = GameObject.Find ("allCarts").transform;
 
 		bolt = GetComponent<Rigidbody>();
 		float minDist = Mathf.Infinity;
 
 		//Loop through karts to target the closest kart ahead of you
 		bool targetFound = false;
-		CarController launchCtrl = launchKart.GetComponent<CarController> ();
+		KartController launchCtrl = launchKart.GetComponent<KartController> ();
 		foreach (Transform kart in allKarts) {
-			CarController ctrl = kart.GetComponent<CarController> ();
+			KartController ctrl = kart.GetComponent<KartController> ();
 			//Distance between cart and target
 			float diff = (kart.position - transform.position).sqrMagnitude;
 			//Replace minDist if the min distance so far. But only if target isn't yourself

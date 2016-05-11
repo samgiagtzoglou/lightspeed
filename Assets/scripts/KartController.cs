@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class CarController : MonoBehaviour {
+public class KartController : MonoBehaviour {
 	// Powerup enum
 	enum Powerups {none, blackhole, shield, attack, boost}
 	private Powerups powerup;
@@ -66,20 +66,19 @@ public class CarController : MonoBehaviour {
 	// Shield powerup variables
 	public GameObject[] shieldObjects;
 	private float shieldStartTime;
-
 	public float shieldTime;
-
 	public  bool shieldsUp;
 	private bool drivingAllowed;
 	private bool inElectronOrbit;
 	private bool inBlackHoleOrbit;
 
+	//Set buttons on the controller
 	public string xaxis;
 	public string yaxis;
 	public string brakeaxis;
 	public string fireButton;
 
-	//Audio
+	//Audio for powerups
 	private AudioSource powerupSource;
 	public AudioClip shieldSound;
 	public AudioClip boostSound;
@@ -87,33 +86,35 @@ public class CarController : MonoBehaviour {
 	public AudioClip blackholeSound;
 	public AudioClip pickupSound;
 
-	//Animations
+	//Animated text for entering medium
 	private Color transparent;
 	private Color opaque;
-	public MovieTexture roidsAnimation;
-	public MovieTexture plasmaAnimation;
+	public MovieTexture atomAnimation;
+	public MovieTexture coldAnimation;
 	private MovieTexture animationTexture;
 	public Sprite leftArrow;
 	public Sprite rightArrow;
 	private Image arrowImage;
 
-	//Powerup icons
+	//Powerup UI icons
 	public Sprite shieldIcon;
 	public Sprite attackIcon;
 	public Sprite blackholeIcon;
 	public Sprite boostIcon;
 	private Sprite powerupSprite;
 
-	//Boost FX
+	//Auxiliary for Boost FX
 	public GameObject myCamera;
 	private bool boostActivated;
 
-	//Canvas
+	//Canvas corresponding to this kart
 	public Canvas myCanvas;
 
+	//This kart
 	private Rigidbody rb;
 	public WaveTailController waveTailController;
 
+	//Initialize
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
 		inElectronOrbit = false;
@@ -122,13 +123,14 @@ public class CarController : MonoBehaviour {
 		inMedium = false;
 		inField = false;
 		attackStartTime = 0f;
-//		powerup = Powerups.boost;
 		boostActivated = false;
 		opaque = new Color(255,255,255,255);
 		transparent = new Color(255,255,255,0);
 		powerupSource = this.transform.Find ("powerupEffects").GetComponent<AudioSource>();
 	}
 
+	//Given a wavelength, returns a Color object.
+	//Used for setting color of kart + tail + shield.
 	Color wavelengthToColor(int newWavelength) {
 		float factor, red, green, blue;
 		float Gamma = 0.8f;
@@ -186,19 +188,23 @@ public class CarController : MonoBehaviour {
 		return new Color(red, green, blue, 0.8f);
 	}	
 
+	//Set color of the shield to the color of the kart
 	public void updateWavelength(int color) {
 		wavelength = color;
 		Renderer shieldRend = shieldObjects[0].GetComponent<Renderer>();
 		shieldRend.material.SetColor("_EmissionColor", wavelengthToColor(color));
 	}
 
+	//Used to allow driving after race countdown
 	public void startDriving() {
 		drivingAllowed = true;
 	}
 
+	//Start boost related powerups, particles and effects
 	private void ActivateBoost() {
 		boostActivated = true;
 		boostStartTime = Time.time;
+		//Loop through all particle emitters in the effect
 		Transform speedupFX = myCamera.transform.Find ("SPEEDUPFX");
 		ParticleSystem.EmissionModule prt = speedupFX.GetComponent<ParticleSystem> ().emission;
 		prt.enabled = true;
@@ -209,9 +215,11 @@ public class CarController : MonoBehaviour {
 		powerupSource.PlayOneShot (boostSound);
 	}
 
+	//Kill the Boost effects when boosting is finished
 	private void killBoostFX() {
 		if (boostActivated) {
 			boostActivated = false;
+			//Loop through all particle emitters in the effect
 			Transform speedupFX = myCamera.transform.Find ("SPEEDUPFX");
 			ParticleSystem.EmissionModule prt = speedupFX.GetComponent<ParticleSystem> ().emission;
 			prt.enabled = false;
@@ -222,24 +230,26 @@ public class CarController : MonoBehaviour {
 		} else {
 			return;
 		}
-		Debug.Log ("ran the kill function");
 	}
 
+	//Instantiate a blackhole object
 	private void DropBlackHole() {
 		Instantiate(blackHolePrefab, transform.position - (10.0f * transform.forward),
 			Quaternion.identity);
 		powerupSource.PlayOneShot (blackholeSound);
 	}
 
+	//Instantiate a lightgun
 	private void ShootLightGun() {
 		GameObject bullet = (GameObject) Instantiate(lightBallPrefab,
 										transform.position + (3.0f * transform.forward),
 										Quaternion.identity);
-		Homing bulletHoming = (Homing) bullet.GetComponent("HomingCSharp");
-		bulletHoming.launchCart = this.gameObject;
+		Homing bulletHoming = (Homing) bullet.GetComponent("Homing");
+		bulletHoming.launchKart = this.gameObject;
 		powerupSource.PlayOneShot (laserSound);
 	}
 
+	//Activate the shield
 	private void ShieldsUp() {
 		foreach (GameObject shield in shieldObjects) {
 			shield.SetActive (true);
@@ -249,12 +259,15 @@ public class CarController : MonoBehaviour {
 		powerupSource.PlayOneShot (shieldSound);
 	}
 
+	//Deactivate the shields
 	public void ShieldsDown() {
 		foreach (GameObject shield in shieldObjects) shield.SetActive(false);
 		shieldsUp = false;
 	}	
 
+	//We check for input in Update
 	void Update() {
+		//Launch a powerup, if necessary
 		if (Input.GetButton(fireButton)) {
 			Debug.Log (fireButton + " : " + powerup);
 			switch (powerup) {
@@ -278,15 +291,21 @@ public class CarController : MonoBehaviour {
 				powerup = Powerups.none;
 				break;
 			}
-			//Set the image area to transparent
-			myCanvas.transform.Find ("Image").GetComponent<Image> ().sprite = null;
-			Color newColor = new Color (0, 0, 0);
-			newColor.a = 0;
-			myCanvas.transform.Find ("Image").GetComponent<Image> ().color = newColor;
+			deactivatePowerupIcon ();
 		}
 	}
 
+	//Turn off the powerup UI image. Used when powerup is launched. 
+	void deactivatePowerupIcon() {
+		myCanvas.transform.Find ("Image").GetComponent<Image> ().sprite = null;
+		Color newColor = new Color (0, 0, 0);
+		newColor.a = 0;
+		myCanvas.transform.Find ("Image").GetComponent<Image> ().color = newColor;
+	}
+
+	//Drive the car
 	void FixedUpdate() {
+		//Once a controller is attached
 		if (yaxis != "") {
 			if (!inElectronOrbit && !inBlackHoleOrbit && drivingAllowed) {
 				//Apply player input to the car
@@ -296,17 +315,20 @@ public class CarController : MonoBehaviour {
 				orbitBlackHole ();
 			}
 		}
+		//respawn when far below the track
 		if (this.transform.position.y <= -40) {
 			respawn ();
 		}
-
+		//Turn off the shields when it's time
 		if (shieldsUp && (Time.time - shieldStartTime > shieldTime))
 			ShieldsDown();
 	}
 
+	//Applies rotations to spin a kart around a blackhole
 	void orbitBlackHole() {
 		float orbitPhase = (Time.time - bhOrbitTime) * blackHoleOrbitSpeed +
 			bhOrbitInitialPhase;
+		//Move the kart around in a circle
 		transform.position =
 			(new Vector3 (blackHoleOrbitRadius * Mathf.Cos(orbitPhase)
 				+ orbitCenter.x,
@@ -318,6 +340,7 @@ public class CarController : MonoBehaviour {
 				Mathf.Cos(orbitPhase)));
 	}
 
+	//Respawns the kart at the last passed checkpoint
 	void respawn() {
 		CartPosition posHandler = GetComponent <CartPosition> ();
 		this.transform.position = posHandler.getRespawnPosition ();
@@ -325,6 +348,7 @@ public class CarController : MonoBehaviour {
 		this.GetComponent<Rigidbody> ().velocity = new Vector3(0f,0f,0f);
 	}
 
+	//Converts player inputs into forces for kart
 	void applyDrivingForces() {
 		//Check if we are touching the ground
 		if (Physics.Raycast(transform.position, transform.up*-1, 3f)) {
@@ -336,7 +360,6 @@ public class CarController : MonoBehaviour {
 				//Controller, set axis for triggers
 				float rt = (Input.GetAxis(yaxis)+1)/2;
 				float lt = 0;
-				Debug.Log ("Controller: " + rt + ", " + lt);
 				if (Input.GetAxis (brakeaxis) != 0.0) {
 					lt = (Input.GetAxis (brakeaxis) + 1) / (-2);
 				}
@@ -345,16 +368,17 @@ public class CarController : MonoBehaviour {
 			} else {
 				yfloat = Input.GetAxis (yaxis);
 				//Keyboard input
-
 			}
-
+			//When driving on the default track, determine velocity based on wavelength
 			if (!inMedium && !inField) {
 				float adjustedMaxSpeed = maxTrackSpeed - maxTrackSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
 
+				//Reduce speed if being affected by lightgun
 				if (Time.time < attackStartTime + attackLength)
 					adjustedMaxSpeed -= attackSpeedReduction;
-				
+
+				//Accelerate forward
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxTrackAccelerationReduction *
 						((float) (wavelength - 380) / 400.0f);
@@ -363,16 +387,18 @@ public class CarController : MonoBehaviour {
 					forwardForce = forwardForce * Time.deltaTime * rb.mass;
 					rb.AddForce(forwardForce);
 				}
-
+				//Add a forward force when using a boost powerup
 				if (Time.time - boostStartTime < boostTime) {
 					rb.AddForce (transform.forward * boostStrength * Time.deltaTime * rb.mass);
 				} else {
 					killBoostFX ();
 				}
+				//Reduce speeds when in a medium
 			} else if (inMedium) {
+				//Determine speed reduction based on wavelength
 				float adjustedMaxSpeed = maxMediumSpeed - maxMediumSpeedReduction *
 					(1.0f - ((float) (wavelength - 380) / 400.0f));
-				
+				//Same for acceleration
 				if (Vector3.Magnitude(rb.velocity) < adjustedMaxSpeed) {
 					float adjustedAcceleration = acceleration - maxMediumAccelerationReduction *
 						(1.0f - ((float) (wavelength - 380) / 400.0f));
@@ -381,6 +407,7 @@ public class CarController : MonoBehaviour {
 					forwardForce = forwardForce * Time.deltaTime * rb.mass;
 					rb.AddForce(forwardForce);
 				}
+				//When in the vacuum, lightspeed!
 			} else {
 				if (Vector3.Magnitude(rb.velocity) < maxVacuumSpeed) {
 					Vector3 forwardForce = transform.forward * acceleration * yfloat;
@@ -389,6 +416,7 @@ public class CarController : MonoBehaviour {
 					rb.AddForce(forwardForce);
 				}
 			}
+		//Reduce drag in the air to be more arcade-y
 		} else {
 			rb.drag = 0;
 		}
@@ -405,19 +433,20 @@ public class CarController : MonoBehaviour {
 		transform.eulerAngles = newRotation;
 	}
 
+	//Set velocity to zero and turn off the RigidBody for a quick sec
 	public void EnterAtomOrbit() {
 		inElectronOrbit = true;
-		//foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = false;
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 		rb.Sleep();
 	}
 
+	//Get out of the orbit
 	public void LeaveAtomOrbit() {
 		inElectronOrbit = false;
-		//foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = true;
 	}
 
+	//Disable RigidBody velocities when in a blackhole. Transformations done by orbitBlackhole
 	public void EnterBlackHoleOrbit(Vector3 center) {
 		inBlackHoleOrbit = true;
 		bhOrbitTime = Time.time;
@@ -435,7 +464,9 @@ public class CarController : MonoBehaviour {
 		inBlackHoleOrbit = false;
 	}
 
+	//Draws the UI icon for powerups
 	private void drawPowerupIndicator(Powerups pwr) {
+		//Select the right icon
 		if (pwr == Powerups.attack) {
 			powerupSprite = attackIcon;
 		} else if (pwr == Powerups.blackhole) {
@@ -445,12 +476,13 @@ public class CarController : MonoBehaviour {
 		} else {
 			powerupSprite = shieldIcon;
 		}
-		//Draw a powerup icon
+		//Insert the image and make sure icon isn't fully transparent
 		Image img = myCanvas.transform.FindChild("Image").GetComponent<Image>();
 		img.sprite = powerupSprite;
 		img.color = new Color (255, 255, 255);
 	}
 
+	//Blinks an arrow on a player's canvas
 	void BlinkArrow() {
 		if (arrowImage.color == transparent) {
 			arrowImage.color = opaque;
@@ -459,51 +491,57 @@ public class CarController : MonoBehaviour {
 		}
 	}
 
-	void startRoidsAnim() {
+	//Begin the text animation when a player enters the atom field
+	void startAtomAnim() {
+		//Make sure the area isn't transparent
 		RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
 		Color notTransparant = new Color (255, 255, 255);
 		notTransparant.a = 255;
 		rimg.color = notTransparant;
-		animationTexture = roidsAnimation;
+		animationTexture = atomAnimation;
 		rimg.texture = animationTexture;
-		Debug.Log(rimg.texture);
 		animationTexture.Play ();
 	}
 
-	void startPlasmaAnim() {
+	//Begin text animation when player enters cold chamber
+	void startColdAnim() {
 		RawImage rimg = myCanvas.transform.FindChild("Animation").GetComponent<RawImage>();
 		Color notTransparant = new Color (255, 255, 255);
 		notTransparant.a = 255;
 		rimg.color = notTransparant;
-		animationTexture = plasmaAnimation;
+		animationTexture = coldAnimation;
 		rimg.texture = animationTexture;
-		Debug.Log(rimg.texture);
 		animationTexture.Play ();
 	}
-
+		
 	public void OnTriggerEnter(Collider other) {
-		if (other.name == "PlasmaTrigger"){
-			startPlasmaAnim();
+		//Start the right animations when entering a zone
+		if (other.name == "ColdTrigger"){
+			startColdAnim();
 		}
-		if (other.name == "RoidsTrigger"){
-			startRoidsAnim();
+		if (other.name == "AtomTrigger"){
+			startAtomAnim();
 		}
+		//Put an arrow on the player's screen
 		if (other.name == "ArrowTrigger") {
 			arrowImage = myCanvas.transform.Find("Arrow").GetComponent<Image>();
 			//Teal, green, purple and blue go to atom field
 			if (wavelength == 490 || wavelength == 450 || wavelength == 400 || wavelength == 530) {
 				arrowImage.sprite = rightArrow;
-			} else {
+			}//Everyone else goes to cold zone
+			else {
 				arrowImage.sprite = leftArrow;
 			}
 			arrowImage.color = opaque;
 			InvokeRepeating ("BlinkArrow", 0f, .5f);
 		}
+		//Give the player a powerup when colliding with a powerup box
 		if (other.name == "Item Box") {
 			if (powerup == Powerups.none) {
 				float success = 1.0f - ((float) (position - 1) / (float) (totalRacers - 1));
-
-				// create weights out of 1.0 for each powerup
+				// Create weights out of 1.0 for each powerup
+				//Don't give boost to first place.
+				//Don't give shield to last place
 				float blackhole = 0.5f * success;
 				float boost = blackhole + (0.5f - 0.5f * success);
 				float shield = boost + (0.125f + 0.25f * success);
@@ -518,18 +556,22 @@ public class CarController : MonoBehaviour {
 				} else {
 					powerup = Powerups.attack;
 				}
+				//Draw the UI icon for the powerup you were given
 				drawPowerupIndicator (powerup);
 				powerupSource.PlayOneShot (pickupSound);
 			}
+			//If you're in a medium, change the refractive index of the tail
 		} else if (other.name == "Medium") {
 			inMedium = true;
 			waveTailController.SetRefractiveIndex(mediumIndex);
+			//If you're in a vacuum, also change the refractive index
 		} else if (other.name == "Field") {
 			inField = true;
 			waveTailController.SetRefractiveIndex(1.0f);
 		}
 	}
 
+	//Remove the black bars and text when leaving medium/atom field
 	void stopMovieAnim() {
 		animationTexture.Stop ();
 		animationTexture = null;
@@ -537,6 +579,7 @@ public class CarController : MonoBehaviour {
 		rimg.color = transparent;
 	}
 
+	//Reset values when leaving triggers/zones
 	void OnTriggerExit (Collider other) {
 		if (other.name == "Medium") {
 			inMedium = false;
@@ -546,7 +589,7 @@ public class CarController : MonoBehaviour {
 			inField = false;
 			waveTailController.SetRefractiveIndex(trackIndex);
 		}
-		if (other.name == "PlasmaTrigger" || other.name == "RoidsTrigger") {
+		if (other.name == "ColdTrigger" || other.name == "AtomTrigger") {
 			stopMovieAnim ();
 		}
 		if (other.name == "ArrowTrigger") {
@@ -555,6 +598,7 @@ public class CarController : MonoBehaviour {
 		}
 	}
 
+	//Reduce speeds when colliding with a lightgun
 	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.tag == "homingBall"
 			&& (Time.time > attackStartTime + attackLength + 1f)) {

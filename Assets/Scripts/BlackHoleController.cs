@@ -13,10 +13,12 @@ public class BlackHoleController : MonoBehaviour {
 		StartCoroutine(WaitAndEmit(other));
 	}
 
+	//Tell the kart that it's entered a blackhole and start the orbit
 	IEnumerator WaitAndEmit(Collider other) {
-		CarController otherController = (CarController) other.gameObject.GetComponent(typeof(CarController));
+		KartController otherController = (KartController) other.gameObject.GetComponent(typeof(KartController));
 		if (!otherController.shieldsUp) {
 			otherController.EnterBlackHoleOrbit(transform.position);
+			//Orbit until kart has completed numOrbits
 			yield return new WaitForSeconds(numOrbits * 2.0f * Mathf.PI / otherController.blackHoleOrbitSpeed);
 			otherController.LeaveBlackHoleOrbit();
 			Rigidbody otherRB = other.attachedRigidbody;

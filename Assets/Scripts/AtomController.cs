@@ -20,7 +20,7 @@ public class AtomController : MonoBehaviour {
 
 	IEnumerator WaitAndEmit(Collider other) {
 		electronController.AbsorbPhoton();
-		CarController otherController = (CarController) other.gameObject.GetComponent(typeof(CarController));
+		KartController otherController = (KartController) other.gameObject.GetComponent(typeof(KartController));
 		otherController.EnterAtomOrbit();
 		yield return new WaitForSeconds(0.0f);
 		electronController.EmitPhoton();
