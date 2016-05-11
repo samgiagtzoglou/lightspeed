@@ -2443,12 +2443,12 @@ MonoBehaviour:
   brakeaxis: 
   fireButton: KWasd_Start
   shieldSound: {fileID: 8300000, guid: 1fe38e3bd79d84f339773b844c5c4d7e, type: 3}
-  boostSound: {fileID: 8300000, guid: bd534043f3cdc49f380fcf5f85590791, type: 3}
-  laserSound: {fileID: 8300000, guid: 940c25594161b4cf28d0accc157400c4, type: 3}
+  boostSound: {fileID: 8300000, guid: 10a28034a4e7d481d99949b7e1ee6989, type: 3}
+  laserSound: {fileID: 8300000, guid: 25fe98471082e4617ae49a831dbfa709, type: 3}
   blackholeSound: {fileID: 8300000, guid: 29b2fa81a2992c84bae0bf40c2bf4e52, type: 3}
   pickupSound: {fileID: 8300000, guid: 784bed9f7e5374ec79d35af04d29d059, type: 3}
   roidsAnimation: {fileID: 15200000, guid: 5b8e07c07b4ac4fe2b1076736d7a075e, type: 3}
-  plasmaAnimation: {fileID: 15200000, guid: 42f7660a3aecd469a86d325ba7f63142, type: 3}
+  plasmaAnimation: {fileID: 15200000, guid: d81cb669042a84fec8b3921848a87517, type: 3}
   leftArrow: {fileID: 21300000, guid: b6a13159579724df3899573400b0623d, type: 3}
   rightArrow: {fileID: 21300000, guid: 1850c9b02771c402a96f69df5feb3e3b, type: 3}
   shieldIcon: {fileID: 21300000, guid: 4db6585792ba745e280eaf025d8c2f79, type: 3}
