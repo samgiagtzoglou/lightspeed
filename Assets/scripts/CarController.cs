@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class KartController : MonoBehaviour {
+//The main class for doing stuff with a kart
+public class CarController : MonoBehaviour {
 	// Powerup enum
 	enum Powerups {none, blackhole, shield, attack, boost}
 	private Powerups powerup;

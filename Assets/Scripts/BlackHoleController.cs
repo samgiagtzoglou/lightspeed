@@ -15,7 +15,7 @@ public class BlackHoleController : MonoBehaviour {
 
 	//Tell the kart that it's entered a blackhole and start the orbit
 	IEnumerator WaitAndEmit(Collider other) {
-		KartController otherController = (KartController) other.gameObject.GetComponent(typeof(KartController));
+		CarController otherController = (CarController) other.gameObject.GetComponent(typeof(CarController));
 		if (!otherController.shieldsUp) {
 			otherController.EnterBlackHoleOrbit(transform.position);
 			//Orbit until kart has completed numOrbits

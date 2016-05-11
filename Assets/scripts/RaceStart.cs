@@ -62,7 +62,7 @@ public class RaceStart : MonoBehaviour {
 
 	void allowDriving() {
 		foreach (Transform kart in karts) {
-			KartController kartScript = kart.GetComponent<KartController> ();
+			CarController kartScript = kart.GetComponent<CarController> ();
 			kartScript.startDriving ();
 		}
 	}

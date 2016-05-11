@@ -47,7 +47,7 @@ public class Configurator : MonoBehaviour {
 
 			setColorForCart(player1, SceneConfig.playersColors[1]);
 
-			KartController controller = (KartController) player1.GetComponent ("KartController");
+			CarController controller = (CarController) player1.GetComponent ("CarController");
 			controller.xaxis = SceneConfig.player1ControlCode + "_X axis";
 			controller.yaxis = SceneConfig.player1ControlCode + "_RT";
 			if (SceneConfig.player1ControlCode.StartsWith ("C")) {
@@ -67,8 +67,8 @@ public class Configurator : MonoBehaviour {
 			c1.worldCamera = (Camera) camera1p.GetComponent<Camera>();
 			c1.gameObject.SetActive (true);
 			c1.planeDistance = 1;
-			player1.GetComponent<KartController>().myCanvas = c1;
-			player1.GetComponent<KartController> ().myCamera = camera1p;
+			player1.GetComponent<CarController>().myCanvas = c1;
+			player1.GetComponent<CarController> ().myCamera = camera1p;
 
 		} else if (SceneConfig.players == 2) {
 				
@@ -81,8 +81,8 @@ public class Configurator : MonoBehaviour {
 			setColorForCart(player1, SceneConfig.playersColors[1]);
 			setColorForCart(player2, SceneConfig.playersColors[2]);
 
-			KartController controller1 = (KartController) player1.GetComponent ("KartController");
-			KartController controller2 = (KartController) player2.GetComponent ("KartController");
+			CarController controller1 = (CarController) player1.GetComponent ("CarController");
+			CarController controller2 = (CarController) player2.GetComponent ("CarController");
 
 			controller1.xaxis = SceneConfig.player1ControlCode + "_X axis";
 			controller1.yaxis = SceneConfig.player1ControlCode + "_RT";
@@ -127,10 +127,10 @@ public class Configurator : MonoBehaviour {
 			c2.planeDistance = 1;
 
 			//Set canvases
-			player1.GetComponent<KartController>().myCanvas = c1;
-			player2.GetComponent<KartController>().myCanvas = c2;
-			player1.GetComponent<KartController> ().myCamera = camera12p;
-			player2.GetComponent<KartController> ().myCamera = camera22p;
+			player1.GetComponent<CarController>().myCanvas = c1;
+			player2.GetComponent<CarController>().myCanvas = c2;
+			player1.GetComponent<CarController> ().myCamera = camera12p;
+			player2.GetComponent<CarController> ().myCamera = camera22p;
 
 		} else if (SceneConfig.players == 3) {
 //			camera13p.gameObject.SetActive (true);
@@ -145,9 +145,9 @@ public class Configurator : MonoBehaviour {
 			setColorForCart(player2, SceneConfig.playersColors[2]);
 			setColorForCart(player3, SceneConfig.playersColors[3]);
 
-			KartController controller1 = (KartController) player1.GetComponent ("KartController");
-			KartController controller2 = (KartController) player2.GetComponent ("KartController");
-			KartController controller3 = (KartController) player3.GetComponent ("KartController");
+			CarController controller1 = (CarController) player1.GetComponent ("CarController");
+			CarController controller2 = (CarController) player2.GetComponent ("CarController");
+			CarController controller3 = (CarController) player3.GetComponent ("CarController");
 
 			controller1.xaxis = SceneConfig.player1ControlCode + "_X axis";
 			controller1.yaxis = SceneConfig.player1ControlCode + "_RT";
@@ -213,13 +213,13 @@ public class Configurator : MonoBehaviour {
 			c3.planeDistance = 1;
 
 			//Set canvases
-			player1.GetComponent<KartController>().myCanvas = c1;
-			player2.GetComponent<KartController>().myCanvas = c2;
-			player3.GetComponent<KartController>().myCanvas = c3;
+			player1.GetComponent<CarController>().myCanvas = c1;
+			player2.GetComponent<CarController>().myCanvas = c2;
+			player3.GetComponent<CarController>().myCanvas = c3;
 
-			player1.GetComponent<KartController> ().myCamera = camera13p;
-			player2.GetComponent<KartController> ().myCamera = camera23p;
-			player3.GetComponent<KartController> ().myCamera = camera33p;
+			player1.GetComponent<CarController> ().myCamera = camera13p;
+			player2.GetComponent<CarController> ().myCamera = camera23p;
+			player3.GetComponent<CarController> ().myCamera = camera33p;
 
 		} else if (SceneConfig.players == 4) {
 //			camera14p.gameObject.SetActive (true);
@@ -237,10 +237,10 @@ public class Configurator : MonoBehaviour {
 			setColorForCart(player3, SceneConfig.playersColors[3]);
 			setColorForCart(player4, SceneConfig.playersColors[4]);
 
-			KartController controller1 = (KartController) player1.GetComponent ("KartController");
-			KartController controller2 = (KartController) player2.GetComponent ("KartController");
-			KartController controller3 = (KartController) player3.GetComponent ("KartController");
-			KartController controller4 = (KartController) player4.GetComponent ("KartController");
+			CarController controller1 = (CarController) player1.GetComponent ("CarController");
+			CarController controller2 = (CarController) player2.GetComponent ("CarController");
+			CarController controller3 = (CarController) player3.GetComponent ("CarController");
+			CarController controller4 = (CarController) player4.GetComponent ("CarController");
 
 			controller1.xaxis = SceneConfig.player1ControlCode + "_X axis";
 			controller1.yaxis = SceneConfig.player1ControlCode + "_RT";
@@ -325,15 +325,15 @@ public class Configurator : MonoBehaviour {
 			c4.planeDistance = 1;
 
 			//Set canvases
-			player1.GetComponent<KartController>().myCanvas = c1;
-			player2.GetComponent<KartController>().myCanvas = c2;
-			player3.GetComponent<KartController>().myCanvas = c3;
-			player4.GetComponent<KartController>().myCanvas = c4;
+			player1.GetComponent<CarController>().myCanvas = c1;
+			player2.GetComponent<CarController>().myCanvas = c2;
+			player3.GetComponent<CarController>().myCanvas = c3;
+			player4.GetComponent<CarController>().myCanvas = c4;
 
-			player1.GetComponent<KartController> ().myCamera = camera14p;
-			player2.GetComponent<KartController> ().myCamera = camera24p;
-			player3.GetComponent<KartController> ().myCamera = camera34p;
-			player4.GetComponent<KartController> ().myCamera = camera44p;
+			player1.GetComponent<CarController> ().myCamera = camera14p;
+			player2.GetComponent<CarController> ().myCamera = camera24p;
+			player3.GetComponent<CarController> ().myCamera = camera34p;
+			player4.GetComponent<CarController> ().myCamera = camera44p;
 
 		}
 //		raceManager = (GameObject)Instantiate (raceManagerPrefab);
@@ -353,7 +353,7 @@ public class Configurator : MonoBehaviour {
 //	}
 
 	void setColorForCart(GameObject player, int color) {
-		KartController playerController = (KartController) player.GetComponent(typeof(KartController));
+		CarController playerController = (CarController) player.GetComponent(typeof(CarController));
 		playerController.updateWavelength(color);
 		Renderer cartRenderer = (Renderer) player.transform.Find("Meshes/cart").GetComponent<Renderer> ();
 		cartRenderer.material.SetInt ("_Wavelength", color);
